@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recircle Cup</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/static/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/static/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/static/custom.css" />
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
+    <script>
+        !function() {
+            var t;
+            if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
+                    t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+                    t.factory = function(e) {
+                        return function() {
+                            var n;
+                            return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function(e) {
+                t[e] = t.factory(e);
+            }), t.load = function(t) {
+                var e, n, o, i;
+                e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
+                        n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+            });
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('3i2nh4v2nv35');
+    </script>
+</head>
+
+<body id="container">
+<header>
+    <nav>
+        <div class="logo">
+            <a href="/"><img src="/static/logoalt.png"/></a>
+        </div>
+        <div class="nav">
+            <a href="/getting-started">Get started</a>
+            <a href="/blog">Blog</a>
+            <a class="drift-open-chat">Talk to us</a>
+        </div>
+    </nav>
+</header>
+
+<div id="body">
+
+    <section class="emphasis-background">
+        <article>
+            <div class="col1 compact">
+                <form class="order-form margin-bottom-10" action="https://formspree.io/contact@recircle.life" method="post">
+                    <div class="margin-bottom-40">
+                        <div class="font-1p25em font-bold margin-bottom-20">
+                            Your Cup
+                        </div>
+                        <div class="margin-bottom-15">
+                            <div class="label">Small</div>
+                            <input type="number" name="quantity-small" title="Quantity" value="1" class="cup-quantity"
+                                   oninput="updateTotal(this)">
+                        </div>
+                        <div class="margin-bottom-15">
+                            <div class="label">Large</div>
+                            <input type="number" name="quantity-large" title="Quantity" value="0" class="cup-quantity"
+                                   oninput="updateTotal(this)">
+                        </div>
+                        <div class="margin-bottom-15">
+                            <div class="label">Color</div>
+                            <select title="Color" name="color">
+                                <option>Purple</option>
+                                <option>Pink</option>
+                                <option>Blue</option>
+                            </select>
+                        </div>
+                        <div class="margin-bottom-10">
+                            <a href="/which-size" target="_blank">Which size is best for me?</a>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
+                            <span class="cup-offer">Sister Cup Offer</span>
+                            <div class="light-grey">
+                                Get two cups for Rs. 2250 (50% off the second cup)
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-1p25em font-bold margin-bottom-20">
+                            Your Details
+                        </div>
+                        <div class="margin-bottom-15">
+                            <div class="label">Name</div>
+                            <input type="text" name="name" title="Name" class="customer-name">
+                        </div>
+                        <div class="margin-bottom-15">
+                            <div class="label">Address</div>
+                            <input type="text" name="address" title="Address" class="customer-address">
+                        </div>
+                        <div class="margin-bottom-15">
+                            <div class="label">Mobile Number</div>
+                            <input type="text" name="mobile-number" title="Mobile Number" class="customer-mobile-number">
+                        </div>
+                        <div class="margin-bottom-15">
+                            <div class="label">Comments</div>
+                            <textarea name="comments" title="Comments" class="customer-comments"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col2 compact">
+                <div class="margin-bottom-40 cup-image">
+                    <img src="/static/cup.png"/>
+                </div>
+                <div class="margin-bottom-40">
+                    <div class="font-1p25em font-bold margin-bottom-20">
+                        Order Summary
+                    </div>
+                    <div class="label">Items</div>
+                    <div class="order-item">
+                        Recircle Cup Small x<span class="order-item-quantity">1</span>
+                        <div class="order-item-price">Rs. 1500</div>
+                    </div>
+                    <div class="order-item display-none">
+                        Recircle Cup Large x<span class="order-item-quantity-large">1</span>
+                        <div class="order-item-price">Rs. 0</div>
+                    </div>
+                </div>
+
+                <div class="margin-bottom-40">
+                    <div class="font-1p25em font-bold margin-bottom-20">
+                        Payment Method
+                    </div>
+                    <div class="margin-bottom-5">
+                        <input type="radio" id="cash" name="radio-group" checked onclick="showHelp(this)">
+                        <label for="cash">Cash on delivery</label>
+                        <input type="radio" id="transfer" name="radio-group" onclick="showHelp(this)">
+                        <label for="transfer" class="margin-left-25">Bank transfer</label>
+                    </div>
+                    <div class="label payment-help">Pay with cash when your order arrives</div>
+                </div>
+
+                <div class="margin-bottom-20">
+                    <div class="total-price font-bold font-1p25em margin-bottom-5">
+                        Total: <span class="font-bold">Rs. <span class="price">1500</span></span>
+                    </div>
+                    <div class="label">Free home delivery included</div>
+                </div>
+                <input type="submit" value="Finish Order" class="finish-order" onclick="sendForm(this)">
+            </div>
+            <div class="clear"></div>
+        </article>
+    </section>
+</div>
+
+<script>
+
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+    document.querySelector("input[name='quantity-small']").value = getCookie('small');
+    document.querySelector("input[name='quantity-large']").value = getCookie('large');
+    updateTotal();
+
+    function showHelp(element) {
+        if (element.id == 'transfer') {
+            document.querySelector('.payment-help').textContent =
+                    'Pay to Wasma Imran - 0766-6199-4100-4526 - MCB T Block, DHA 2. Add transaction ID in comments.'
+        }
+    }
+    function sendForm(element) {
+        var xmlhttp = new XMLHttpRequest();
+        var url = "https://formspree.io/contact@recircle.life";
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                window.location.replace('http://www.recircle.life/thankyou');
+            }
+        };
+        xmlhttp.open("POST", url, true);
+        xmlhttp.send();
+    }
+
+    function updateTotal(element) {
+        var small = document.querySelector("input[name='quantity-small']").value;
+        var large = document.querySelector("input[name='quantity-large']").value;
+        document.querySelector(".order-item-quantity").textContent = small;
+        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (parseInt(small) * 1500).toString();
+
+        document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
+        document.querySelector(".order-item-quantity-large").textContent = large;
+        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (parseInt(large) * 1500).toString();
+
+        var total = parseInt(document.querySelector("input[name='quantity-small']").value) +
+                parseInt(document.querySelector("input[name='quantity-large']").value);
+        if (total == 2) {
+            document.querySelector(".price").textContent = "2250 (Save Rs. 750)";
+            document.querySelector(".cup-offer").checked = true;
+        }
+        else {
+            document.querySelector(".price").textContent = (total * 1500).toString();
+            document.querySelector(".cup-offer").checked = false;
+        }
+    }
+    function addOffer(element) {
+        if (element.checked) {
+            document.querySelector(".price").textContent = "2250 (Save Rs. 750)";
+            document.querySelector(".cup-quantity").value = 2;
+            document.querySelector("input[name='quantity-large']").value = 0;
+        }
+        else {
+            document.querySelector(".price").textContent = "1500";
+            document.querySelector(".cup-quantity").value = 1;
+        }
+    }
+</script>
+</body>
+
+<div id="footer">
+    <a href="mailto:contact@recircle.life">contact@recircle.life</a>
+    <p class="center">
+        Copyright Recircle Cup 2017
+    </p>
+</div>
+</html>

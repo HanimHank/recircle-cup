@@ -22,7 +22,13 @@
         <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="stylesheet" href="/static/custom.css" />
+        <link rel="stylesheet" href="/static/custom.css" media="all">
+        <link rel="stylesheet" href="/static/layout.css" media="all and (min-width: 33.236em)">
+        <!-- 30em + (1.618em * 2) = 33.236em / Eliminates potential of horizontal scrolling in most cases -->
+
+        <!--[if (lt IE 9) & (!IEMobile)]>
+        <link rel="stylesheet" href="/static/layout.css" media="all">
+        <![endif]-->
         <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
         <!-- Start of Async Drift Code -->
         <script>

@@ -1,0 +1,57 @@
+/* 8. CUSTOM LAYOUT & TYPOGRAPHY (Daddy bear)
+----------------------------------------------------------------------------------------*/
+article {
+    max-width: 60em;
+    margin: 0 auto;
+    padding: 60px 0 60px;
+}
+
+
+.blog-image img {
+    margin-bottom: 0;
+}
+
+.col1, .col2 {
+    float: left;
+    width: 44%;
+}
+
+.col2 {
+    margin-left: 12%;
+    margin-top: 0;
+}
+
+.col1.compact, .col2.compact {
+    margin-left: 6%;
+}
+
+/* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
+----------------------------------------------------------------------------------------*/
+@media screen and (min-width: 30em) and (max-width: 63.236em) {
+
+    article {
+        max-width: 30em;
+        margin: 0 auto;
+        padding: 60px 20px 60px;
+    }
+
+    .blog-image img {
+        margin-bottom: 20px;
+    }
+
+    .col1, .col2 {
+        float: left;
+        width: 100%;
+    }
+
+    .col2 {
+        margin-left: 0;
+        margin-top: 60px;
+    }
+
+    .col1.compact, .col2.compact {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+}

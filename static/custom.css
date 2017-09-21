@@ -643,6 +643,10 @@ article {
     margin-bottom: 20px;
 }
 
+.blog-image {
+    float: none;
+}
+
 .col1, .col2 {
     float: left;
     width: 100%;

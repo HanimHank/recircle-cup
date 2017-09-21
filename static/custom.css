@@ -110,6 +110,8 @@ body {
 
 #body {
     min-height: 85%;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
 }
 
 #footer {
@@ -668,6 +670,14 @@ article {
 
 .nav {
     margin: 10px;
+}
+
+#body div, article {
+    max-width: none;
+}
+
+#footer {
+    font-size: 1.25em;
 }
 
 

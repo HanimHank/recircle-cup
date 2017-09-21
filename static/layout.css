@@ -33,6 +33,14 @@ article {
     margin: 0;
 }
 
+#body div, article {
+    max-width: 60em;
+}
+
+#footer {
+    font-size: 0.95em;
+}
+
 
 
 /* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
@@ -70,6 +78,14 @@ article {
 
     .nav {
         margin-top: 10px;
+    }
+
+    #body div, article {
+        max-width: none;
+    }
+
+    #footer {
+        font-size: 1.25em;
     }
 
 }

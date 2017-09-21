@@ -37,6 +37,9 @@ article {
     font-size: 0.95em;
 }
 
+.total-price {
+    margin-top: 15px;
+}
 
 
 /* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
@@ -78,6 +81,10 @@ article {
 
     #footer {
         font-size: 1.25em;
+    }
+
+    .total-price {
+        margin-top: 0;
     }
 
 }

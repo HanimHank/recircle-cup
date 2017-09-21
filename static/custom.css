@@ -636,6 +636,10 @@ select {
       }
 }
 
+.total-price {
+    margin-top: 0;
+}
+
 article {
     max-width: 30em;
     padding: 60px 30px;

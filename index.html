@@ -92,8 +92,8 @@
                                     Save money
                                 </div>
                                 <div>
-                                    A reusable cup can last you upto 10 years. This means, after making up for its cost in 5 months,
-                                    your cup will save you Rs. 3000/year.
+                                    A reusable cup can last you upto 10 years. This means you'll save over Rs. 110,000
+                                    in your lifetime that you would otherwise spend on disposable menstrual products.
                                 </div>
                             </div>
                             <div>
@@ -180,6 +180,9 @@
                     <h3 class="section-header">
                         Get your Cup
                     </h3>
+                    <div class="font-bold margin-bottom-10">
+                        10% discount is active! (Expires October 1st)
+                    </div>
 
                     <div class="col1">
                         <p>
@@ -214,12 +217,12 @@
                                 <div class="display-inline margin-right-85">
                                     Small
                                     <input type="number" name="quantity-small" title="Quantity" value="1" class="cup-quantity"
-                                           oninput="updateTotal(this)">
+                                           oninput="updateTotal(this)" min="0">
                                 </div>
                                 <div class="display-inline">
                                     Large
                                     <input type="number" name="quantity-large" title="Quantity" value="0" class="cup-quantity"
-                                    oninput="updateTotal(this)">
+                                    oninput="updateTotal(this)" min="0">
                                 </div>
                             </div>
                             <div>
@@ -230,15 +233,15 @@
                                 <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
                                 <span class="cup-offer">Sister Cup Offer</span>
                                 <div class="light-grey">
-                                    Get two cups for Rs. 2250 (50% off the second cup)
+                                    Get two cups for Rs. 2400 (50% off the second cup)
                                 </div>
                             </div>
 
                             <div class="col2 margin-top-15">
                                 <div class="total-price">
-                                    Total: <span class="font-bold">Rs. <span class="price">1500</span></span>
+                                    Total: <span class="font-bold">Rs. <span class="price">1600</span></span>
                                 </div>
-                                <div class="light-grey margin-bottom-10">
+                                <div class="light-grey">
                                     Includes home delivery
                                 </div>
                             </div>
@@ -264,22 +267,22 @@
                 var total = parseInt(document.querySelector("input[name='quantity-small']").value) +
                             parseInt(document.querySelector("input[name='quantity-large']").value);
                 if (total == 2) {
-                    document.querySelector(".price").textContent = "2250";
+                    document.querySelector(".price").textContent = "2400 (Save Rs. 800)";
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {
-                    document.querySelector(".price").textContent = (total * 1500).toString();
+                    document.querySelector(".price").textContent = (total * 1600).toString();
                     document.querySelector(".cup-offer").checked = false;
                 }
             }
             function addOffer(element) {
                 if (element.checked) {
-                    document.querySelector(".price").textContent = "2250";
+                    document.querySelector(".price").textContent = "2400";
                     document.querySelector(".cup-quantity").value = 2;
                     document.querySelector("input[name='quantity-large']").value = 0;
                 }
                 else {
-                    document.querySelector(".price").textContent = "1500";
+                    document.querySelector(".price").textContent = "1600";
                     document.querySelector(".cup-quantity").value = 1;
                 }
             }
@@ -314,7 +317,7 @@
                 }
                 ready(function() {
                     drift.on('ready', function(api) {
-                        var handleClick = openSidebar.bind(this, api)
+                        var handleClick = openSidebar.bind(this, api);
                         forEachElement(DRIFT_CHAT_SELECTOR, function(el) {
                             el.addEventListener('click', handleClick);
                         });

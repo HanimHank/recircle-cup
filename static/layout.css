@@ -25,6 +25,16 @@ article {
     margin-left: 6%;
 }
 
+.nav a {
+    font-size: 17px;
+}
+
+.nav {
+    margin-top: 0;
+}
+
+
+
 /* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
 ----------------------------------------------------------------------------------------*/
 @media screen and (min-width: 30em) and (max-width: 63.236em) {
@@ -52,6 +62,14 @@ article {
     .col1.compact, .col2.compact {
         margin-left: 0;
         margin-top: 0;
+    }
+
+    .nav a {
+        font-size: 24px;
+    }
+
+    .nav {
+        margin-top: 10px;
     }
 
 }

@@ -455,12 +455,12 @@ select {
 .primary-background {
     font-size: 16px;
     font-family: 'Raleway', sans-serif;
-    padding: 140px 0 120px 0;
+    padding: 100px 0 120px 0;
     background-image: url(header-one.jpg);
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    min-height: 80vh;
+    min-height: 82vh;
 }
 
 .primary-background span {
@@ -479,7 +479,7 @@ select {
 }
 
 .blog-section {
-    padding: 25px 0;
+    padding: 0;
 }
 
 .blog-section p img {
@@ -656,6 +656,14 @@ article {
 .col1.compact, .col2.compact {
     margin-left: 0;
     margin-top: 0;
+}
+
+.nav a {
+    font-size: 28px;
+}
+
+.nav {
+    margin: 10px;
 }
 
 

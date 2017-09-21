@@ -41,6 +41,10 @@ article {
     font-size: 0.95em;
 }
 
+#order input[type="submit"] {
+    float: right;
+}
+
 
 
 /* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
@@ -86,6 +90,10 @@ article {
 
     #footer {
         font-size: 1.25em;
+    }
+
+    #order input[type="submit"] {
+        float: left;
     }
 
 }

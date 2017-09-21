@@ -55,8 +55,8 @@
             <a href="/"><img src="/static/logoalt.png"/></a>
         </div>
         <div class="nav">
-            <a href="/getting-started">Get started</a>
-            <a href="/blog">Blog</a>
+            <a href="/start">Get started</a>
+            <a href="/#blog">Blog</a>
             <a class="drift-open-chat">Talk to us</a>
         </div>
     </nav>
@@ -89,7 +89,7 @@
                     by Wasma Imran
                 </div>
                 <div class="margin-bottom-10">
-                    <a href="/getting-started" target="_blank">Getting started with Recircle Cup</a>
+                    <a href="/start" target="_blank">Getting started with Recircle Cup</a>
                 </div>
                 <div class="margin-bottom-10">
                     <a href="/folds" target="_blank">Folds to try</a>
@@ -101,6 +101,42 @@
         </article>
     </section>
 </div>
+<script>
+    (function() {
+        var DRIFT_CHAT_SELECTOR = '.drift-open-chat';
+        function ready(fn) {
+            if (document.readyState != 'loading') {
+                fn();
+            } else if (document.addEventListener) {
+                document.addEventListener('DOMContentLoaded', fn);
+            } else {
+                document.attachEvent('onreadystatechange', function() {
+                    if (document.readyState != 'loading')
+                        fn();
+                });
+            }
+        }
+        /* http://youmightnotneedjquery.com/#each */
+        function forEachElement(selector, fn) {
+            var elements = document.querySelectorAll(selector);
+            for (var i = 0; i < elements.length; i++)
+                fn(elements[i], i);
+        }
+        function openSidebar(driftApi, event) {
+            event.preventDefault();
+            driftApi.sidebar.open();
+            return false;
+        }
+        ready(function() {
+            drift.on('ready', function(api) {
+                var handleClick = openSidebar.bind(this, api)
+                forEachElement(DRIFT_CHAT_SELECTOR, function(el) {
+                    el.addEventListener('click', handleClick);
+                });
+            });
+        });
+    })();
+</script>
 </body>
 
 <div id="footer">

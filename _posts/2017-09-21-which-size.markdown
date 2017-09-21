@@ -6,17 +6,20 @@ tagline: Let's help you select the right size for your Recircle Cup
 image: static/cup.jpg
 ---
 
-If you are a virgin, we would recommend you start by using our small recircle cup. This is because your vaginal muscles will be tighter, and inserting a bigger cup might be difficult. However, the size basically only changes the capacity of the cup, so it is actually related to your period discharge. If you have light to medium flow, you should use a small recircle cup. If you have a heavy flow, use a large recircle cup. Please know that the large Recricle cup is only 5mm larger in diameter than the small recircle cup, so it’s not going to be that big a difference for you to change sizes. If you have given birth vaginally however, we recommend you use the large cup because after giving birth your vaginal muscles become weak and so a large cup would hold itself properly in place- more easily.
+If you are a virgin, we would recommend you start by using our small cup. This is because your vaginal muscles
+will be tighter, and inserting a bigger cup might be difficult.
 
-Flow measure:
+However, the size mostly affects the capacity of the cup. If you have light to medium flow, you should use our small
+cup. If you have a heavy flow, use our large cup. Please know that the large Recircle cup is only
+slightly larger in diameter than the small Recircle cup, so it’s not going to be that big a difference for you to change
+sizes. If you have given birth vaginally, we recommend you use the large cup because after giving birth your
+vaginal muscles become weak and so a large cup would hold itself properly in place more easily.
 
-Light Flow:
-If you change a pad after every 7 - 8 hours during your period
+**Flow measure**
 
-Medium Flow:
-If you change a pad every 4 - 6 hours during your period
+Light Flow: If you change a pad after every 7 - 8 hours during your period
 
-Heavy Flow:
-If you change your pad every 1- 3 hours during your period
+Medium Flow: If you change a pad every 4 - 6 hours during your period
 
+Heavy Flow: If you change your pad every 1- 3 hours during your period
 

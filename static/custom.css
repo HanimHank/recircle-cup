@@ -48,7 +48,7 @@ p, ul, ol, dl, blockquote {
 }
 
 ul {
-    list-style-type: none;
+    list-style-type: bullet;
 }
 
 ol {
@@ -482,6 +482,11 @@ select {
     padding: 25px 0;
 }
 
+.blog-section p img {
+    display: block;
+    margin: 10px 0;
+}
+
 .label {
     display: block;
     margin-bottom: 5px;
@@ -597,6 +602,36 @@ select {
 
 .cup-image {
     margin: 50px 0 65px 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: #d3d3d3;
+
+    border-radius: 100%;
+    -webkit-animation: spinner-scaleout 1.0s infinite ease-in-out;
+    animation: spinner-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes spinner-scaleout {
+    0% { -webkit-transform: scale(0) }
+    100% {
+        -webkit-transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes spinner-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    } 100% {
+          -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+          opacity: 0;
+      }
 }
 
 

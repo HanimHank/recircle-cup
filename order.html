@@ -46,6 +46,12 @@
         drift.SNIPPET_VERSION = '0.3.1';
         drift.load('3i2nh4v2nv35');
     </script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("user_STIZUXa2EcJZW0JbNzJkK");
+        })();
+    </script>
 </head>
 
 <body id="container">
@@ -55,8 +61,8 @@
             <a href="/"><img src="/static/logoalt.png"/></a>
         </div>
         <div class="nav">
-            <a href="/getting-started">Get started</a>
-            <a href="/blog">Blog</a>
+            <a href="/start">Get started</a>
+            <a href="/#blog">Blog</a>
             <a class="drift-open-chat">Talk to us</a>
         </div>
     </nav>
@@ -66,8 +72,8 @@
 
     <section class="emphasis-background">
         <article>
+            <form class="order-form margin-bottom-10" onsubmit="event.preventDefault(); sendForm(this)">
             <div class="col1 compact">
-                <form class="order-form margin-bottom-10" action="https://formspree.io/contact@recircle.life" method="post">
                     <div class="margin-bottom-40">
                         <div class="font-1p25em font-bold margin-bottom-20">
                             Your Cup
@@ -94,7 +100,7 @@
                             <a href="/which-size" target="_blank">Which size is best for me?</a>
                         </div>
                         <div>
-                            <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
+                            <input type="checkbox" class="cup-offer" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer">Sister Cup Offer</span>
                             <div class="light-grey">
                                 Get two cups for Rs. 2250 (50% off the second cup)
@@ -107,22 +113,21 @@
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Name</div>
-                            <input type="text" name="name" title="Name" class="customer-name">
+                            <input type="text" name="name" title="Name" class="customer-name" required>
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Address</div>
-                            <input type="text" name="address" title="Address" class="customer-address">
+                            <input type="text" name="address" title="Address" class="customer-address" required>
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Mobile Number</div>
-                            <input type="text" name="mobile-number" title="Mobile Number" class="customer-mobile-number">
+                            <input type="text" name="mobile-number" title="Mobile Number" class="customer-mobile-number" required>
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Comments</div>
                             <textarea name="comments" title="Comments" class="customer-comments"></textarea>
                         </div>
                     </div>
-                </form>
             </div>
             <div class="col2 compact">
                 <div class="margin-bottom-40 cup-image">
@@ -162,15 +167,15 @@
                     </div>
                     <div class="label">Free home delivery included</div>
                 </div>
-                <input type="submit" value="Finish Order" class="finish-order" onclick="sendForm(this)">
+                <input type="submit" value="Finish Order" class="finish-order">
             </div>
+            </form>
             <div class="clear"></div>
         </article>
     </section>
 </div>
 
 <script>
-
     function getCookie(name) {
         var value = "; " + document.cookie;
         var parts = value.split("; " + name + "=");
@@ -186,17 +191,24 @@
                     'Pay to Wasma Imran - 0766-6199-4100-4526 - MCB T Block, DHA 2. Add transaction ID in comments.'
         }
     }
-    function sendForm(element) {
-        var xmlhttp = new XMLHttpRequest();
-        var url = "https://formspree.io/contact@recircle.life";
-
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                window.location.replace('http://www.recircle.life/thankyou');
-            }
-        };
-        xmlhttp.open("POST", url, true);
-        xmlhttp.send();
+    function sendForm(e) {
+        document.querySelector('.finish-order').value = 'Sending...';
+        emailjs.send("sendgrid","template_VmJ5BJNR", {
+            small: document.querySelector('input[name="quantity-small"]').value,
+            large: document.querySelector('input[name="quantity-large"]').value,
+            color: document.querySelector('select[name="color"]').value,
+            offer: (document.querySelector('input[name="cup-offer"]').checked)? 'Yes' : 'No',
+            name: document.querySelector('input[name="name"]').value,
+            address: document.querySelector('input[name="address"]').value,
+            mobile: document.querySelector('input[name="mobile-number"]').value,
+            comments: document.querySelector('textarea[name="comments"]').value,
+            payment: document.querySelector('input[name="radio-group"]:checked').id,
+            total: document.querySelector('.price').textContent})
+                .then(function(response) {
+                    window.location.href = '/thankyou';
+                }, function(err) {
+                    console.log("FAILED. error=", err);
+                });
     }
 
     function updateTotal(element) {
@@ -231,6 +243,40 @@
             document.querySelector(".cup-quantity").value = 1;
         }
     }
+    (function() {
+        var DRIFT_CHAT_SELECTOR = '.drift-open-chat';
+        function ready(fn) {
+            if (document.readyState != 'loading') {
+                fn();
+            } else if (document.addEventListener) {
+                document.addEventListener('DOMContentLoaded', fn);
+            } else {
+                document.attachEvent('onreadystatechange', function() {
+                    if (document.readyState != 'loading')
+                        fn();
+                });
+            }
+        }
+        /* http://youmightnotneedjquery.com/#each */
+        function forEachElement(selector, fn) {
+            var elements = document.querySelectorAll(selector);
+            for (var i = 0; i < elements.length; i++)
+                fn(elements[i], i);
+        }
+        function openSidebar(driftApi, event) {
+            event.preventDefault();
+            driftApi.sidebar.open();
+            return false;
+        }
+        ready(function() {
+            drift.on('ready', function(api) {
+                var handleClick = openSidebar.bind(this, api)
+                forEachElement(DRIFT_CHAT_SELECTOR, function(el) {
+                    el.addEventListener('click', handleClick);
+                });
+            });
+        });
+    })();
 </script>
 </body>
 

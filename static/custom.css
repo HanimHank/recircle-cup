@@ -672,14 +672,6 @@ article {
     margin: 10px;
 }
 
-#body div, article {
-    max-width: none;
-}
-
 #footer {
     font-size: 1.25em;
-}
-
-#order input[type="submit"] {
-    float: left;
 }

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56797eaf-522e-456f-9626-92cf31b60b8c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/custom.css" afterPath="$PROJECT_DIR$/static/custom.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/layout.css" afterPath="$PROJECT_DIR$/static/layout.css" />
     </list>
     <ignored path="recircle-cup.iws" />
@@ -27,8 +28,8 @@
       <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="639" column="17" selection-start-line="639" selection-start-column="17" selection-end-line="639" selection-end-column="17" />
+            <state relative-caret-position="692">
+              <caret line="687" column="22" selection-start-line="687" selection-start-column="22" selection-end-line="687" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -37,8 +38,8 @@
       <file leaf-file-name="layout.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/layout.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+            <state relative-caret-position="734">
+              <caret line="103" column="26" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -103,9 +104,9 @@
         <option value="$PROJECT_DIR$/_site/static/custom.css" />
         <option value="$PROJECT_DIR$/_layouts/blog.html" />
         <option value="$PROJECT_DIR$/_site/static/layout.css" />
-        <option value="$PROJECT_DIR$/static/custom.css" />
         <option value="$PROJECT_DIR$/order.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/static/custom.css" />
         <option value="$PROJECT_DIR$/static/layout.css" />
       </list>
     </option>
@@ -712,14 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="639" column="17" selection-start-line="639" selection-start-column="17" selection-end-line="639" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -728,10 +721,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="692">
+          <caret line="687" column="22" selection-start-line="687" selection-start-column="22" selection-end-line="687" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/layout.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+        <state relative-caret-position="734">
+          <caret line="103" column="26" selection-start-line="103" selection-start-column="26" selection-end-line="103" selection-end-column="26" />
           <folding />
         </state>
       </provider>

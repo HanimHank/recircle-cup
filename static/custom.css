@@ -679,3 +679,11 @@ article {
 #footer {
     font-size: 1.25em;
 }
+
+body {
+    font-size: 22px;
+}
+
+#body div {
+    line-height: 36px;
+}

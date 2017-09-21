@@ -41,6 +41,15 @@ article {
     margin-top: 15px;
 }
 
+body {
+    font-size: 18px;
+}
+
+#body div {
+    line-height: 26px;
+}
+
+
 
 /* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
 ----------------------------------------------------------------------------------------*/
@@ -85,6 +94,14 @@ article {
 
     .total-price {
         margin-top: 15px;
+    }
+
+    body {
+        font-size: 22px;
+    }
+
+    #body div {
+        line-height: 32px;
     }
 
 }

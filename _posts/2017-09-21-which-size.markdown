@@ -3,7 +3,7 @@ layout: blog
 title:  "Which size is right for me?"
 permalink: which-size
 tagline: Let's help you select the right size for your Recircle Cup
-image: static/cup.jpg
+image: static/sizes.png
 ---
 
 If you are a virgin, we would recommend you start by using our small cup. This is because your vaginal muscles
@@ -22,4 +22,20 @@ Light Flow: If you change a pad after every 7 - 8 hours during your period
 Medium Flow: If you change a pad every 4 - 6 hours during your period
 
 Heavy Flow: If you change your pad every 1- 3 hours during your period
+
+**Recircle Cup Small (Left in picture above)**
+
+Length: 58mm
+
+Diameter: 41mm
+
+Capacity (upto holes): 19ml
+
+**Recircle Cup Large (Right in picture above)**
+
+Length: 64mm
+
+Diameter: 45mm
+
+Capacity (upto holes): 24ml
 

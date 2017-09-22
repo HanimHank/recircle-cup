@@ -19,7 +19,8 @@ Let's now #PutACupInIt
 * Wash your hands! This should be done every time you insert or remove your Recircle cup.
 * Sit down on your toilet seat. (Some women prefer putting one leg on the toilet seat and standing, and some squat and put it in,  but I recommend sitting on the toilet seat comfortably).
 * Breathe! You need to relax your muscles, and not be anxious. Put on some nice music if it helps you relax.
-* If you’re a first time user, you must put a water-based lubricant on the rim of your cup. Almond oil and Coconut oil are my favourite natural lubricants. Don't use vaseline or other oil based lubricants.
+* If you’re a first time user, you must put a water-based lubricant on the rim of your cup. If you don't have any, you can apply
+ some water on the rim. Don't use vaseline or other oil based lubricants as they can be harmful for your vagina.
 * Fold the cup. [Read about folds](/folds).
 * Hold it and guide it inside. It’s a good idea to first feel your vagina with a finger, and insert your finger in a little first to know where exactly you have to insert the cup. The vagina curves backwards towards your rectum, and so you have to gently push the cup in that direction rather than trying to thrust it straight up.
 * Release the fold, and let the cup open.

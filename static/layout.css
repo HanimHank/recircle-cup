@@ -11,6 +11,10 @@ article {
     margin-bottom: 0;
 }
 
+.blog-image {
+    float: right;
+}
+
 .col1, .col2 {
     float: left;
     width: 44%;

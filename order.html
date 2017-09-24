@@ -131,6 +131,10 @@
                             <input type="text" name="mobile-number" title="Mobile Number" class="customer-mobile-number" required>
                         </div>
                         <div class="margin-bottom-15">
+                            <div class="label">Email</div>
+                            <input type="text" name="email" title="Email" class="customer-email">
+                        </div>
+                        <div class="margin-bottom-15">
                             <div class="label">Comments</div>
                             <textarea name="comments" title="Comments" class="customer-comments"></textarea>
                         </div>
@@ -208,6 +212,7 @@
             name: document.querySelector('input[name="name"]').value,
             address: document.querySelector('input[name="address"]').value,
             mobile: document.querySelector('input[name="mobile-number"]').value,
+            email: document.querySelector('input[name="email"]').value,
             comments: document.querySelector('textarea[name="comments"]').value,
             payment: document.querySelector('input[name="radio-group"]:checked').id,
             total: document.querySelector('.price').textContent})

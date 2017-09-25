@@ -126,15 +126,19 @@
                             <input type="text" name="address" title="Address" class="customer-address" required>
                         </div>
                         <div class="margin-bottom-15">
+                            <div class="label">City</div>
+                            <input type="text" name="city" title="City" class="customer-city" required>
+                        </div>
+                        <div class="margin-bottom-15">
                             <div class="label">Mobile Number</div>
                             <input type="text" name="mobile-number" title="Mobile Number" class="customer-mobile-number" required>
                         </div>
                         <div class="margin-bottom-15">
-                            <div class="label">Email</div>
+                            <div class="label">Email (optional)</div>
                             <input type="text" name="email" title="Email" class="customer-email">
                         </div>
                         <div class="margin-bottom-15">
-                            <div class="label">Comments</div>
+                            <div class="label">Comments (optional)</div>
                             <textarea name="comments" title="Comments" class="customer-comments"></textarea>
                         </div>
                     </div>
@@ -210,6 +214,7 @@
             offer: (document.querySelector('input[name="cup-offer"]').checked)? 'Yes' : 'No',
             name: document.querySelector('input[name="name"]').value,
             address: document.querySelector('input[name="address"]').value,
+            city: document.querySelector('input[name="city"]').value,
             mobile: document.querySelector('input[name="mobile-number"]').value,
             email: document.querySelector('input[name="email"]').value,
             comments: document.querySelector('textarea[name="comments"]').value,

@@ -663,6 +663,16 @@ article {
     margin-bottom: 20px;
 }
 
+.blog-image.header {
+    float: left;
+    margin-bottom: 20px;
+}
+
+.blog-image.header img {
+    width: 700px;
+    border-radius: 4px;
+}
+
 .blog-image {
     float: none;
 }

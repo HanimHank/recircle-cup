@@ -7,6 +7,8 @@ image: static/rethink-header.png
 image-class: header
 ---
 
+*[Vector illustration credit](https://vecteezy.com)*
+
 Disposable products have taken over our lives. They're everywhere, they're cheap, and they don't leave a mess to deal with. Not for us, no.
 
 They leave a mess for the Earth, for trash pickers, for the people growing up in the slums of Pakistan, for our rivers and the ground below us. And then, they leave a mess for us, though that comes some years down the line.

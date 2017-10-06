@@ -488,6 +488,10 @@ select {
     margin: 10px 0;
 }
 
+#blog {
+    padding-top: 30px;
+}
+
 .label {
     display: block;
     margin-bottom: 5px;

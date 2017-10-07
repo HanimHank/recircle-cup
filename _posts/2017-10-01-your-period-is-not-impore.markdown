@@ -1,6 +1,6 @@
 ---
 layout: blog
-title:  "Your Period is not Impure"
+title:  "Your Period is Not Impure"
 permalink: period-not-impure
 tagline: It's time to stop believing the myths
 image: static/impure2.jpg

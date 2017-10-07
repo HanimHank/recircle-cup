@@ -55,8 +55,7 @@ embrace their bodies and their period.
 ### References
 
 1) [Is Period Blood Really Impure? A Scientific Take on Myths &amp; Facts of Menstrual
-Discharge](https://feminisminindia.com/2017/05/24/menstrual-blood- impure-scientific-
-explanation/)
+Discharge](https://feminisminindia.com/2017/05/24/menstrual-blood-impure-scientific-explanation/)
 
 2) [Menstrual Blood: it’s not what you think it is](https://www.plim.fr/en/content/19-about-menstrual-blood#blood)
 

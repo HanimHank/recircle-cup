@@ -58,7 +58,6 @@ embrace their bodies and their period.
 Discharge](https://feminisminindia.com/2017/05/24/menstrual-blood- impure-scientific-
 explanation/)
 
-2) [Menstrual Blood: it’s not what you think it is](https://www.plim.fr/en/content/19-about-
-menstrual-blood#blood)
+2) [Menstrual Blood: it’s not what you think it is](https://www.plim.fr/en/content/19-about-menstrual-blood#blood)
 
 3) [Menstruation: Bleeding](https://en.wikipedia.org/wiki/Menstruation#Bleeding)

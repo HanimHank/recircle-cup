@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Recircle Cup</title>
+    <title>{{ page.title }}</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/static/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/static/apple-icon-60x60.png">
@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
 
-    <meta property="og:image" content="{{ page.image }}" />
+    <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{ site.url }}/{{ page.permalink }}" />

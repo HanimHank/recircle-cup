@@ -659,6 +659,19 @@ select {
     height: 100%;
 }
 
+.review {
+    padding: 20px;
+    background: #ffa67a;
+    color: white;
+    border-radius: 10px;
+    font-size: 0.9em;
+    max-width: 33em;
+}
+
+.review p {
+    max-width: 33em;
+}
+
 
 /* Baby */
 

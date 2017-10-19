@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56797eaf-522e-456f-9626-92cf31b60b8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2017-10-01-your-period-is-not-impore.markdown" afterPath="$PROJECT_DIR$/_posts/2017-10-01-your-period-is-not-impore.markdown" />
-    </list>
+    <list default="true" id="56797eaf-522e-456f-9626-92cf31b60b8c" name="Default" comment="" />
     <ignored path="recircle-cup.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -24,21 +22,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="2017-10-01-your-period-is-not-impore.markdown" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_posts/2017-10-01-your-period-is-not-impore.markdown">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="57" column="84" selection-start-line="57" selection-start-column="84" selection-end-line="57" selection-end-column="84" />
-              <folding />
+            <state relative-caret-position="746">
+              <caret line="313" column="50" selection-start-line="313" selection-start-column="50" selection-end-line="313" selection-end-column="50" />
+              <folding>
+                <element signature="n#div#3;n#article#0;n#section#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_layouts/blog.html">
+      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+            <state relative-caret-position="628">
+              <caret line="671" column="17" selection-start-line="671" selection-start-column="17" selection-end-line="671" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -83,10 +83,10 @@
         <option value="$PROJECT_DIR$/_posts/2017-10-01-rethink-menstrual-products.markdown" />
         <option value="$PROJECT_DIR$/_posts/2017-10-01-what-is-a-menstrual-cup.markdown" />
         <option value="$PROJECT_DIR$/order.html" />
-        <option value="$PROJECT_DIR$/static/custom.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/_layouts/blog.html" />
         <option value="$PROJECT_DIR$/_posts/2017-10-01-your-period-is-not-impore.markdown" />
+        <option value="$PROJECT_DIR$/static/custom.css" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -127,6 +127,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,7 +191,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -768,13 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="491" column="22" selection-start-line="491" selection-start-column="22" selection-end-line="491" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/layout.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -796,26 +789,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/_posts/2017-10-01-your-period-is-not-impore.markdown">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="239" column="74" selection-start-line="239" selection-start-column="74" selection-end-line="239" selection-end-column="74" />
+        <state relative-caret-position="671">
+          <caret line="57" column="84" selection-start-line="57" selection-start-column="84" selection-end-line="57" selection-end-column="84" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_layouts/blog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
+        <state relative-caret-position="714">
           <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/2017-10-01-your-period-is-not-impore.markdown">
+    <entry file="file://$PROJECT_DIR$/static/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="57" column="84" selection-start-line="57" selection-start-column="84" selection-end-line="57" selection-end-column="84" />
+        <state relative-caret-position="628">
+          <caret line="671" column="17" selection-start-line="671" selection-start-column="17" selection-end-line="671" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="313" column="50" selection-start-line="313" selection-start-column="50" selection-end-line="313" selection-end-column="50" />
+          <folding>
+            <element signature="n#div#3;n#article#0;n#section#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

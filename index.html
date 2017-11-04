@@ -192,6 +192,9 @@
                         </p>
                     </div>
                     <div class="col2">
+                        <div class="font-bold">
+                            <p>20% discount till Nov 5th!</p>
+                        </div>
                         <div class="margin-bottom-10">
                             <div>
                                 <div class="display-inline margin-right-85">
@@ -213,13 +216,13 @@
                                 <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
                                 <span class="cup-offer">Sister Cup Offer</span>
                                 <div class="light-grey">
-                                    Get two cups for Rs. 3000 (50% off the second cup)
+                                    Get two cups for Rs. 2400 (50% off the second cup)
                                 </div>
                             </div>
 
                             <div class="col2 margin-top-15">
                                 <div class="total-price">
-                                    Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
+                                    Total: <span class="font-bold">Rs. <span class="price">1600</span></span>
                                 </div>
                                 <div class="light-grey">
                                     Includes home delivery
@@ -349,22 +352,22 @@
                 var total = parseInt(document.querySelector("input[name='quantity-small']").value) +
                             parseInt(document.querySelector("input[name='quantity-large']").value);
                 if (total == 2) {
-                    document.querySelector(".price").textContent = "3000 (Save Rs. 1000)";
+                    document.querySelector(".price").textContent = "2400 (Save Rs. 800)";
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {
-                    document.querySelector(".price").textContent = (total * 2000).toString();
+                    document.querySelector(".price").textContent = (total * 1600).toString();
                     document.querySelector(".cup-offer").checked = false;
                 }
             }
             function addOffer(element) {
                 if (element.checked) {
-                    document.querySelector(".price").textContent = "3000";
+                    document.querySelector(".price").textContent = "2400 (Save Rs. 800)";
                     document.querySelector(".cup-quantity").value = 2;
                     document.querySelector("input[name='quantity-large']").value = 0;
                 }
                 else {
-                    document.querySelector(".price").textContent = "2000";
+                    document.querySelector(".price").textContent = "1600";
                     document.querySelector(".cup-quantity").value = 1;
                 }
             }

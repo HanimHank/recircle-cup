@@ -677,6 +677,7 @@ select {
 
 .review p {
     max-width: 33em;
+    line-height: 28px;
 }
 
 

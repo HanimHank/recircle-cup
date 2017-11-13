@@ -11,7 +11,7 @@ It’s understandable: for us girls, keeping our virginity intact has been deepl
 From pre-marital relationships to marriage night worries, our virginity looms over us. But we don’t even
 talk about it. So let’s.
 
-### What is a virgin?
+### Who is a virgin?
 
 A virgin is a person who has never had sexual intercourse.
 
@@ -25,7 +25,9 @@ The hymen is a thin tissue located at the opening of the vagina. Women are born 
 
 Girls are worried their hymen will ‘break’ if they use a menstrual cup, since it has to be folded and inserted inside your vagina.
 
-Some hymens will already be stretched or ‘torn’ before you have sexual intercourse, from a variety of activities like horse riding or other strenuous sports. For some girls, having sexual intercourse for the first time won’t break the hymen and there won’t be any blood. And sometimes, even after sexual intercourse, a hymen can be elastic enough to just stretch and not tear, with no bleeding.
+Some hymens will already be stretched or ‘torn’ before you have sexual intercourse,
+from a variety of activities like horse riding or other strenuous sports. And for some girls,
+after sexual intercourse, a hymen can be elastic enough to just stretch and not tear, causing no bleeding.
 
 So, we know that checking the hymen is not a reliable way to see if a girl is a virgin or not. If you know that, you can begin to get comfortable with the idea of using a menstrual cup.
 

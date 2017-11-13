@@ -661,12 +661,18 @@ select {
 }
 
 .review {
-    padding: 20px;
+    padding: 25px;
     background: #ffa67a;
     color: white;
     border-radius: 10px;
     font-size: 0.9em;
     max-width: 33em;
+    display: inline-block;
+    width: 40%;
+}
+
+.review:first-of-type {
+    margin-right: 105px;
 }
 
 .review p {
@@ -732,4 +738,9 @@ body {
 
 #body div {
     line-height: 36px;
+}
+
+.review {
+    width: 100%;
+    margin-bottom: 40px;
 }

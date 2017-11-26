@@ -693,6 +693,14 @@ select {
     top: -5px;
 }
 
+.sub-header-image {
+    vertical-align: middle;
+    width: 50px;
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+}
+
 
 /* Baby */
 

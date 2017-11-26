@@ -88,8 +88,11 @@
                     </h3>
                     <div class="col1">
                             <div class="margin-bottom-60">
-                                <div class="font-1p25em margin-bottom-10 black">
-                                    Save money
+                                <div>
+                                    <div class="font-1p25em margin-bottom-10 black display-inline-block">
+                                        Save money
+                                    </div>
+                                    
                                 </div>
                                 <div>
                                     A reusable cup can last you upto 10 years. This means you'll save over Rs. 110,000
@@ -97,8 +100,11 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-1p25em margin-bottom-10 black">
-                                    Reduce waste
+                                <div>
+                                    <div class="font-1p25em margin-bottom-10 black display-inline-block">
+                                        Reduce waste
+                                    </div>
+                                    
                                 </div>
                                 <div>
                                     On average, a woman will use
@@ -110,8 +116,11 @@
                     </div>
                     <div class="col2">
                             <div class="margin-bottom-60">
-                                <div class="font-1p25em margin-bottom-10 black">
-                                    Be comfortable
+                                <div>
+                                    <div class="font-1p25em margin-bottom-10 black display-inline-block">
+                                        Be comfortable
+                                    </div>
+                                    
                                 </div>
                                 <div>
                                     Once properly inserted, you won't feel your cup inside you, and because of its large capacity,
@@ -119,8 +128,11 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="font-1p25em margin-bottom-10 black">
-                                    Stay active
+                                <div>
+                                    <div class="font-1p25em margin-bottom-10 black display-inline-block">
+                                        Stay active
+                                    </div>
+                                    
                                 </div>
                                 <div>
                                     Once your cup is inside you, it stays in place so you can be as active as you want.
@@ -135,9 +147,12 @@
 
             <section>
                 <article>
-                    <h3 class="section-header">
-                        Concerns
-                    </h3>
+                    <div>
+                        <h3 class="section-header display-inline-block">
+                            Concerns
+                        </h3>
+
+                    </div>
                     <div class="col1">
                         <div class="margin-bottom-60">
                             <div class="font-bold margin-bottom-10">Does using Recircle Cup hurt?</div>
@@ -177,9 +192,12 @@
 
             <section id="order" class="emphasis-background">
                 <article>
-                    <h3 class="section-header">
-                        Get Your Cup
-                    </h3>
+                    <div>
+                        <h3 class="section-header display-inline-block">
+                            Get Your Cup
+                        </h3>
+
+                    </div>
 
                     <div class="col1">
                         <p>
@@ -194,9 +212,6 @@
                     <div class="col2">
                         <div class="margin-bottom-10">
                             <div>
-                                <p class="font-bold">
-                                    20% off for Black Friday!
-                                </p>
                                 <div class="display-inline margin-right-85">
                                     Small
                                     <input type="number" name="quantity-small" title="Quantity" value="1" class="cup-quantity"
@@ -216,13 +231,13 @@
                                 <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
                                 <span class="cup-offer">Sister Cup Offer</span>
                                 <div class="light-grey">
-                                    Get two cups for Rs. 2400 (50% off the second cup)
+                                    Get two cups for Rs. 3000 (50% off the second cup)
                                 </div>
                             </div>
 
                             <div class="col2 margin-top-15">
                                 <div class="total-price">
-                                    Total: <span class="font-bold">Rs. <span class="price">1600</span></span>
+                                    Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
                                 </div>
                                 <div class="light-grey">
                                     Includes home delivery
@@ -296,6 +311,7 @@
                         <h3 class="section-header display-inline-block">
                             Reviews from Users
                         </h3>
+
                     </div>
                     <div class="review review-left">
                         <p>
@@ -391,22 +407,22 @@
                 var total = parseInt(document.querySelector("input[name='quantity-small']").value) +
                             parseInt(document.querySelector("input[name='quantity-large']").value);
                 if (total == 2) {
-                    document.querySelector(".price").textContent = "2400 (Save Rs. 800)";
+                    document.querySelector(".price").textContent = "3000 (Save Rs. 1000)";
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {
-                    document.querySelector(".price").textContent = (total * 1600).toString();
+                    document.querySelector(".price").textContent = (total * 2000).toString();
                     document.querySelector(".cup-offer").checked = false;
                 }
             }
             function addOffer(element) {
                 if (element.checked) {
-                    document.querySelector(".price").textContent = "2400 (Save Rs. 800)";
+                    document.querySelector(".price").textContent = "3000 (Save Rs. 1000)";
                     document.querySelector(".cup-quantity").value = 2;
                     document.querySelector("input[name='quantity-large']").value = 0;
                 }
                 else {
-                    document.querySelector(".price").textContent = "1600";
+                    document.querySelector(".price").textContent = "2000";
                     document.querySelector(".cup-quantity").value = 1;
                 }
             }

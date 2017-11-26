@@ -111,7 +111,7 @@
                             <input type="checkbox" class="cup-offer" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer">Sister Cup Offer</span>
                             <div class="light-grey">
-                                Get two cups for Rs. 2400 (50% off the second cup)
+                                Get two cups for Rs. 3000 (50% off the second cup)
                             </div>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                     <div class="label">Items</div>
                     <div class="order-item">
                         Recircle Cup Small x<span class="order-item-quantity">1</span>
-                        <div class="order-item-price">Rs. 1600</div>
+                        <div class="order-item-price">Rs. 2000</div>
                     </div>
                     <div class="order-item display-none">
                         Recircle Cup Large x<span class="order-item-quantity-large">1</span>
@@ -183,7 +183,7 @@
 
                 <div class="margin-bottom-20">
                     <div class="total-price font-bold font-1p25em margin-bottom-5">
-                        Total: <span class="font-bold">Rs. <span class="price">1600</span></span>
+                        Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
                     </div>
                     <div class="label">Free home delivery included</div>
                 </div>
@@ -241,33 +241,42 @@
         var small = document.querySelector("input[name='quantity-small']").value;
         var large = document.querySelector("input[name='quantity-large']").value;
         document.querySelector(".order-item-quantity").textContent = small;
-        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (parseInt(small) * 1600).toString();
+        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (parseInt(small) * 2000).toString();
 
         document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
         document.querySelector(".order-item-quantity-large").textContent = large;
-        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (parseInt(large) * 1600).toString();
+        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (parseInt(large) * 2000).toString();
 
         var total = parseInt(document.querySelector("input[name='quantity-small']").value) +
                 parseInt(document.querySelector("input[name='quantity-large']").value);
         if (total == 2) {
-            document.querySelector(".price").textContent = "2400 (Save Rs. 800)";
+            document.querySelector(".price").textContent = "3000 (Save Rs. 1000)";
             document.querySelector(".cup-offer").checked = true;
         }
         else {
-            document.querySelector(".price").textContent = (total * 1600).toString();
+            document.querySelector(".price").textContent = (total * 2000).toString();
             document.querySelector(".cup-offer").checked = false;
         }
     }
     function addOffer(element) {
         if (element.checked) {
-            document.querySelector(".price").textContent = "2400 (Save Rs. 800)";
+            document.querySelector(".price").textContent = "3000 (Save Rs. 1000)";
             document.querySelector(".cup-quantity").value = 2;
             document.querySelector("input[name='quantity-large']").value = 0;
         }
         else {
-            document.querySelector(".price").textContent = "1600";
+            document.querySelector(".price").textContent = "2000";
             document.querySelector(".cup-quantity").value = 1;
         }
+        var small = document.querySelector("input[name='quantity-small']").value;
+        var large = document.querySelector("input[name='quantity-large']").value;
+        document.querySelector(".order-item-quantity").textContent = small;
+        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (parseInt(small) * 2000).toString();
+
+        document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
+        document.querySelector(".order-item-quantity-large").textContent = large;
+        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (parseInt(large) * 2000).toString();
+
     }
     (function() {
         var DRIFT_CHAT_SELECTOR = '.drift-open-chat';

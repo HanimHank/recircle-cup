@@ -203,6 +203,20 @@
     }
     document.querySelector("input[name='quantity-small']").value = getCookie('small');
     document.querySelector("input[name='quantity-large']").value = getCookie('large');
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var discount = url.searchParams.get("discount");
+    var name = url.searchParams.get("name");
+    var email = url.searchParams.get("email");
+    if (discount == 'true') {
+        discount = true;
+    }
+    if (name != 'null') {
+        document.querySelector("input[name='name']").value = name
+    }
+    if (email != 'null') {
+        document.querySelector("input[name='email']").value = email
+    }
     updateTotal();
 
     function showHelp(element) {
@@ -249,23 +263,53 @@
 
         var total = parseInt(document.querySelector("input[name='quantity-small']").value) +
                 parseInt(document.querySelector("input[name='quantity-large']").value);
+        var totalPrice;
         if (total == 2) {
-            document.querySelector(".price").textContent = "3000 (Save Rs. 1000)";
+            totalPrice = 3000;
+            if (discount) {
+                totalPrice *= 0.8;
+                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off + Save Rs. 1000)";
+            }
+            else {
+                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
+            }
             document.querySelector(".cup-offer").checked = true;
         }
         else {
-            document.querySelector(".price").textContent = (total * 2000).toString();
+            totalPrice = total * 2000;
+            if (discount) {
+                totalPrice *= 0.8;
+                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+            }
+            else {
+                document.querySelector(".price").textContent = totalPrice.toString();
+            }
             document.querySelector(".cup-offer").checked = false;
         }
     }
     function addOffer(element) {
+        var totalPrice;
         if (element.checked) {
-            document.querySelector(".price").textContent = "3000 (Save Rs. 1000)";
+            totalPrice = 3000;
+            if (discount) {
+                totalPrice *= 0.8;
+                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off + Save Rs. 1000)";
+            }
+            else {
+                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
+            }
             document.querySelector(".cup-quantity").value = 2;
             document.querySelector("input[name='quantity-large']").value = 0;
         }
         else {
-            document.querySelector(".price").textContent = "2000";
+            totalPrice = 2000;
+            if (discount) {
+                totalPrice *= 0.8;
+                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+            }
+            else {
+                document.querySelector(".price").textContent = totalPrice.toString();
+            }
             document.querySelector(".cup-quantity").value = 1;
         }
         var small = document.querySelector("input[name='quantity-small']").value;

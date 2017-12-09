@@ -101,7 +101,6 @@
                                 <option>Pink</option>
                                 <option>Blue</option>
                                 <option>Purple</option>
-                                <option>White</option>
                             </select>
                         </div>
                         <div class="margin-bottom-10">
@@ -201,8 +200,10 @@
         var parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
     }
-    document.querySelector("input[name='quantity-small']").value = getCookie('small');
-    document.querySelector("input[name='quantity-large']").value = getCookie('large');
+    var smallCups = (getCookie('small')) ? getCookie('small') : 1;
+    var largeCups = (getCookie('large')) ? getCookie('large') : 0;
+    document.querySelector("input[name='quantity-small']").value = smallCups;
+    document.querySelector("input[name='quantity-large']").value = largeCups;
     var url_string = window.location.href;
     var url = new URL(url_string);
     var discount = url.searchParams.get("discount");

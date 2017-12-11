@@ -206,6 +206,11 @@ section {
     color: #8c8c8c;
 }
 
+.form-error {
+    color: #c12000;
+    width: 82%;
+}
+
 .black {
     color: #000000;
 }

@@ -96,6 +96,12 @@
                                    oninput="updateTotal(this)" min="0">
                         </div>
                         <div class="margin-bottom-15">
+                            <div class="quantity-help display-none form-error">
+                                We're so sorry but we're currently out of Large Recircle Cups!
+                                We expect to be restocked by Dec 23rd. You can place an order now but your
+                                order will be delivered after Dec 23rd.</div>
+                        </div>
+                        <div class="margin-bottom-15">
                             <div class="label">Color</div>
                             <select title="Color" name="color">
                                 <option>Pink</option>
@@ -261,6 +267,14 @@
         document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
         document.querySelector(".order-item-quantity-large").textContent = large;
         document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (parseInt(large) * 2000).toString();
+
+        // Show large cup unavailability and add discount
+        if (large > 0) {
+            document.querySelector(".quantity-help").classList.remove('display-none');
+        }
+        else {
+            document.querySelector(".quantity-help").classList.add('display-none');
+        }
 
         var total = parseInt(document.querySelector("input[name='quantity-small']").value) +
                 parseInt(document.querySelector("input[name='quantity-large']").value);

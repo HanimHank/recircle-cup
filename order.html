@@ -238,20 +238,68 @@
     }
     function sendForm(e) {
         document.querySelector('.finish-order').value = 'Sending...';
+        var order = [];
+        var small = document.querySelector("input[name='quantity-small']").value;
+        var large = document.querySelector("input[name='quantity-large']").value;
+        var color = document.querySelector('select[name="color"]').value;
+        var name = document.querySelector('input[name="name"]').value;
+        var address = document.querySelector('input[name="address"]').value;
+        var city = document.querySelector('input[name="city"]').value;
+        var mobile = document.querySelector('input[name="mobile-number"]').value;
+        var email = document.querySelector('input[name="email"]').value;
+        var comments = document.querySelector('textarea[name="comments"]').value;
+        var payment = document.querySelector('input[name="radio-group"]:checked').id;
+        var total = document.querySelector('.price').textContent;
+
+        if (small != '0') {
+            if (parseInt(small) > 1) {
+                order.push(small + ' Recircle Cups (Small)')
+            }
+            else {
+                order.push(small + ' Recircle Cup (Small)')
+            }
+        }
+        if (large != '0') {
+            if (parseInt(large) > 1) {
+                order.push(large + ' Recircle Cups (Large)')
+            }
+            else {
+                order.push(large + ' Recircle Cup (Large)')
+            }
+        }
+
+        // Send email to admin
         emailjs.send("sendgrid","template_VmJ5BJNR", {
             small: document.querySelector('input[name="quantity-small"]').value,
             large: document.querySelector('input[name="quantity-large"]').value,
-            color: document.querySelector('select[name="color"]').value,
+            color: color,
             offer: (document.querySelector('input[name="cup-offer"]').checked)? 'Yes' : 'No',
-            name: document.querySelector('input[name="name"]').value,
-            address: document.querySelector('input[name="address"]').value,
-            city: document.querySelector('input[name="city"]').value,
-            mobile: document.querySelector('input[name="mobile-number"]').value,
-            email: document.querySelector('input[name="email"]').value,
-            comments: document.querySelector('textarea[name="comments"]').value,
-            payment: document.querySelector('input[name="radio-group"]:checked').id,
-            total: document.querySelector('.price').textContent})
+            name: name,
+            address: address,
+            city: city,
+            mobile: mobile,
+            email: email,
+            comments: comments,
+            payment: payment,
+            total: total})
+                .then(function(response) {}, function(err) {
+                    console.log("FAILED. error=", err);
+                });
+        emailjs.send("sendgrid","user_email", {
+            order: order,
+            small: small,
+            large: large,
+            color: color,
+            name: name,
+            address: address,
+            city: city,
+            mobile: mobile,
+            email: email,
+            comments: comments,
+            payment: payment,
+            total: total})
                 .then(function(response) {
+                    console.log('sending to user');
                     window.location.href = '/thankyou';
                 }, function(err) {
                     console.log("FAILED. error=", err);

@@ -104,6 +104,7 @@
                                 <option>Pink</option>
                                 <option>Blue</option>
                                 <option>Purple</option>
+                                <option>White</option>
                             </select>
                         </div>
                         <div class="margin-bottom-10">
@@ -113,7 +114,7 @@
                             <input type="checkbox" class="cup-offer" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer">Sister Cup Offer</span>
                             <div class="light-grey">
-                                Get two cups for Rs. 3000 (50% off the second cup)
+                                Get two cups for Rs. 2700 (50% off the second cup)
                             </div>
                         </div>
                     </div>
@@ -216,6 +217,7 @@
     if (discount == 'true') {
         discount = true;
     }
+    discount = true;
     if (name != 'null') {
         document.querySelector("input[name='name']").value = name
     }
@@ -330,19 +332,19 @@
         if (total == 2) {
             totalPrice = 3000;
             if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off + Save Rs. 1000)";
+                totalPrice *= 0.9;
+                document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off + Save Rs. 900)";
             }
             else {
-                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
+                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 900)";
             }
             document.querySelector(".cup-offer").checked = true;
         }
         else {
             totalPrice = total * 2000;
             if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+                totalPrice *= 0.9;
+                document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off)";
             }
             else {
                 document.querySelector(".price").textContent = totalPrice.toString();
@@ -355,11 +357,11 @@
         if (element.checked) {
             totalPrice = 3000;
             if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off + Save Rs. 1000)";
+                totalPrice *= 0.9;
+                document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off + Save Rs. 900)";
             }
             else {
-                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
+                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 900)";
             }
             document.querySelector(".cup-quantity").value = 2;
             document.querySelector("input[name='quantity-large']").value = 0;
@@ -367,8 +369,8 @@
         else {
             totalPrice = 2000;
             if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+                totalPrice *= 0.9;
+                document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off)";
             }
             else {
                 document.querySelector(".price").textContent = totalPrice.toString();

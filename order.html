@@ -217,7 +217,7 @@
     if (discount == 'true') {
         discount = true;
     }
-    discount = true;
+    discount = false;
     if (name != 'null') {
         document.querySelector("input[name='name']").value = name
     }
@@ -237,7 +237,7 @@
         }
     }
     function sendForm(e) {
-        document.querySelector('.finish-order').value = 'Sending...';
+        document.querySelector('.finish-order').value = 'Sending...please wait';
         var order = [];
         var small = document.querySelector("input[name='quantity-small']").value;
         var large = document.querySelector("input[name='quantity-large']").value;

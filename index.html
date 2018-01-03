@@ -211,9 +211,6 @@
                     </div>
                     <div class="col2">
                         <div class="margin-bottom-10">
-                            <div class="font-bold margin-bottom-20">
-                                <span>10% New Year's Discount!</a>
-                            </div>
                             <div>
                                 <div class="display-inline margin-right-85">
                                     Small
@@ -234,13 +231,13 @@
                                 <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
                                 <span class="cup-offer">Sister Cup Offer</span>
                                 <div class="light-grey">
-                                    Get two cups for Rs. 2700 (50% off the second cup)
+                                    Get two cups for Rs. 3000 (50% off the second cup)
                                 </div>
                             </div>
 
                             <div class="col2 margin-top-15">
                                 <div class="total-price">
-                                    Total: <span class="font-bold">Rs. <span class="price">1800</span></span>
+                                    Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
                                 </div>
                                 <div class="light-grey">
                                     Includes home delivery
@@ -399,7 +396,7 @@
         </div>
 
         <script>
-            var discount = true;
+            var discount = false;
             function addCookie(element) {
                 var small = parseInt(document.querySelector("input[name='quantity-small']").value);
                 var large = parseInt(document.querySelector("input[name='quantity-large']").value);
@@ -418,7 +415,7 @@
                         document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off + Save Rs. 900)";
                     }
                     else {
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 900)";
+                        document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
                     }
                     document.querySelector(".cup-offer").checked = true;
                 }
@@ -444,7 +441,7 @@
                         document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off + Save Rs. 900)";
                     }
                     else {
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 900)";
+                        document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
                     }
                     document.querySelector(".cup-quantity").value = 2;
                     document.querySelector("input[name='quantity-large']").value = 0;

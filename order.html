@@ -114,7 +114,7 @@
                             <input type="checkbox" class="cup-offer" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer">Sister Cup Offer</span>
                             <div class="light-grey">
-                                Get two cups for Rs. 2700 (50% off the second cup)
+                                Get two cups for Rs. 3000 (50% off the second cup)
                             </div>
                         </div>
                     </div>
@@ -336,7 +336,7 @@
                 document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off + Save Rs. 900)";
             }
             else {
-                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 900)";
+                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
             }
             document.querySelector(".cup-offer").checked = true;
         }
@@ -361,7 +361,7 @@
                 document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off + Save Rs. 900)";
             }
             else {
-                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 900)";
+                document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
             }
             document.querySelector(".cup-quantity").value = 2;
             document.querySelector("input[name='quantity-large']").value = 0;

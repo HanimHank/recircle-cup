@@ -282,7 +282,12 @@
             comments: comments,
             payment: payment,
             total: total})
-                .then(function(response) {}, function(err) {
+                .then(function(response) {
+                    if (!email) {
+                        // Redirect if no email provided by user
+                        window.location.href = '/thankyou';
+                    }
+                }, function(err) {
                     console.log("FAILED. error=", err);
                 });
 

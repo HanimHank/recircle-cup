@@ -285,25 +285,30 @@
                 .then(function(response) {}, function(err) {
                     console.log("FAILED. error=", err);
                 });
-        emailjs.send("sendgrid","user_email", {
-            order: order,
-            small: small,
-            large: large,
-            color: color,
-            name: name,
-            address: address,
-            city: city,
-            mobile: mobile,
-            email: email,
-            comments: comments,
-            payment: payment,
-            total: total})
-                .then(function(response) {
-                    console.log('sending to user');
-                    window.location.href = '/thankyou';
-                }, function(err) {
-                    console.log("FAILED. error=", err);
-                });
+
+        // Send email to user if email entered
+        if (email) {
+            emailjs.send("sendgrid", "user_email", {
+                order: order,
+                small: small,
+                large: large,
+                color: color,
+                name: name,
+                address: address,
+                city: city,
+                mobile: mobile,
+                email: email,
+                comments: comments,
+                payment: payment,
+                total: total
+            })
+                    .then(function (response) {
+                        console.log('sending to user');
+                        window.location.href = '/thankyou';
+                    }, function (err) {
+                        console.log("FAILED. error=", err);
+                    });
+        }
     }
 
     function updateTotal(element) {

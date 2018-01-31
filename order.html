@@ -239,8 +239,8 @@
     function sendForm(e) {
         document.querySelector('.finish-order').value = 'Sending...please wait';
         var order = [];
-        var small = document.querySelector("input[name='quantity-small']").value;
-        var large = document.querySelector("input[name='quantity-large']").value;
+        var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
+        var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
         var color = document.querySelector('select[name="color"]').value;
         var name = document.querySelector('input[name="name"]').value;
         var address = document.querySelector('input[name="address"]').value;
@@ -251,27 +251,23 @@
         var payment = document.querySelector('input[name="radio-group"]:checked').id;
         var total = document.querySelector('.price').textContent;
 
-        if (small != '0') {
-            if (parseInt(small) > 1) {
-                order.push(small + ' Recircle Cups (Small)')
-            }
-            else {
-                order.push(small + ' Recircle Cup (Small)')
-            }
+        if (small > 1) {
+            order.push(small + ' Recircle Cups (Small)')
         }
-        if (large != '0') {
-            if (parseInt(large) > 1) {
-                order.push(large + ' Recircle Cups (Large)')
-            }
-            else {
-                order.push(large + ' Recircle Cup (Large)')
-            }
+        else if (small == 1) {
+            order.push(small + ' Recircle Cup (Small)')
+        }
+        if (large > 1) {
+            order.push(large + ' Recircle Cups (Large)')
+        }
+        else if (large == 1) {
+            order.push(large + ' Recircle Cup (Large)')
         }
 
         // Send email to admin
         emailjs.send("sendgrid","template_VmJ5BJNR", {
-            small: document.querySelector('input[name="quantity-small"]').value,
-            large: document.querySelector('input[name="quantity-large"]').value,
+            small: small,
+            large: large,
             color: color,
             offer: (document.querySelector('input[name="cup-offer"]').checked)? 'Yes' : 'No',
             name: name,
@@ -294,9 +290,7 @@
         // Send email to user if email entered
         if (email) {
             emailjs.send("sendgrid", "user_email", {
-                order: order,
-                small: small,
-                large: large,
+                order: order.join(', '),
                 color: color,
                 name: name,
                 address: address,
@@ -308,7 +302,6 @@
                 total: total
             })
                     .then(function (response) {
-                        console.log('sending to user');
                         window.location.href = '/thankyou';
                     }, function (err) {
                         console.log("FAILED. error=", err);
@@ -317,14 +310,15 @@
     }
 
     function updateTotal(element) {
-        var small = document.querySelector("input[name='quantity-small']").value;
-        var large = document.querySelector("input[name='quantity-large']").value;
+        var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
+        var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
+
         document.querySelector(".order-item-quantity").textContent = small;
-        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (parseInt(small) * 2000).toString();
+        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
 
         document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
         document.querySelector(".order-item-quantity-large").textContent = large;
-        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (parseInt(large) * 2000).toString();
+        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' + (large * 2000).toString();
 
         // Show large cup unavailability and add discount
         if (outOfStock) {
@@ -336,8 +330,7 @@
             }
         }
 
-        var total = parseInt(document.querySelector("input[name='quantity-small']").value) +
-                parseInt(document.querySelector("input[name='quantity-large']").value);
+        var total = small + large;
         var totalPrice;
         if (total == 2) {
             totalPrice = 3000;
@@ -387,14 +380,14 @@
             }
             document.querySelector(".cup-quantity").value = 1;
         }
-        var small = document.querySelector("input[name='quantity-small']").value;
-        var large = document.querySelector("input[name='quantity-large']").value;
+        var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
+        var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
         document.querySelector(".order-item-quantity").textContent = small;
-        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (parseInt(small) * 2000).toString();
+        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
 
         document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
         document.querySelector(".order-item-quantity-large").textContent = large;
-        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (parseInt(large) * 2000).toString();
+        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (large * 2000).toString();
 
     }
     (function() {

@@ -249,6 +249,9 @@
         var email = document.querySelector('input[name="email"]').value;
         var comments = document.querySelector('textarea[name="comments"]').value;
         var payment = document.querySelector('input[name="radio-group"]:checked').id;
+        if (payment == 'transfer') {
+            payment = 'bank transfer'
+        }
         var total = document.querySelector('.price').textContent;
 
         if (small > 1) {

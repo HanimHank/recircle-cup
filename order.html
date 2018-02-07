@@ -270,36 +270,27 @@
             order.push(large + ' Recircle Cup (Large)')
         }
 
-        if (false) {
-            // Send email to admin
-            emailjs.send("sendgrid", "template_VmJ5BJNR", {
-                small: small,
-                large: large,
-                color: color,
-                offer: (document.querySelector('input[name="cup-offer"]').checked) ? 'Yes' : 'No',
-                name: name,
-                address: address,
-                city: city,
-                mobile: mobile,
-                email: email,
-                comments: comments,
-                payment: payment,
-                total: total
-            })
-                    .then(function (response) {
-                        if (!email) {
-                            // Redirect if no email provided by user
-                            window.location.href = '/thankyou';
-                        }
-                    }, function (err) {
-                        console.log("FAILED. error=", err);
-                    });
-
-            // Send email to user if email entered
-            if (email) {
-                emailjs.send("sendgrid", "user_email", {
-                    order: order.join(', '),
+        var data = {
+            small: small, large: large, color: color, name: name, address: address, city: city,
+            number: mobile, email: email, comments: comments, payment_type: payment, total: total
+        };
+        // Send order to API
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            crossDomain: true,
+            url: 'https://recircle-api.herokuapp.com/_add_order',
+            data: JSON.stringify({
+                data: data
+            }),
+            success: function (data) {
+                requestRunning = false;
+                // Send email to admin
+                emailjs.send("sendgrid", "template_VmJ5BJNR", {
+                    small: small,
+                    large: large,
                     color: color,
+                    offer: (document.querySelector('input[name="cup-offer"]').checked) ? 'Yes' : 'No',
                     name: name,
                     address: address,
                     city: city,
@@ -310,27 +301,34 @@
                     total: total
                 })
                         .then(function (response) {
-                            window.location.href = '/thankyou';
+                            if (!email) {
+                                // Redirect if no email provided by user
+                                window.location.href = '/thankyou';
+                            }
                         }, function (err) {
                             console.log("FAILED. error=", err);
                         });
-            }
-        }
 
-        var data = {
-            small: small, large: large, color: color, name: name, address: address, city: city,
-            number: mobile, email: email, comments: comments, payment_type: payment, total: total
-        };
-        // Send order to API
-        $.ajax({
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            url: 'https://recircle-api.herokuapp.com/_add_order',
-            data: JSON.stringify({
-                data: data
-            }),
-            success: function (data) {
-                requestRunning = false;
+                // Send email to user if email entered
+                if (email) {
+                    emailjs.send("sendgrid", "user_email", {
+                        order: order.join(', '),
+                        color: color,
+                        name: name,
+                        address: address,
+                        city: city,
+                        mobile: mobile,
+                        email: email,
+                        comments: comments,
+                        payment: payment,
+                        total: total
+                    })
+                            .then(function (response) {
+                                window.location.href = '/thankyou';
+                            }, function (err) {
+                                console.log("FAILED. error=", err);
+                            });
+                }
             },
             dataType: "json"
         });

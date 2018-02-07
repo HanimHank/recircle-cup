@@ -59,6 +59,9 @@
             emailjs.init("user_STIZUXa2EcJZW0JbNzJkK");
         })();
     </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
 </head>
 
 <body id="container">
@@ -267,34 +270,13 @@
             order.push(large + ' Recircle Cup (Large)')
         }
 
-        // Send email to admin
-        emailjs.send("sendgrid","template_VmJ5BJNR", {
-            small: small,
-            large: large,
-            color: color,
-            offer: (document.querySelector('input[name="cup-offer"]').checked)? 'Yes' : 'No',
-            name: name,
-            address: address,
-            city: city,
-            mobile: mobile,
-            email: email,
-            comments: comments,
-            payment: payment,
-            total: total})
-                .then(function(response) {
-                    if (!email) {
-                        // Redirect if no email provided by user
-                        window.location.href = '/thankyou';
-                    }
-                }, function(err) {
-                    console.log("FAILED. error=", err);
-                });
-
-        // Send email to user if email entered
-        if (email) {
-            emailjs.send("sendgrid", "user_email", {
-                order: order.join(', '),
+        if (false) {
+            // Send email to admin
+            emailjs.send("sendgrid", "template_VmJ5BJNR", {
+                small: small,
+                large: large,
                 color: color,
+                offer: (document.querySelector('input[name="cup-offer"]').checked) ? 'Yes' : 'No',
                 name: name,
                 address: address,
                 city: city,
@@ -305,10 +287,34 @@
                 total: total
             })
                     .then(function (response) {
-                        window.location.href = '/thankyou';
+                        if (!email) {
+                            // Redirect if no email provided by user
+                            window.location.href = '/thankyou';
+                        }
                     }, function (err) {
                         console.log("FAILED. error=", err);
                     });
+
+            // Send email to user if email entered
+            if (email) {
+                emailjs.send("sendgrid", "user_email", {
+                    order: order.join(', '),
+                    color: color,
+                    name: name,
+                    address: address,
+                    city: city,
+                    mobile: mobile,
+                    email: email,
+                    comments: comments,
+                    payment: payment,
+                    total: total
+                })
+                        .then(function (response) {
+                            window.location.href = '/thankyou';
+                        }, function (err) {
+                            console.log("FAILED. error=", err);
+                        });
+            }
         }
 
         var data = {

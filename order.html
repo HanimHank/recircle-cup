@@ -330,6 +330,52 @@
                             });
                 }
             },
+            failure: function(data) {
+                // Send email to admin
+                emailjs.send("sendgrid", "template_VmJ5BJNR", {
+                    small: small,
+                    large: large,
+                    color: color,
+                    offer: (document.querySelector('input[name="cup-offer"]').checked) ? 'Yes' : 'No',
+                    name: name,
+                    address: address,
+                    city: city,
+                    mobile: mobile,
+                    email: email,
+                    comments: comments,
+                    payment: payment,
+                    total: total
+                })
+                        .then(function (response) {
+                            if (!email) {
+                                // Redirect if no email provided by user
+                                window.location.href = '/thankyou';
+                            }
+                        }, function (err) {
+                            console.log("FAILED. error=", err);
+                        });
+
+                // Send email to user if email entered
+                if (email) {
+                    emailjs.send("sendgrid", "user_email", {
+                        order: order.join(', '),
+                        color: color,
+                        name: name,
+                        address: address,
+                        city: city,
+                        mobile: mobile,
+                        email: email,
+                        comments: comments,
+                        payment: payment,
+                        total: total
+                    })
+                            .then(function (response) {
+                                window.location.href = '/thankyou';
+                            }, function (err) {
+                                console.log("FAILED. error=", err);
+                            });
+                }
+            }
             dataType: "json"
         });
     }

@@ -330,7 +330,7 @@
                             });
                 }
             },
-            failure: function(data) {
+            error: function(data) {
                 // Send email to admin
                 emailjs.send("sendgrid", "template_VmJ5BJNR", {
                     small: small,

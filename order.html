@@ -99,7 +99,9 @@
                                    oninput="updateTotal(this)" min="0">
                         </div>
                         <div class="margin-bottom-15">
-                            <div class="quantity-help display-none form-error"></div>
+                            <div class="quantity-help display-none form-info">
+                                We're sorry, but we're out of Small Blue Cups! We will restock by 6th March.
+                            </div>
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Color</div>
@@ -209,7 +211,7 @@
     }
     var smallCups = (getCookie('small')) ? getCookie('small') : 1;
     var largeCups = (getCookie('large')) ? getCookie('large') : 0;
-    var outOfStock = false;
+    var outOfStock = true;
     document.querySelector("input[name='quantity-small']").value = smallCups;
     document.querySelector("input[name='quantity-large']").value = largeCups;
     var url_string = window.location.href;
@@ -361,7 +363,7 @@
 
         // Show large cup unavailability and add discount
         if (outOfStock) {
-            if (large > 0) {
+            if (small > 0) {
                 document.querySelector(".quantity-help").classList.remove('display-none');
             }
             else {

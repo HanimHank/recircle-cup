@@ -211,6 +211,9 @@
                     </div>
                     <div class="col2">
                         <div class="margin-bottom-10">
+                            <div class="font-bold margin-bottom-20">
+                                20% International Women's Day Discount!
+                            </div>
                             <div>
                                 <div class="display-inline margin-right-85">
                                     Small
@@ -237,7 +240,7 @@
 
                             <div class="col2 margin-top-15">
                                 <div class="total-price">
-                                    Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
+                                    Total: <span class="font-bold">Rs. <span class="price">1600 (20% off)</span></span>
                                 </div>
                                 <div class="light-grey">
                                     Includes home delivery
@@ -396,7 +399,7 @@
         </div>
 
         <script>
-            var discount = false;
+            var discount = true;
             function addCookie(element) {
                 var small = parseInt(document.querySelector("input[name='quantity-small']").value);
                 var large = parseInt(document.querySelector("input[name='quantity-large']").value);
@@ -410,21 +413,15 @@
                 var totalPrice;
                 if (total == 2) {
                     totalPrice = 3000;
-                    if (discount) {
-                        totalPrice *= 0.9;
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off + Save Rs. 900)";
-                    }
-                    else {
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
-                    }
+                    document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {
 
                     totalPrice = total * 2000;
                     if (discount) {
-                        totalPrice *= 0.9;
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off)";
+                        totalPrice *= 0.8;
+                        document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
                     }
                     else {
                         document.querySelector(".price").textContent = totalPrice.toString();
@@ -436,21 +433,15 @@
                 var totalPrice;
                 if (element.checked) {
                     totalPrice = 3000;
-                    if (discount) {
-                        totalPrice *= 0.9;
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off + Save Rs. 900)";
-                    }
-                    else {
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
-                    }
+                    document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
                     document.querySelector(".cup-quantity").value = 2;
                     document.querySelector("input[name='quantity-large']").value = 0;
                 }
                 else {
                     totalPrice = 2000;
                     if (discount) {
-                        totalPrice *= 0.9;
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off)";
+                        totalPrice *= 0.8;
+                        document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
                     }
                     else {
                         document.querySelector(".price").textContent = totalPrice.toString();

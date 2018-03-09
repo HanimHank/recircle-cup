@@ -212,6 +212,7 @@
     var smallCups = (getCookie('small')) ? getCookie('small') : 1;
     var largeCups = (getCookie('large')) ? getCookie('large') : 0;
     var outOfStock = false;
+    var totalPrice;
     document.querySelector("input[name='quantity-small']").value = smallCups;
     document.querySelector("input[name='quantity-large']").value = largeCups;
     var url_string = window.location.href;
@@ -260,7 +261,6 @@
         if (payment == 'transfer') {
             payment = 'bank transfer'
         }
-        var total = document.querySelector('.price').textContent;
 
         if (small > 1) {
             order.push(small + ' Recircle Cups (Small)')
@@ -277,7 +277,7 @@
 
         var data = {
             small: small, large: large, color: color, name: name, address: address, city: city,
-            number: mobile, email: email, comments: comments, payment_type: payment, total: total
+            number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice
         };
         // Send order to API
         var orderSent = false;
@@ -312,7 +312,7 @@
             email: email,
             comments: comments,
             payment: payment,
-            total: total
+            total: totalPrice
         })
                 .then(function (response) {
                     if (!email) {
@@ -338,7 +338,7 @@
                 email: email,
                 comments: comments,
                 payment: payment,
-                total: total
+                total: totalPrice
             })
                     .then(function (response) {
                         emailSent = true;
@@ -373,7 +373,6 @@
         }
 
         var total = small + large;
-        var totalPrice;
         if (total == 2) {
             totalPrice = 3000;
             document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
@@ -393,7 +392,6 @@
         }
     }
     function addOffer(element) {
-        var totalPrice;
         if (element.checked) {
             totalPrice = 3000;
             document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";

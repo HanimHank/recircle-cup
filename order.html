@@ -168,7 +168,7 @@
                     <div class="label">Items</div>
                     <div class="order-item">
                         Recircle Cup Small x<span class="order-item-quantity">1</span>
-                        <div class="order-item-price">Rs. 1600 (20% off)</div>
+                        <div class="order-item-price">Rs. 2000</div>
                     </div>
                     <div class="order-item display-none">
                         Recircle Cup Large x<span class="order-item-quantity-large">1</span>
@@ -191,7 +191,7 @@
 
                 <div class="margin-bottom-20">
                     <div class="total-price font-bold font-1p25em margin-bottom-5">
-                        Total: <span class="font-bold">Rs. <span class="price">1600 (10% off)</span></span>
+                        Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
                     </div>
                     <div class="label">Free home delivery included</div>
                 </div>
@@ -218,7 +218,6 @@
     var url_string = window.location.href;
     var url = new URL(url_string);
     var discount = url.searchParams.get("discount");
-    discount = 'true';
     var name = url.searchParams.get("name");
     var email = url.searchParams.get("email");
     if (discount == 'true') {
@@ -388,7 +387,6 @@
                 document.querySelector(".price").textContent = totalPrice.toString();
             }
             document.querySelector(".cup-offer").checked = false;
-            console.log(totalPrice);
         }
     }
     function addOffer(element) {

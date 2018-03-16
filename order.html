@@ -278,25 +278,9 @@
             small: small, large: large, color: color, name: name, address: address, city: city,
             number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice
         };
-        // Send order to API
+
         var orderSent = false;
         var emailSent = false;
-        $.ajax({
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            crossDomain: true,
-            url: 'https://recircle-api.herokuapp.com/_add_order',
-            data: JSON.stringify({
-                data: data
-            }),
-            success: function (data) {
-                orderSent = true;
-                if (emailSent) {
-                    window.location.href = '/thankyou';
-                }
-            },
-            dataType: "json"
-        });
 
         // Send email to admin
         emailjs.send("sendgrid", "template_VmJ5BJNR", {
@@ -348,6 +332,23 @@
                         console.log("FAILED. error=", err);
                     });
         }
+        // Send order to API
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            crossDomain: true,
+            url: 'https://recircle-api.herokuapp.com/_add_order',
+            data: JSON.stringify({
+                data: data
+            }),
+            success: function (data) {
+                orderSent = true;
+                if (emailSent) {
+                    window.location.href = '/thankyou';
+                }
+            },
+            dataType: "json"
+        });
     }
 
     function updateTotal(element) {

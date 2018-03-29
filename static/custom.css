@@ -826,3 +826,7 @@ body {
     width: 100%;
     margin-bottom: 40px;
 }
+
+.primary-background-toothbrush {
+    min-height: 38vh;
+}

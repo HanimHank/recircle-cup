@@ -58,6 +58,10 @@ body {
     margin-bottom: 0;
 }
 
+.primary-background-toothbrush {
+    min-height: 82vh;
+}
+
 
 
 /* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
@@ -116,6 +120,10 @@ body {
     .review {
         width: 100%;
         margin-bottom: 40px;
+    }
+
+    .primary-background-toothbrush {
+        min-height: 38vh;
     }
 
 }

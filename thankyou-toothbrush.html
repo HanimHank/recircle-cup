@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ page.title }}</title>
+    <title>Recircle Cup</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/static/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/static/apple-icon-60x60.png">
@@ -31,12 +31,6 @@
     <![endif]-->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
-
-    <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ site.url }}/{{ page.permalink }}" />
-    <meta property="og:description" content="{{ page.tagline }}" />
     <script>
         !function() {
             var t;
@@ -80,28 +74,13 @@
 
     <section class="light-blue-background blog-section">
         <article>
-            <div>
             <h3 class="font-bold">
-                {{ page.title }}
+                Thank you!
             </h3>
-            </div>
             <div>
-                {{ page.tagline }}
+                We've received your order and will begin work on it now. You can expect to receive it in 5-7 business days.
+                Happy brushing!
             </div>
-        </article>
-    </section>
-
-    <section class="blog-section">
-        <article>
-            <div class="blog-image {{ page.image-class }}">
-                <img src={{ page.image }}>
-            </div>
-            <div>
-                {{ content }}
-            </div>
-            <p class="margin-top-30">
-                <a href="/index#order"><button class="action-button">Get your Cup</button></a>
-            </p>
         </article>
     </section>
 </div>

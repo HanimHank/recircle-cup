@@ -84,46 +84,7 @@
     <section class="emphasis-background">
         <article>
             <form class="order-form margin-bottom-10" onsubmit="event.preventDefault(); sendForm(this)">
-            <div class="col1 compact">
-                    <div class="margin-bottom-40">
-                        <div class="font-1p25em font-bold margin-bottom-20">
-                            Your Cup
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Small</div>
-                            <input type="number" name="quantity-small" title="Quantity" value="1" class="cup-quantity"
-                                   oninput="updateTotal(this)" min="0">
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Large</div>
-                            <input type="number" name="quantity-large" title="Quantity" value="0" class="cup-quantity"
-                                   oninput="updateTotal(this)" min="0">
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="quantity-help form-info display-none">
-                                We're sorry, but we're out of Small Cups! We will restock by 10th March.
-                            </div>
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Color</div>
-                            <select title="Color" name="color">
-                                <option>Pink</option>
-                                <option>Blue</option>
-                                <option>Purple</option>
-                                <option>White</option>
-                            </select>
-                        </div>
-                        <div class="margin-bottom-10">
-                            <a href="/which-size" target="_blank">Which size is best for me?</a>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="cup-offer" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
-                            <span class="cup-offer">Sister Cup Offer</span>
-                            <div class="light-grey">
-                                Get two cups for Rs. 3000 (50% off the second cup)
-                            </div>
-                        </div>
-                    </div>
+                <div class="col1 compact">
                     <div>
                         <div class="font-1p25em font-bold margin-bottom-20">
                             Your Details
@@ -153,51 +114,64 @@
                             <textarea name="comments" title="Comments" class="customer-comments"></textarea>
                         </div>
                     </div>
-            </div>
-            <div class="col2 compact">
-                <div class="cup-image">
-                    <img src="/static/sizes.png"/>
                 </div>
-                <div class="margin-bottom-20">
-                    <a href="https://www.instagram.com/p/Ba3jpVZB_NZ/?taken-by=recircle.life"
-                       target="_blank">See all colors</a>
-                </div>
-                <div class="margin-bottom-40">
-                    <div class="font-1p25em font-bold margin-bottom-20">
-                        Order Summary
-                    </div>
-                    <div class="label">Items</div>
-                    <div class="order-item">
-                        Recircle Cup Small x<span class="order-item-quantity">1</span>
-                        <div class="order-item-price">Rs. 2000</div>
-                    </div>
-                    <div class="order-item display-none">
-                        Recircle Cup Large x<span class="order-item-quantity-large">1</span>
-                        <div class="order-item-price">Rs. 0</div>
-                    </div>
-                </div>
+                <div class="col2 compact">
 
-                <div class="margin-bottom-40">
-                    <div class="font-1p25em font-bold margin-bottom-20">
-                        Payment Method
-                    </div>
-                    <div class="margin-bottom-5">
-                        <input type="radio" id="cash" name="radio-group" checked onclick="showHelp(this)">
-                        <label for="cash">Cash on delivery</label>
-                        <input type="radio" id="transfer" name="radio-group" onclick="showHelp(this)">
-                        <label for="transfer" class="margin-left-25">Bank transfer</label>
-                    </div>
-                    <div class="label payment-help">Pay with cash when your order arrives</div>
-                </div>
+                    <div class="margin-bottom-60" id="order">
+                        <div class="font-1p25em font-bold margin-bottom-20">
+                            Your Toothbrush
+                        </div>
+                        <div>
+                            Quantity
+                            <select name="toothbrush-quantity" title="Toothbrush Quantity" class="toothbrush-quantity"
+                                    oninput="updateTotal(this)" onchange="changeSubscription(this)">
+                                <option value="1">1</option>
+                                <option value="4" selected>4</option>
+                                <option value="8">8</option>
+                                <option value="12">12</option>
+                            </select>
+                        <span class="toothbrush-quantity-help margin-left-10 light-grey">
+                            Equal to a year's supply
+                        </span>
+                        </div>
 
-                <div class="margin-bottom-20">
-                    <div class="total-price font-bold font-1p25em margin-bottom-5">
-                        Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
+                        <div class="margin-top-15 margin-bottom-40">
+                            <input type="checkbox" class="subscribe" name="subscribe" title="Subscribe" onchange="addSubscription(this)">
+                            <span>Get this quantity every
+                            <select name="subscription-frequency" title="Subscription Frequency" class="subscription-frequency-select"
+                                    onchange="changeSubscription(this)">
+                                <option value="3" selected>3</option>
+                                <option value="6">6</option>
+                            </select>
+                            months</span>
+                            <div class="light-grey subscription-text display-none">
+                                We'll deliver <span class="subscription-quantity"></span> to you every
+                                <span class="subscription-frequency"></span> months
+                            </div>
+                        </div>
                     </div>
-                    <div class="label">Free home delivery included</div>
+
+                    <div class="margin-bottom-60">
+                        <div class="font-1p25em font-bold margin-bottom-20">
+                            Payment Method
+                        </div>
+                        <div class="margin-bottom-5">
+                            <input type="radio" id="cash" name="radio-group" checked onclick="showHelp(this)">
+                            <label for="cash">Cash on delivery</label>
+                            <input type="radio" id="transfer" name="radio-group" onclick="showHelp(this)">
+                            <label for="transfer" class="margin-left-25">Bank transfer</label>
+                        </div>
+                        <div class="label payment-help">Pay with cash when your order arrives</div>
+                    </div>
+
+                    <div class="margin-bottom-20">
+                        <div class="total-price font-bold font-1p25em margin-bottom-5">
+                            Total: <span class="font-bold">Rs. <span class="price">1600</span></span>
+                        </div>
+                        <div class="label">Free home delivery included</div>
+                    </div>
+                    <input type="submit" value="Finish Order" class="finish-order">
                 </div>
-                <input type="submit" value="Finish Order" class="finish-order">
-            </div>
             </form>
             <div class="clear"></div>
         </article>
@@ -210,12 +184,20 @@
         var parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
     }
-    var smallCups = (getCookie('small')) ? getCookie('small') : 1;
-    var largeCups = (getCookie('large')) ? getCookie('large') : 0;
+    var quantity = (getCookie('quantity')) ? getCookie('quantity') : 1;
+    var subscribe = (getCookie('subscribe')) ? getCookie('subscribe') : 1;
+    var frequency = (getCookie('frequency')) ? getCookie('frequency') : 1;
     var outOfStock = false;
     var totalPrice;
-    document.querySelector("input[name='quantity-small']").value = smallCups;
-    document.querySelector("input[name='quantity-large']").value = largeCups;
+    document.querySelector("select[name='toothbrush-quantity']").value = quantity;
+    if (subscribe == 'true') {
+        document.querySelector('.subscribe').checked = subscribe;
+        document.querySelector(".subscription-frequency-select").value = frequency;
+        changeSubscription(document.querySelector("select[name='toothbrush-quantity']"));
+    }
+    else {
+        document.querySelector('.subscribe').checked = false;
+    }
     var url_string = window.location.href;
     var url = new URL(url_string);
     var discount = url.searchParams.get("discount");
@@ -233,7 +215,7 @@
     if (email != 'null') {
         document.querySelector("input[name='email']").value = email
     }
-    updateTotal();
+    updateTotal(document.querySelector("select[name='toothbrush-quantity']"));
 
     function showHelp(element) {
         if (element.id == 'transfer') {
@@ -247,10 +229,7 @@
     }
     function sendForm(e) {
         document.querySelector('.finish-order').value = 'Sending...please wait';
-        var order = [];
-        var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
-        var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
-        var color = document.querySelector('select[name="color"]').value;
+        var quantity = parseInt(document.querySelector("select[name='toothbrush-quantity']").value) || 0;
         var name = document.querySelector('input[name="name"]').value;
         var address = document.querySelector('input[name="address"]').value;
         var city = document.querySelector('input[name="city"]').value;
@@ -258,38 +237,29 @@
         var email = document.querySelector('input[name="email"]').value;
         var comments = document.querySelector('textarea[name="comments"]').value;
         var payment = document.querySelector('input[name="radio-group"]:checked').id;
+        var subscription = document.querySelector('.subscribe').checked;
+        var frequency = document.querySelector(".subscription-frequency-select").value;
         if (payment == 'transfer') {
             payment = 'bank transfer'
         }
 
-        if (small > 1) {
-            order.push(small + ' Recircle Cups (Small) ' + '(' + color + ')')
-        }
-        else if (small == 1) {
-            order.push(small + ' Recircle Cup (Small) ' + '(' + color + ')')
-        }
-        if (large > 1) {
-            order.push(large + ' Recircle Cups (Large) ' + '(' + color + ')')
-        }
-        else if (large == 1) {
-            order.push(large + ' Recircle Cup (Large) ' + '(' + color + ')')
-        }
-
         var data = {
-            small: small, large: large, color: color, name: name, address: address, city: city,
-            number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice,
-            order_type: 'cup'
+            quantity: quantity, name: name, address: address, city: city, subscription: subscription,
+            frequency: frequency, number: mobile, email: email, comments: comments, payment_type: payment,
+            total: totalPrice, order_type: 'toothbrush'
         };
 
         var orderSent = false;
         var emailSent = false;
 
+        var order = 'Recircle Bamboo Toothbrush x ' + quantity;
+        if (subscription) {
+            order += ' every ' + frequency + ' months'
+        }
+
         // Send email to admin
-        emailjs.send("sendgrid", "template_VmJ5BJNR", {
-            small: small,
-            large: large,
-            color: color,
-            offer: (document.querySelector('input[name="cup-offer"]').checked) ? 'Yes' : 'No',
+        emailjs.send("sendgrid", "toothbrush_admin_template", {
+            order: order,
             name: name,
             address: address,
             city: city,
@@ -304,7 +274,7 @@
                         emailSent = true;
                         // Redirect if no email provided by user
                         if (orderSent) {
-                            window.location.href = '/thankyou';
+                            window.location.href = '/thankyou-toothbrush';
                         }
                     }
                 }, function (err) {
@@ -314,7 +284,7 @@
         // Send email to user if email entered
         if (email) {
             emailjs.send("sendgrid", "user_email", {
-                order: order.join(', '),
+                order: order,
                 name: name,
                 address: address,
                 city: city,
@@ -327,12 +297,13 @@
                     .then(function (response) {
                         emailSent = true;
                         if (orderSent) {
-                            window.location.href = '/thankyou';
+                            window.location.href = '/thankyou-toothbrush';
                         }
                     }, function (err) {
                         console.log("FAILED. error=", err);
                     });
         }
+
         // Send order to API
         $.ajax({
             type: "POST",
@@ -345,7 +316,7 @@
             success: function (data) {
                 orderSent = true;
                 if (emailSent) {
-                    window.location.href = '/thankyou';
+                    window.location.href = '/thankyou-toothbrush';
                 }
             },
             dataType: "json"
@@ -353,34 +324,13 @@
     }
 
     function updateTotal(element) {
-        var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
-        var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
-
-        document.querySelector(".order-item-quantity").textContent = small;
-        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
-
-        document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
-        document.querySelector(".order-item-quantity-large").textContent = large;
-        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' + (large * 2000).toString();
-
-        // Show large cup unavailability and add discount
-        if (outOfStock) {
-            if (small > 0) {
-                document.querySelector(".quantity-help").classList.remove('display-none');
-            }
-            else {
-                document.querySelector(".quantity-help").classList.add('display-none');
-            }
-        }
-
-        var total = small + large;
-        if (total == 2) {
-            totalPrice = 3000;
-            document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
-            document.querySelector(".cup-offer").checked = true;
+        var total = element.value;
+        if (total == 1) {
+            totalPrice = 550;
+            document.querySelector(".price").textContent = totalPrice.toString();
         }
         else {
-            totalPrice = total * 2000;
+            totalPrice = total * 400;
             if (discount) {
                 totalPrice *= 0.8;
                 document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
@@ -388,36 +338,47 @@
             else {
                 document.querySelector(".price").textContent = totalPrice.toString();
             }
-            document.querySelector(".cup-offer").checked = false;
+        }
+        if (total != 4) {
+            document.querySelector(".toothbrush-quantity-help").classList.add('display-none')
+        }
+        else {
+            document.querySelector(".toothbrush-quantity-help").classList.remove('display-none')
         }
     }
-    function addOffer(element) {
+    function addSubscription(element) {
         if (element.checked) {
-            totalPrice = 3000;
-            document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
-            document.querySelector(".cup-quantity").value = 2;
-            document.querySelector("input[name='quantity-large']").value = 0;
-        }
-        else {
-            totalPrice = 2000;
-            if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+            var quantity = document.querySelector(".toothbrush-quantity").value;
+            var frequency = document.querySelector(".subscription-frequency-select").value;
+            if (quantity == 1) {
+                quantity = quantity + ' toothbrush'
             }
             else {
-                document.querySelector(".price").textContent = totalPrice.toString();
+                quantity = quantity + ' toothbrushes'
             }
-            document.querySelector(".cup-quantity").value = 1;
+            document.querySelector(".subscription-quantity").textContent = quantity;
+            document.querySelector(".subscription-frequency").textContent = frequency;
+            document.querySelector('.subscription-text').classList.remove('display-none');
         }
-        var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
-        var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
-        document.querySelector(".order-item-quantity").textContent = small;
-        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
-
-        document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
-        document.querySelector(".order-item-quantity-large").textContent = large;
-        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (large * 2000).toString();
-
+        else {
+            document.querySelector('.subscription-text').classList.add('display-none');
+        }
+    }
+    function changeSubscription(element) {
+        var quantity = document.querySelector(".toothbrush-quantity").value;
+        var frequency = document.querySelector(".subscription-frequency-select").value;
+        if (quantity == 1) {
+            quantity = quantity + ' toothbrush'
+        }
+        else {
+            quantity = quantity + ' toothbrushes'
+        }
+        document.querySelector(".subscription-quantity").textContent = quantity;
+        document.querySelector(".subscription-frequency").textContent = frequency;
+        if (element.name != 'toothbrush-quantity') {
+            document.querySelector('.subscribe').checked = true;
+            document.querySelector('.subscription-text').classList.remove('display-none');
+        }
     }
     (function() {
         var DRIFT_CHAT_SELECTOR = '.drift-open-chat';

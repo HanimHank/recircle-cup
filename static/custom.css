@@ -274,12 +274,20 @@ section {
     margin-bottom: 20px;
 }
 
+.margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
 .margin-bottom-15 {
     margin-bottom: 15px;
 }
 
 .margin-bottom-40 {
     margin-bottom: 40px;
+}
+
+.margin-bottom-60 {
+    margin-bottom: 60px;
 }
 
 .margin-right-85 {
@@ -356,6 +364,11 @@ select {
     color: #525252;
 }
 
+.light-brown-background {
+    background: #fff7d9;
+    color: #525252;
+}
+
 .divided-section-inner {
     margin-left: 43%;
     padding: 20px 0;
@@ -373,6 +386,10 @@ select {
 
 .emphasis-background {
     background: #ededed;
+}
+
+.white-background {
+    background: #ffffff;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -441,6 +458,24 @@ select {
     margin-left: 30px;
 }
 
+#order .toothbrush-quantity {
+    margin-left: 25px;
+    width: 14%;
+    color: #777777;
+    border-radius: 5px;
+    border: 1px solid #d2d2d2;
+    margin-bottom: 5px;
+}
+
+#order .subscription-frequency-select {
+    width: 9%;
+    margin-bottom: 0;
+    margin-left: 2px;
+    padding: 3px;
+    background: none;
+    border: 0;
+}
+
 .display-inline {
     display: inline;
 }
@@ -457,8 +492,16 @@ select {
     margin-left: 5px;
 }
 
+.margin-left-10 {
+    margin-left: 10px;
+}
+
 .margin-left-25 {
     margin-left: 25px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
 }
 
 .margin-top-15 {
@@ -477,6 +520,17 @@ select {
     font-family: 'Raleway', sans-serif;
     padding: 100px 0 120px 0;
     background-image: url(header-one.jpg);
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    min-height: 82vh;
+}
+
+.primary-background-toothbrush {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    padding: 100px 0 120px 0;
+    background-image: url(toothbrush-header2.jpg);
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
@@ -541,7 +595,6 @@ select {
     border-radius: 5px;
     resize: none;
     vertical-align: top;
-    height: 75px;
 }
 
 .finish-order {

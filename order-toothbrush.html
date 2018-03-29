@@ -117,7 +117,7 @@
                 </div>
                 <div class="col2 compact">
 
-                    <div class="margin-bottom-60" id="order">
+                    <div class="margin-bottom-40" id="order">
                         <div class="font-1p25em font-bold margin-bottom-20">
                             Your Toothbrush
                         </div>
@@ -126,23 +126,27 @@
                             <select name="toothbrush-quantity" title="Toothbrush Quantity" class="toothbrush-quantity"
                                     oninput="updateTotal(this)" onchange="changeSubscription(this)">
                                 <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                                 <option value="4" selected>4</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
                                 <option value="7">7</option>
                                 <option value="8">8</option>
                             </select>
-                        <span class="toothbrush-quantity-help margin-left-10 light-grey">
-                            A year's supply for one person
-                        </span>
+                        <div class="toothbrush-quantity-help margin-top-5 light-grey">
+                            A year's supply for Rs. 400 each
+                        </div>
                         </div>
 
-                        <div class="margin-top-15 margin-bottom-40">
+                        <div class="margin-top-20 margin-bottom-40">
+                            <div class="font-bold">Subscription Plan</div>
                             <input type="checkbox" class="subscribe" name="subscribe" title="Subscribe" onchange="addSubscription(this)">
                             <span>Get this quantity every
                             <select name="subscription-frequency" title="Subscription Frequency" class="subscription-frequency-select"
                                     onchange="changeSubscription(this)">
                                 <option value="3" selected>3</option>
+                                <option value="4">4</option>
                                 <option value="6">6</option>
                             </select>
                             months</span>
@@ -153,7 +157,7 @@
                         </div>
                     </div>
 
-                    <div class="margin-bottom-60">
+                    <div class="margin-bottom-40">
                         <div class="font-1p25em font-bold margin-bottom-20">
                             Payment Method
                         </div>
@@ -327,8 +331,8 @@
 
     function updateTotal(element) {
         var total = element.value;
-        if (total == 1) {
-            totalPrice = 550;
+        if (total < 4) {
+            totalPrice = total * 550;
             document.querySelector(".price").textContent = totalPrice.toString();
         }
         else {

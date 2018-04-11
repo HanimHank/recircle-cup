@@ -278,7 +278,7 @@
         var data = {
             small: small, large: large, color: color, name: name, address: address, city: city,
             number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice,
-            order_type: 'cup', order: order
+            order_type: 'cup', order: order.join(', ')
         };
 
         // Send order to API

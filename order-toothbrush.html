@@ -249,66 +249,16 @@
             payment = 'bank transfer'
         }
 
-        var data = {
-            quantity: quantity, name: name, address: address, city: city, subscription: subscription,
-            frequency: frequency, number: mobile, email: email, comments: comments, payment_type: payment,
-            total: totalPrice, order_type: 'toothbrush'
-        };
-
-        var orderSent = false;
-        var emailSent = false;
-
         var order = 'Recircle Bamboo Toothbrush x ' + quantity;
         if (subscription) {
             order += ' every ' + frequency + ' months'
         }
 
-        // Send email to admin
-        emailjs.send("sendgrid", "toothbrush_admin_template", {
-            order: order,
-            name: name,
-            address: address,
-            city: city,
-            mobile: mobile,
-            email: email,
-            comments: comments,
-            payment: payment,
-            total: totalPrice
-        })
-                .then(function (response) {
-                    if (!email) {
-                        emailSent = true;
-                        // Redirect if no email provided by user
-                        if (orderSent) {
-                            window.location.href = '/thankyou-toothbrush';
-                        }
-                    }
-                }, function (err) {
-                    console.log("FAILED. error=", err);
-                });
-
-        // Send email to user if email entered
-        if (email) {
-            emailjs.send("sendgrid", "user_email", {
-                order: order,
-                name: name,
-                address: address,
-                city: city,
-                mobile: mobile,
-                email: email,
-                comments: comments,
-                payment: payment,
-                total: totalPrice
-            })
-                    .then(function (response) {
-                        emailSent = true;
-                        if (orderSent) {
-                            window.location.href = '/thankyou-toothbrush';
-                        }
-                    }, function (err) {
-                        console.log("FAILED. error=", err);
-                    });
-        }
+        var data = {
+            quantity: quantity, name: name, address: address, city: city, subscription: subscription,
+            frequency: frequency, number: mobile, email: email, comments: comments, payment_type: payment,
+            total: totalPrice, order_type: 'toothbrush', order: order
+        };
 
         // Send order to API
         $.ajax({
@@ -320,10 +270,7 @@
                 data: data
             }),
             success: function (data) {
-                orderSent = true;
-                if (emailSent) {
-                    window.location.href = '/thankyou-toothbrush';
-                }
+                window.location.href = '/thankyou-toothbrush';
             },
             dataType: "json"
         });

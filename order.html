@@ -278,61 +278,9 @@
         var data = {
             small: small, large: large, color: color, name: name, address: address, city: city,
             number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice,
-            order_type: 'cup'
+            order_type: 'cup', order: order
         };
 
-        var orderSent = false;
-        var emailSent = false;
-
-        // Send email to admin
-        emailjs.send("sendgrid", "template_VmJ5BJNR", {
-            small: small,
-            large: large,
-            color: color,
-            offer: (document.querySelector('input[name="cup-offer"]').checked) ? 'Yes' : 'No',
-            name: name,
-            address: address,
-            city: city,
-            mobile: mobile,
-            email: email,
-            comments: comments,
-            payment: payment,
-            total: totalPrice
-        })
-                .then(function (response) {
-                    if (!email) {
-                        emailSent = true;
-                        // Redirect if no email provided by user
-                        if (orderSent) {
-                            window.location.href = '/thankyou';
-                        }
-                    }
-                }, function (err) {
-                    console.log("FAILED. error=", err);
-                });
-
-        // Send email to user if email entered
-        if (email) {
-            emailjs.send("sendgrid", "user_email", {
-                order: order.join(', '),
-                name: name,
-                address: address,
-                city: city,
-                mobile: mobile,
-                email: email,
-                comments: comments,
-                payment: payment,
-                total: totalPrice
-            })
-                    .then(function (response) {
-                        emailSent = true;
-                        if (orderSent) {
-                            window.location.href = '/thankyou';
-                        }
-                    }, function (err) {
-                        console.log("FAILED. error=", err);
-                    });
-        }
         // Send order to API
         $.ajax({
             type: "POST",
@@ -343,10 +291,7 @@
                 data: data
             }),
             success: function (data) {
-                orderSent = true;
-                if (emailSent) {
-                    window.location.href = '/thankyou';
-                }
+                window.location.href = '/thankyou';
             },
             dataType: "json"
         });

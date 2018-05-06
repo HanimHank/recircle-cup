@@ -212,8 +212,8 @@
                     </div>
                     <div class="col2">
                         <div class="margin-bottom-10">
-                            <div class="font-bold margin-bottom-20 display-none">
-                                20% International Women's Day Discount!
+                            <div class="font-bold margin-bottom-20">
+                                20% Mother's Day Discount! Ends Tuesday, May 8th.
                             </div>
                             <div>
                                 <div class="display-inline margin-right-85">
@@ -400,7 +400,9 @@
         </div>
 
         <script>
-            var discount = false;
+            var discount = true;
+            updateTotal();
+
             function addCookie(element) {
                 var small = parseInt(document.querySelector("input[name='quantity-small']").value);
                 var large = parseInt(document.querySelector("input[name='quantity-large']").value);

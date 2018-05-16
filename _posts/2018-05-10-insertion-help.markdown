@@ -1,8 +1,8 @@
 ---
 layout: blog
-title:  "How to Insert a Soft Menstrual Cup"
+title:  "How to Get Your Cup to Open Up Inside"
 permalink: insertion-help
-tagline: Get additional help in inserting the Recircle Cup
+tagline: Get help making sure your Recircle Cup opens up inside
 image:
 ---
 

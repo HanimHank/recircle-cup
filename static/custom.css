@@ -736,24 +736,19 @@ select {
 }
 
 .review {
-    padding: 24px;
+    padding: 20px;
     background: #fbfbfb;
     color: #505050;
-    border: 2px solid #ff954d;
-    border-radius: 10px;
-    font-size: 0.925em;
+    border-radius: 5px;
+    font-size: 17px;
     max-width: 33em;
     display: inline-block;
-    width: 40%;
-}
-
-.review-left {
-    margin-right: 105px;
 }
 
 .review p {
     max-width: 33em;
     line-height: 28px;
+    margin-bottom: 5px;
 }
 
 .header-image {
@@ -832,7 +827,7 @@ body {
 
 .review {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .primary-background-toothbrush {

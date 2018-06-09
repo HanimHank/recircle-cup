@@ -31,6 +31,7 @@
     <![endif]-->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
+    <script src="https://cdn.ravenjs.com/3.26.1/raven.min.js" crossorigin="anonymous"></script>
     <script>
         !function() {
             var t;
@@ -205,6 +206,7 @@
 </div>
 
 <script>
+    Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
     function getCookie(name) {
         var value = "; " + document.cookie;
         var parts = value.split("; " + name + "=");

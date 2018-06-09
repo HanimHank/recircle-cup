@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="/static/layout.css" media="all">
         <![endif]-->
         <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
+        <script src="https://cdn.ravenjs.com/3.26.1/raven.min.js" crossorigin="anonymous"></script>
         <!-- Start of Async Drift Code -->
         <script>
             !function() {
@@ -438,6 +439,7 @@
         </div>
 
         <script>
+            Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
             var discount = false;
             updateTotal();
 

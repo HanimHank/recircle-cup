@@ -237,12 +237,15 @@
 
     function showHelp(element) {
         if (element.id == 'transfer') {
-            document.querySelector('.payment-help').textContent =
-                    'Pay to Recircle Enterprise Pvt - 1121-2498-5706-3 - UBL Tufail Road. Add transaction ID in comments.'
+            document.querySelector('.payment-help').innerHTML =
+                    'Pay to Recircle Enterprise - 1121-2498-5706-3 - UBL Tufail Road and ' +
+                    '<a target="_blank" href="mailto:contact@recircle.life">email</a> or ' +
+                    '<a target="_blank" href="https://www.facebook.com/recirclepakistan">message</a>' +
+                    ' us a picture of your receipt/transaction.'
         }
         else {
             document.querySelector('.payment-help').textContent =
-                    'Pay with cash when your order arrives'
+                    'Pay with cash when your order arrives.'
         }
     }
     function sendForm(e) {

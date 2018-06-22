@@ -102,12 +102,12 @@
                         </div>
                         <div class="margin-bottom-15">
                             <div class="quantity-help form-info">
-                                We're sorry, but we're out of White Cups! We'll be restocking soon.
+                                We're sorry, but we're out of all White and large Pink Cups! We'll be restocking soon.
                             </div>
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Color</div>
-                            <select title="Color" name="color">
+                            <select title="Color" name="color" class="cup-color">
                                 <option>Pink</option>
                                 <option>Blue</option>
                                 <option>Purple</option>
@@ -320,6 +320,19 @@
             else {
                 document.querySelector(".quantity-help").classList.add('display-none');
             }
+        }
+
+        var selectColor = document.querySelector(".cup-color");
+        if (large > 0) {
+            selectColor.innerHTML =
+                    '<option>Blue</option>' +
+                    '<option>Purple</option>'
+        }
+        else {
+            selectColor.innerHTML =
+                    '<option>Pink</option>' +
+                    '<option>Blue</option>' +
+                    '<option>Purple</option>'
         }
 
         var total = small + large;

@@ -101,14 +101,16 @@
                                    oninput="updateTotal(this)" min="0">
                         </div>
                         <div class="margin-bottom-15">
-                            <div class="quantity-help form-info">
-                                We're sorry, but we're out of Large Cups and some Small Cup colors! We will restock them by July 10th.
+                            <div class="quantity-help form-info display-none">
                             </div>
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Color</div>
                             <select title="Color" name="color" class="cup-color">
+                                <option>Pink</option>
                                 <option>Blue</option>
+                                <option>Purple</option>
+                                <option>White</option>
                             </select>
                         </div>
                         <div class="margin-bottom-10">
@@ -319,18 +321,7 @@
                 document.querySelector(".quantity-help").classList.add('display-none');
             }
         }
-
-        var selectColor = document.querySelector(".cup-color");
-        if (small > 0) {
-            selectColor.innerHTML =
-                    '<option>Blue</option>';
-        }
-        else {
-            selectColor.innerHTML =
-                    '<option>Blue</option>' +
-                    '<option>Purple</option>'
-        }
-
+        
         var total = small + large;
         if (total == 2) {
             totalPrice = 3000;

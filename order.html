@@ -100,11 +100,14 @@
                             <input type="number" name="quantity-large" title="Quantity" value="0" class="cup-quantity"
                                    oninput="updateTotal(this)" min="0">
                         </div>
-                        <div class="margin-bottom-15">
+                        <div class="margin-bottom-10">
+                            <a href="/which-size" target="_blank">Which size is best for me?</a>
+                        </div>
+                        <div class="margin-bottom-10">
                             <div class="quantity-help form-info display-none">
                             </div>
                         </div>
-                        <div class="margin-bottom-15">
+                        <div class="margin-bottom-20">
                             <div class="label">Color</div>
                             <select title="Color" name="color" class="cup-color">
                                 <option>Pink</option>
@@ -113,14 +116,23 @@
                                 <option>White</option>
                             </select>
                         </div>
-                        <div class="margin-bottom-10">
-                            <a href="/which-size" target="_blank">Which size is best for me?</a>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="cup-offer" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
-                            <span class="cup-offer">Sister Cup Offer</span>
+                        <div class="margin-bottom-15">
+                            <input type="checkbox" class="cup-offer checkbox-position" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
+                            <span class="cup-offer margin-left-2 font-bold">Sister Cup Offer</span>
                             <div class="light-grey">
                                 Get two cups for Rs. 3000 (50% off the second cup)
+                            </div>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="add-wash checkbox-position" name="add-wash" title="Add Cup Wash" onchange="addWash(this)">
+                            <span class="margin-left-2 font-bold">Add Cup Wash</span>
+                            <div class="light-grey">
+                                Our Menstrual Cup Wash is pH neutral, oil-free and organic.
+                            </div>
+                            <div class="display-none cup-wash-container margin-top-10">
+                            <div class="label">Cup Wash</div>
+                                 <input type="number" name="quantity-cup-wash" title="Quantity" value="1" class="wash-quantity"
+                                       oninput="updateTotal(this)" min="0">
                             </div>
                         </div>
                     </div>
@@ -175,6 +187,10 @@
                         Recircle Cup Large x<span class="order-item-quantity-large">1</span>
                         <div class="order-item-price">Rs. 0</div>
                     </div>
+                    <div class="order-item cup-wash display-none">
+                        Recircle Cup Wash x<span class="order-item-quantity-cup-wash">0</span>
+                        <div class="order-item-price">Rs. 0</div>
+                    </div>
                 </div>
 
                 <div class="margin-bottom-40">
@@ -192,7 +208,10 @@
 
                 <div class="margin-bottom-20">
                     <div class="total-price font-bold font-1p25em margin-bottom-5">
-                        Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
+                        Total:
+                        <span class="font-bold">
+                        Rs. <span class="price">2000</span><span class="price-discount margin-left-5"></span>
+                        </span>
                     </div>
                     <div class="label">Free home delivery included</div>
                 </div>
@@ -255,6 +274,13 @@
         var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
         var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
         var color = document.querySelector('select[name="color"]').value;
+        var cupWash = 0;
+
+        // If cup wash checked, add to order
+        if (document.querySelector('input[name="add-wash"]').checked) {
+            cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
+        }
+
         var name = document.querySelector('input[name="name"]').value;
         var address = document.querySelector('input[name="address"]').value;
         var city = document.querySelector('input[name="city"]').value;
@@ -278,9 +304,12 @@
         else if (large == 1) {
             order.push(large + ' Recircle Cup (Large) ' + '(' + color + ')')
         }
+        if (cupWash) {
+            order.push('Cup Wash')
+        }
 
         var data = {
-            small: small, large: large, color: color, name: name, address: address, city: city,
+            small: small, large: large, color: color, cup_wash: cupWash, name: name, address: address, city: city,
             number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice,
             order_type: 'cup', order: order.join(', ')
         };
@@ -304,6 +333,7 @@
     function updateTotal(element) {
         var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
         var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
+        var cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0;
 
         document.querySelector(".order-item-quantity").textContent = small;
         document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
@@ -311,6 +341,12 @@
         document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
         document.querySelector(".order-item-quantity-large").textContent = large;
         document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' + (large * 2000).toString();
+
+        if (document.querySelector(".add-wash").checked) {
+            document.querySelector(".order-item-quantity-cup-wash").parentNode.classList.remove('display-none');
+            document.querySelector(".order-item-quantity-cup-wash").textContent = cupWash;
+            document.querySelector(".order-item-quantity-cup-wash").nextElementSibling.textContent = 'Rs. ' + (cupWash * 600).toString();
+        }
 
         // Show large cup unavailability and add discount
         if (outOfStock) {
@@ -321,29 +357,47 @@
                 document.querySelector(".quantity-help").classList.add('display-none');
             }
         }
-        
+
         var total = small + large;
         if (total == 2) {
             totalPrice = 3000;
-            document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
+            document.querySelector(".price-discount").textContent = "(Save Rs. 1000)";
             document.querySelector(".cup-offer").checked = true;
         }
         else {
             totalPrice = total * 2000;
             if (discount) {
                 totalPrice *= 0.8;
-                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+                document.querySelector(".price-discount").textContent = "(20% Off)";
             }
             else {
-                document.querySelector(".price").textContent = totalPrice.toString();
+                document.querySelector(".price-discount").textContent = "";
             }
             document.querySelector(".cup-offer").checked = false;
         }
+
+        if (document.querySelector(".add-wash").checked) {
+            totalPrice += cupWash * 600;
+        }
+
+        document.querySelector(".price").textContent = totalPrice.toString();
+    }
+    function addWash(element) {
+        if (element.checked) {
+            document.querySelector(".cup-wash").classList.remove('display-none');
+            document.querySelector(".cup-wash-container").classList.remove('display-none');
+        }
+        else {
+            document.querySelector(".cup-wash").classList.add('display-none');
+            document.querySelector(".cup-wash-container").classList.add('display-none');
+        }
+        updateTotal();
+
     }
     function addOffer(element) {
         if (element.checked) {
             totalPrice = 3000;
-            document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
+            document.querySelector(".price-discount").textContent = "(Save Rs. 1000)";
             document.querySelector(".cup-quantity").value = 2;
             document.querySelector("input[name='quantity-large']").value = 0;
         }
@@ -351,13 +405,20 @@
             totalPrice = 2000;
             if (discount) {
                 totalPrice *= 0.8;
-                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+                document.querySelector(".price-discount").textContent = "(20% Off)";
             }
             else {
-                document.querySelector(".price").textContent = totalPrice.toString();
+                document.querySelector(".price-discount").textContent = "";
             }
             document.querySelector(".cup-quantity").value = 1;
         }
+
+        var cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0;
+        if (document.querySelector(".add-wash").checked) {
+            totalPrice += cupWash * 600;
+        }
+        document.querySelector(".price").textContent = totalPrice.toString();
+
         var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
         var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
         document.querySelector(".order-item-quantity").textContent = small;

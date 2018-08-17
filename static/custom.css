@@ -488,6 +488,10 @@ select {
     display: none;
 }
 
+.margin-left-2 {
+    margin-left: 2px;
+}
+
 .margin-left-5 {
     margin-left: 5px;
 }
@@ -764,6 +768,10 @@ select {
     margin-bottom: 12px;
 }
 
+.checkbox-position {
+    position: relative;
+    top: 1px;
+}
 
 /* Baby */
 

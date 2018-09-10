@@ -454,9 +454,12 @@
                 var total = (parseInt(document.querySelector("input[name='quantity-small']").value) || 0) +
                             (parseInt(document.querySelector("input[name='quantity-large']").value) || 0);
                 var totalPrice;
-                if (total == 2) {
-                    totalPrice = 3000;
-                    document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. 1000)";
+                if (total >= 2) {
+                    var sisterCupOffers = Math.floor(total / 2);
+                    var singleCups = total % 2;
+                    totalPrice = sisterCupOffers * 3000 + singleCups * 2000;
+                    var discountAmount = sisterCupOffers * 1000;
+                    document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. " + discountAmount + ")";
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {

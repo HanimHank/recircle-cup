@@ -213,8 +213,8 @@
                     </div>
                     <div class="col2">
                         <div class="margin-bottom-10">
-                            <div class="font-bold margin-bottom-20 display-none">
-                                20% Menstrual Hygiene Day Discount! Ends Today, May 28th!
+                            <div class="font-bold margin-bottom-20">
+                                10% Single Cup Discount! Ends Friday, Oct 19th!
                             </div>
                             <div>
                                 <div class="display-inline margin-right-85">
@@ -242,7 +242,10 @@
 
                             <div class="col2 margin-top-15">
                                 <div class="total-price">
-                                    Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
+                                    Total:
+                                    <span class="font-bold">
+                                    Rs. <span class="price">2000</span><span class="price-discount margin-left-5"></span>
+                                    </span>
                                 </div>
                                 <div class="light-grey">
                                     Includes home delivery
@@ -440,7 +443,7 @@
 
         <script>
             Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
-            var discount = false;
+            var discount = true;
             updateTotal();
 
             function addCookie(element) {
@@ -454,25 +457,28 @@
                 var total = (parseInt(document.querySelector("input[name='quantity-small']").value) || 0) +
                             (parseInt(document.querySelector("input[name='quantity-large']").value) || 0);
                 var totalPrice;
+
                 if (total >= 2) {
                     var sisterCupOffers = Math.floor(total / 2);
                     var singleCups = total % 2;
                     totalPrice = sisterCupOffers * 3000 + singleCups * 2000;
                     var discountAmount = sisterCupOffers * 1000;
-                    document.querySelector(".price").textContent = totalPrice.toString() + " (Save Rs. " + discountAmount + ")";
+                    document.querySelector(".price-discount").textContent = "(Save Rs. " + discountAmount + ")";
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {
                     totalPrice = total * 2000;
-                    if (discount) {
-                        totalPrice *= 0.8;
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+                    if (discount && total) {
+                        totalPrice *= 0.9;
+                        document.querySelector(".price-discount").textContent = "(10% Off)";
                     }
                     else {
-                        document.querySelector(".price").textContent = totalPrice.toString();
+                        document.querySelector(".price-discount").textContent = "";
                     }
                     document.querySelector(".cup-offer").checked = false;
                 }
+
+                document.querySelector(".price").textContent = totalPrice.toString();
             }
             function addOffer(element) {
                 var totalPrice;
@@ -485,8 +491,8 @@
                 else {
                     totalPrice = 2000;
                     if (discount) {
-                        totalPrice *= 0.8;
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
+                        totalPrice *= 0.9;
+                        document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off)";
                     }
                     else {
                         document.querySelector(".price").textContent = totalPrice.toString();

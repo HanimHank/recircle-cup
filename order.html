@@ -247,6 +247,7 @@
     else {
         discount = false;
     }
+    discount = true;
     if (name != 'null') {
         document.querySelector("input[name='name']").value = name
     }
@@ -369,9 +370,9 @@
         }
         else {
             totalPrice = total * 2000;
-            if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price-discount").textContent = "(20% Off)";
+            if (discount && total) {
+                totalPrice *= 0.9;
+                document.querySelector(".price-discount").textContent = "(10% Off)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";
@@ -407,8 +408,8 @@
         else {
             totalPrice = 2000;
             if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price-discount").textContent = "(20% Off)";
+                totalPrice *= 0.9;
+                document.querySelector(".price-discount").textContent = "(10% Off)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";

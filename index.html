@@ -213,8 +213,8 @@
                     </div>
                     <div class="col2">
                         <div class="margin-bottom-10">
-                            <div class="font-bold margin-bottom-20 display-none">
-
+                            <div class="font-bold margin-bottom-20">
+                                20% Discount till Friday, November 23rd!
                             </div>
                             <div>
                                 <div class="display-inline margin-right-85">
@@ -443,7 +443,7 @@
 
         <script>
             Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
-            var discount = false;
+            var discount = true;
             updateTotal();
 
             function addCookie(element) {
@@ -469,8 +469,8 @@
                 else {
                     totalPrice = total * 2000;
                     if (discount && total) {
-                        totalPrice *= 0.9;
-                        document.querySelector(".price-discount").textContent = "(10% Off)";
+                        totalPrice *= 0.8;
+                        document.querySelector(".price-discount").textContent = "(20% Off)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = "";
@@ -491,8 +491,8 @@
                 else {
                     totalPrice = 2000;
                     if (discount) {
-                        totalPrice *= 0.9;
-                        document.querySelector(".price").textContent = totalPrice.toString() + " (10% Off)";
+                        totalPrice *= 0.8;
+                        document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
                     }
                     else {
                         document.querySelector(".price").textContent = totalPrice.toString();

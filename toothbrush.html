@@ -160,56 +160,64 @@
 
             <div class="margin-bottom-10">
 
-                    <div>
-                        Quantity
-                        <select name="toothbrush-quantity" title="Toothbrush Quantity" class="toothbrush-quantity"
-                                oninput="updateTotal(this)" onchange="changeSubscription(this)">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4" selected>4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                        </select>
-                        <div class="toothbrush-quantity-help margin-top-5 light-grey">
-                            A year's supply for Rs. 400 each
-                        </div>
+                <div class="margin-bottom-20 font-bold">
+                    <div class="stock-help form-info display-none">
+                        Sorry, but we're currently out of Toothbrushes!
+                        If you place your order now, it will be delivered by the end of May.
                     </div>
-
-                    <div class="margin-top-20">
-                        Total: <span class="font-bold">Rs. <span class="price">1600</span></span>
-                    </div>
-                    <div class="light-grey">
-                        Includes home delivery
-                    </div>
-
-                    <div class="margin-top-20 margin-bottom-30">
-                        <div class="font-bold">Subscription Plan</div>
-                        <input type="checkbox" class="subscribe" name="subscribe" title="Subscribe" onchange="addSubscription(this)">
-                        <span>Get this quantity every
-                        <select name="subscription-frequency" title="Subscription Frequency" class="subscription-frequency-select"
-                                onchange="changeSubscription(this)">
-                            <option value="3" selected>3</option>
-                            <option value="4">4</option>
-                            <option value="6">6</option>
-                        </select>
-                        months</span>
-                        <div class="light-grey subscription-text display-none">
-                            We'll deliver <span class="subscription-quantity"></span> to you every
-                            <span class="subscription-frequency"></span> months
-                        </div>
-                    </div>
-
-                    <input type="submit" value="Order" onclick="addCookie(this)">
                 </div>
+
+                <div>
+                    Quantity
+                    <select name="toothbrush-quantity" title="Toothbrush Quantity" class="toothbrush-quantity"
+                            oninput="updateTotal(this)" onchange="changeSubscription(this)">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                    <div class="toothbrush-quantity-help margin-top-5 light-grey">
+                        A year's supply for Rs. 400 each
+                    </div>
+                </div>
+
+                <div class="margin-top-20">
+                    Total: <span class="font-bold">Rs. <span class="price">1600</span></span>
+                </div>
+                <div class="light-grey">
+                    Includes home delivery
+                </div>
+
+                <div class="margin-top-20 margin-bottom-30">
+                    <div class="font-bold">Subscription Plan</div>
+                    <input type="checkbox" class="subscribe" name="subscribe" title="Subscribe" onchange="addSubscription(this)">
+                    <span>Get this quantity every
+                    <select name="subscription-frequency" title="Subscription Frequency" class="subscription-frequency-select"
+                            onchange="changeSubscription(this)">
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                    </select>
+                    months</span>
+                    <div class="light-grey subscription-text display-none">
+                        We'll deliver <span class="subscription-quantity"></span> to you every
+                        <span class="subscription-frequency"></span> months
+                    </div>
+                </div>
+
+                <input type="submit" value="Order" onclick="addCookie(this)">
+            </div>
         </article>
     </section>
 </div>
 
 <script>
     var discount = false;
+    var outOfStock = true;
     function addCookie(element) {
         var quantity = document.querySelector("select[name='toothbrush-quantity']").value;
         document.cookie = 'quantity=' + quantity;
@@ -219,6 +227,12 @@
         document.cookie = 'subscribe=' + subscribe;
         window.location.replace('/order-toothbrush');
     }
+
+    // Show unavailability
+    if (outOfStock) {
+        document.querySelector(".stock-help").classList.remove('display-none')
+    }
+
     function updateTotal(element) {
         var total = element.value;
         var totalPrice;

@@ -31,6 +31,7 @@
         <![endif]-->
         <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
         <script src="https://cdn.ravenjs.com/3.26.1/raven.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <!-- Start of Async Drift Code -->
         <script>
             !function() {
@@ -68,6 +69,11 @@
                     <a href="/#blog">Blog</a>
                     <a class="drift-open-chat">Talk to us</a>
                     <a href="/toothbrush">Toothbrush</a>
+                    <a href="/cup-wash">Menstrual Cup Wash</a>
+                    <div class="user-cart display-inline-block" onclick="window.location = ('/checkout')">
+                        <img class="user-cart-image" src="static/cart.png"/>
+                        <span class="user-cart-quantity"></span>
+                    </div>
                 </div>
             </nav>
             <div class="section primary-background">
@@ -248,12 +254,12 @@
                                     </span>
                                 </div>
                                 <div class="light-grey">
-                                    Includes home delivery
+                                    Excludes delivery charge
                                 </div>
                             </div>
                             <div class="clear"></div>
 
-                            <input type="submit" value="Order" class="float-right" onclick="addCookie(this)">
+                            <input type="submit" value="Order" class="float-right" onclick="submitOrder(this)">
                         </div>
                     </div>
                     <div class="clear"></div>
@@ -446,13 +452,18 @@
             var discount = false;
             updateTotal();
 
-            function addCookie(element) {
+            function submitOrder(element) {
                 var small = parseInt(document.querySelector("input[name='quantity-small']").value);
                 var large = parseInt(document.querySelector("input[name='quantity-large']").value);
-                document.cookie = 'small=' + small;
-                document.cookie = 'large=' + large;
-                window.location.replace('/order');
+                addCookie('Small', small);
+                addCookie('Large', large);
+                window.location = ('/order');
             }
+
+            function addCookie(name, value) {
+                document.cookie = name + '=' + value;
+            }
+
             function updateTotal(element) {
                 var total = (parseInt(document.querySelector("input[name='quantity-small']").value) || 0) +
                             (parseInt(document.querySelector("input[name='quantity-large']").value) || 0);
@@ -538,13 +549,39 @@
                     });
                 });
             })();
+
+            function getCookie(name) {
+                var value = "; " + document.cookie;
+                var parts = value.split("; " + name + "=");
+                if (parts.length == 2) return parts.pop().split(";").shift();
+            }
+
+            var userCart = [];
+            if (Cookies.getJSON('userCart')) {
+                userCart = Cookies.getJSON('userCart');
+            }
+
+            // Show/hide cart
+            var cartQuantity = userCart.reduce(function (a, b) {
+                return a + b.quantity;
+            }, 0);
+            if (cartQuantity) {
+                document.querySelector(".user-cart-quantity").textContent = cartQuantity;
+                document.querySelector(".user-cart").classList.remove('display-none');
+                document.querySelector(".user-cart").classList.add('display-inline-block');
+            }
+            else {
+                document.querySelector(".user-cart").classList.add('display-none');
+                document.querySelector(".user-cart").classList.remove('display-inline-block');
+            }
+
         </script>
     </body>
 
     <div id="footer">
         <a href="mailto:contact@recircle.life">contact@recircle.life</a>
         <p class="center">
-            Copyright Recircle Cup 2017 - 2018
+            Copyright Recircle Cup 2017 - 2019
         </p>
     </div>
 </html>

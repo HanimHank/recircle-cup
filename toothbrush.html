@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="/static/layout.css" media="all">
     <![endif]-->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
+    <script src="https://cdn.ravenjs.com/3.26.1/raven.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <!-- Start of Async Drift Code -->
     <script>
         !function() {
@@ -67,6 +69,11 @@
             <a href="/#blog">Blog</a>
             <a class="drift-open-chat">Talk to us</a>
             <a href="/toothbrush">Toothbrush</a>
+            <a href="/cup-wash">Menstrual Cup Wash</a>
+            <div class="user-cart display-inline-block" onclick="window.location = ('/checkout')">
+                <img class="user-cart-image" src="static/cart.png"/>
+                <span class="user-cart-quantity"></span>
+            </div>
         </div>
     </nav>
     <div class="section primary-background-toothbrush">
@@ -181,15 +188,15 @@
                         <option value="8">8</option>
                     </select>
                     <div class="toothbrush-quantity-help margin-top-5 light-grey">
-                        A year's supply for Rs. 400 each
+                        A year's supply for 1 person
                     </div>
                 </div>
 
                 <div class="margin-top-20">
-                    Total: <span class="font-bold">Rs. <span class="price">1600</span></span>
+                    Total: <span class="font-bold">Rs. <span class="price">800</span></span>
                 </div>
                 <div class="light-grey">
-                    Includes home delivery
+                    Excludes delivery charge
                 </div>
 
                 <div class="margin-top-20 margin-bottom-30">
@@ -209,7 +216,12 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Order" onclick="addCookie(this)">
+                <button type="button" class="add-to-cart-button light-action-button" onclick="updateCart()">Add to Cart</button>
+                <button type="button" class="order-now-button" onclick="orderNow()">Order Now</button>
+                <div class="added-to-cart-message display-none"><img class="checkmark-icon" src="static/checkmark.png"/>
+                    Added to Cart
+                    <a href="/checkout" class="margin-left-5">Checkout</a>
+                </div>
             </div>
         </article>
     </section>
@@ -218,15 +230,6 @@
 <script>
     var discount = false;
     var outOfStock = true;
-    function addCookie(element) {
-        var quantity = document.querySelector("select[name='toothbrush-quantity']").value;
-        document.cookie = 'quantity=' + quantity;
-        var frequency = document.querySelector(".subscription-frequency-select").value;
-        document.cookie = 'frequency=' + frequency;
-        var subscribe = document.querySelector('.subscribe').checked;
-        document.cookie = 'subscribe=' + subscribe;
-        window.location.replace('/order-toothbrush');
-    }
 
     // Show unavailability
     if (outOfStock) {
@@ -235,20 +238,13 @@
 
     function updateTotal(element) {
         var total = element.value;
-        var totalPrice;
-        if (total < 3) {
-            totalPrice = total * 550;
-            document.querySelector(".price").textContent = totalPrice.toString();
+        var totalPrice = total * 200;
+        if (discount) {
+            totalPrice *= 0.8;
+            document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
         }
         else {
-            totalPrice = total * 400;
-            if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
-            }
-            else {
-                document.querySelector(".price").textContent = totalPrice.toString();
-            }
+            document.querySelector(".price").textContent = totalPrice.toString();
         }
         if (total != 4) {
             document.querySelector(".toothbrush-quantity-help").classList.add('display-none')
@@ -295,6 +291,85 @@
         document.getElementById('order').scrollIntoView();
     }
 
+    var userCart = [];
+    if (Cookies.getJSON('userCart')) {
+        userCart = Cookies.getJSON('userCart');
+    }
+
+    displayCart();
+
+    function displayCart() {
+        // Show/hide cart
+        var cartQuantity = userCart.reduce(function (a, b) {
+            return a + b.quantity;
+        }, 0);
+        if (cartQuantity) {
+            document.querySelector(".user-cart-quantity").textContent = cartQuantity;
+            document.querySelector(".user-cart").classList.remove('display-none');
+            document.querySelector(".user-cart").classList.add('display-inline-block');
+        }
+        else {
+            document.querySelector(".user-cart").classList.add('display-none');
+            document.querySelector(".user-cart").classList.remove('display-inline-block');
+        }
+    }
+
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+    function updateCart() {
+        var quantity = parseInt(document.querySelector("select[name='toothbrush-quantity']").value) || 0;
+
+        if (quantity) {
+            var subscription = document.querySelector('.subscribe').checked;
+            var frequency;
+            if (subscription) {
+                frequency = parseInt(document.querySelector(".subscription-frequency-select").value);
+            }
+            var orderItem = {};
+            orderItem.name = 'Toothbrush';
+            orderItem.displayName = 'Toothbrush';
+            orderItem.quantity = quantity;
+            orderItem.frequency = frequency;
+            userCart.push(orderItem);
+        }
+        Cookies.set('userCart', userCart);
+
+        document.querySelector(".added-to-cart-message").classList.remove('display-none');
+        document.querySelector(".added-to-cart-message").classList.add('fade');
+        setTimeout(function(){
+            document.querySelector(".added-to-cart-message").classList.remove('fade');
+        }, 1000);
+
+        displayCart();
+    }
+
+    function orderNow() {
+
+        var tempCart = [];
+        var quantity = parseInt(document.querySelector("select[name='toothbrush-quantity']").value) || 0;
+
+        if (quantity) {
+            var subscription = document.querySelector('.subscribe').checked;
+            var frequency;
+            if (subscription) {
+                frequency = parseInt(document.querySelector(".subscription-frequency-select").value);
+            }
+            var orderItem = {};
+            orderItem.name = 'Toothbrush';
+            orderItem.displayName = 'Toothbrush';
+            orderItem.quantity = quantity;
+            orderItem.frequency = frequency;
+            tempCart.push(orderItem);
+        }
+        Cookies.set('tempCart', tempCart);
+
+        window.location = ('/checkout?orderNow=true');
+    }
+
     (function() {
         var DRIFT_CHAT_SELECTOR = '.drift-open-chat';
         function ready(fn) {
@@ -335,7 +410,7 @@
 <div id="footer">
     <a href="mailto:contact@recircle.life">contact@recircle.life</a>
     <p class="center">
-        Copyright Recircle Cup 2017 - 2018
+        Copyright Recircle Cup 2017 - 2019
     </p>
 </div>
 </html>

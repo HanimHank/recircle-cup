@@ -32,6 +32,7 @@
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
     <script src="https://cdn.ravenjs.com/3.26.1/raven.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script>
         !function() {
             var t;
@@ -76,6 +77,11 @@
             <a href="/#blog">Blog</a>
             <a class="drift-open-chat">Talk to us</a>
             <a href="/toothbrush">Toothbrush</a>
+            <a href="/cup-wash">Menstrual Cup Wash</a>
+            <div class="user-cart display-inline-block" onclick="window.location = ('/checkout')">
+                <img class="user-cart-image" src="static/cart.png"/>
+                <span class="user-cart-quantity"></span>
+            </div>
         </div>
     </nav>
 </header>
@@ -84,7 +90,7 @@
 
     <section class="emphasis-background">
         <article>
-            <form class="order-form margin-bottom-10" onsubmit="event.preventDefault(); sendForm(this)">
+            <form class="order-form margin-bottom-10">
             <div class="col1 compact">
                     <div class="margin-bottom-40">
                         <div class="font-1p25em font-bold margin-bottom-20">
@@ -103,18 +109,23 @@
                         <div class="margin-bottom-10">
                             <a href="/which-size" target="_blank">Which size is best for me?</a>
                         </div>
-                        <div class="margin-bottom-10">
-                            <div class="quantity-help form-info">
-                                Sorry, but we're out of White Cups! We will restock soon.
-                            </div>
-                        </div>
-                        <div class="margin-bottom-20">
+                        <div class="margin-bottom-15">
                             <div class="label">Color</div>
                             <select title="Color" name="color" class="cup-color">
                                 <option>Pink</option>
                                 <option>Blue</option>
                                 <option>Purple</option>
+                                <option>White</option>
                             </select>
+                        </div>
+                        <div class="margin-bottom-10">
+                            <a href="https://www.instagram.com/p/Ba3jpVZB_NZ/?taken-by=recircle.life"
+                               target="_blank">See all colors</a>
+                        </div>
+                        <div class="margin-bottom-20">
+                            <div class="quantity-help form-info display-none">
+                                Sorry, but we're out of White Cups! We will restock soon.
+                            </div>
                         </div>
                         <div class="margin-bottom-15">
                             <input type="checkbox" class="cup-offer checkbox-position" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
@@ -124,86 +135,49 @@
                             </div>
                         </div>
                         <div>
-                            <input type="checkbox" class="add-wash checkbox-position" name="add-wash" title="Add Cup Wash" onchange="addWash(this)">
-                            <span class="margin-left-2 font-bold">Add Cup Wash</span>
+                            <input type="checkbox" class="add-wash checkbox-position" name="add-wash" title="Add Menstrual Cup Wash" onchange="addWash(this)">
+                            <span class="margin-left-2 font-bold">Add Menstrual Cup Wash</span>
                             <div class="light-grey">
                                 Our Menstrual Cup Wash is pH neutral, oil-free and organic.
                             </div>
                             <div class="display-none cup-wash-container margin-top-10">
-                            <div class="label">Cup Wash</div>
+                            <div class="label">Menstrual Cup Wash</div>
                                  <input type="number" name="quantity-cup-wash" title="Quantity" value="1" class="wash-quantity"
                                        oninput="updateTotal(this)" min="0">
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="font-1p25em font-bold margin-bottom-20">
-                            Your Details
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Name</div>
-                            <input type="text" name="name" title="Name" class="customer-name" required>
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Address</div>
-                            <input type="text" name="address" title="Address" class="customer-address" required>
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">City</div>
-                            <input type="text" name="city" title="City" class="customer-city" required>
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Mobile Number</div>
-                            <input type="text" name="mobile-number" title="Mobile Number" class="customer-mobile-number" required>
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Email (optional)</div>
-                            <input type="text" name="email" title="Email" class="customer-email">
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Comments (optional)</div>
-                            <textarea name="comments" title="Comments" class="customer-comments"></textarea>
+                        <div class="cup-image">
+                            <img src="/static/sizes.png"/>
                         </div>
                     </div>
             </div>
             <div class="col2 compact">
-                <div class="cup-image">
-                    <img src="/static/sizes.png"/>
-                </div>
-                <div class="margin-bottom-20">
-                    <a href="https://www.instagram.com/p/Ba3jpVZB_NZ/?taken-by=recircle.life"
-                       target="_blank">See all colors</a>
-                </div>
                 <div class="margin-bottom-40">
                     <div class="font-1p25em font-bold margin-bottom-20">
                         Order Summary
                     </div>
                     <div class="label">Items</div>
                     <div class="order-item">
-                        Recircle Cup Small x<span class="order-item-quantity">1</span>
+                        Recircle Cup Small
+                        <span class="order-item-quantity-container">
+                            x <span class="order-item-quantity-small">1</span>
+                        </span>
                         <div class="order-item-price">Rs. 2000</div>
                     </div>
-                    <div class="order-item display-none">
-                        Recircle Cup Large x<span class="order-item-quantity-large">1</span>
+                    <div class="order-item">
+                        Recircle Cup Large
+                        <span class="order-item-quantity-container">
+                            x <span class="order-item-quantity-large">0</span>
+                        </span>
                         <div class="order-item-price">Rs. 0</div>
                     </div>
                     <div class="order-item cup-wash display-none">
-                        Recircle Cup Wash x<span class="order-item-quantity-cup-wash">0</span>
+                        Recircle Menstrual Cup Wash
+                        <span class="order-item-quantity-container">
+                            x <span class="order-item-quantity-cup-wash">0</span>
+                        </span>
                         <div class="order-item-price">Rs. 0</div>
                     </div>
-                </div>
-
-                <div class="margin-bottom-40">
-                    <div class="font-1p25em font-bold margin-bottom-20">
-                        Payment Method
-                    </div>
-                    <div class="margin-bottom-5">
-                        <input type="radio" id="cash" name="radio-group" checked onclick="showHelp(this)">
-                        <label for="cash">Cash on delivery</label>
-                        <input type="radio" id="transfer" name="radio-group" onclick="showHelp(this)">
-                        <label for="transfer" class="margin-left-25">Bank transfer</label>
-                    </div>
-                    <div class="label payment-help">Pay with cash when your order arrives</div>
                 </div>
 
                 <div class="margin-bottom-20">
@@ -213,9 +187,14 @@
                         Rs. <span class="price">2000</span><span class="price-discount margin-left-5"></span>
                         </span>
                     </div>
-                    <div class="label">Free home delivery included</div>
+                    <div class="label">Excludes delivery charge</div>
                 </div>
-                <input type="submit" value="Finish Order" class="finish-order">
+                <button type="button" class="add-to-cart-button light-action-button" onclick="updateCart()">Add to Cart</button>
+                <button type="button" class="order-now-button" onclick="orderNow()">Order Now</button>
+                <div class="added-to-cart-message display-none"><img class="checkmark-icon" src="static/checkmark.png"/>
+                    Added to Cart
+                    <a href="/checkout" class="margin-left-5">Checkout</a>
+                </div>
             </div>
             </form>
             <div class="clear"></div>
@@ -230,8 +209,8 @@
         var parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
     }
-    var smallCups = (getCookie('small')) ? getCookie('small') : 1;
-    var largeCups = (getCookie('large')) ? getCookie('large') : 0;
+    var smallCups = (getCookie('Small')) ? getCookie('Small') : 1;
+    var largeCups = (getCookie('Large')) ? getCookie('Large') : 0;
     var outOfStock = false;
     var totalPrice;
     document.querySelector("input[name='quantity-small']").value = smallCups;
@@ -239,20 +218,11 @@
     var url_string = window.location.href;
     var url = new URL(url_string);
     var discount = url.searchParams.get("discount");
-    var name = url.searchParams.get("name");
-    var email = url.searchParams.get("email");
     if (discount == 'true') {
         discount = true;
     }
     else {
         discount = false;
-    }
-
-    if (name != 'null') {
-        document.querySelector("input[name='name']").value = name
-    }
-    if (email != 'null') {
-        document.querySelector("input[name='email']").value = email
     }
     updateTotal();
 
@@ -269,8 +239,9 @@
                     'Pay with cash when your order arrives.'
         }
     }
+
     function sendForm(e) {
-        document.querySelector('.finish-order').value = 'Sending...please wait';
+        document.querySelector('.order-now-button').value = 'Sending...please wait';
         var order = [];
         var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
         var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
@@ -325,7 +296,7 @@
                 data: data
             }),
             success: function (data) {
-                window.location.href = '/thankyou';
+                window.location = '/thankyou';
             },
             dataType: "json"
         });
@@ -336,17 +307,28 @@
         var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
         var cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0;
 
-        document.querySelector(".order-item-quantity").textContent = small;
-        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
+        if (small) {
+            document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
+            document.querySelector(".order-item-quantity-small").textContent = small;
+            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
+        }
+        else {
+            document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.add('display-none');
+        }
 
-        document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
-        document.querySelector(".order-item-quantity-large").textContent = large;
-        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' + (large * 2000).toString();
+        if (large) {
+            document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.remove('display-none');
+            document.querySelector(".order-item-quantity-large").textContent = large;
+            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'Rs. ' + (large * 2000).toString();
+        }
+        else {
+            document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.add('display-none');
+        }
 
         if (document.querySelector(".add-wash").checked) {
-            document.querySelector(".order-item-quantity-cup-wash").parentNode.classList.remove('display-none');
+            document.querySelector(".order-item-quantity-cup-wash").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-cup-wash").textContent = cupWash;
-            document.querySelector(".order-item-quantity-cup-wash").nextElementSibling.textContent = 'Rs. ' + (cupWash * 600).toString();
+            document.querySelector(".order-item-quantity-cup-wash").parentNode.nextElementSibling.textContent = 'Rs. ' + (cupWash * 600).toString();
         }
 
         // Show large cup unavailability and add discount
@@ -364,15 +346,14 @@
             var sisterCupOffers = Math.floor(total / 2);
             var singleCups = total % 2;
             totalPrice = sisterCupOffers * 3000 + singleCups * 2000;
-            var discountAmount = sisterCupOffers * 1000;
-            document.querySelector(".price-discount").textContent = "(Save Rs. " + discountAmount + ")";
+            document.querySelector(".price-discount").textContent = "(Save Rs. 1000 on every 2 Cups)";
             document.querySelector(".cup-offer").checked = true;
         }
         else {
             totalPrice = total * 2000;
             if (discount && total) {
                 totalPrice *= 0.8;
-                document.querySelector(".price-discount").textContent = "(20% Off)";
+                document.querySelector(".price-discount").textContent = "(20% Off on Cups)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";
@@ -386,6 +367,7 @@
 
         document.querySelector(".price").textContent = totalPrice.toString();
     }
+
     function addWash(element) {
         if (element.checked) {
             document.querySelector(".cup-wash").classList.remove('display-none');
@@ -395,44 +377,142 @@
             document.querySelector(".cup-wash").classList.add('display-none');
             document.querySelector(".cup-wash-container").classList.add('display-none');
         }
-        updateTotal();
-
+        updateTotal(null);
     }
+
     function addOffer(element) {
         if (element.checked) {
-            totalPrice = 3000;
-            document.querySelector(".price-discount").textContent = "(Save Rs. 1000)";
-            document.querySelector(".cup-quantity").value = 2;
+            document.querySelector("input[name='quantity-small']").value = 2;
             document.querySelector("input[name='quantity-large']").value = 0;
         }
         else {
-            totalPrice = 2000;
-            if (discount) {
-                totalPrice *= 0.8;
-                document.querySelector(".price-discount").textContent = "(20% Off)";
-            }
-            else {
-                document.querySelector(".price-discount").textContent = "";
-            }
-            document.querySelector(".cup-quantity").value = 1;
+            document.querySelector("input[name='quantity-small']").value = 1;
+            document.querySelector("input[name='quantity-large']").value = 0;
         }
-
-        var cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0;
-        if (document.querySelector(".add-wash").checked) {
-            totalPrice += cupWash * 600;
-        }
-        document.querySelector(".price").textContent = totalPrice.toString();
-
-        var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
-        var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
-        document.querySelector(".order-item-quantity").textContent = small;
-        document.querySelector(".order-item-quantity").nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
-
-        document.querySelector(".order-item-quantity-large").parentNode.classList.remove('display-none');
-        document.querySelector(".order-item-quantity-large").textContent = large;
-        document.querySelector(".order-item-quantity-large").nextElementSibling.textContent = 'Rs. ' +  (large * 2000).toString();
-
+        updateTotal();
     }
+
+    // Get/initialize user cart
+    var userCart = [];
+    if (Cookies.getJSON('userCart')) {
+        userCart = Cookies.getJSON('userCart');
+    }
+
+    displayCart();
+
+    function updateCart() {
+        // Update cart cookies
+        var small = parseInt(document.querySelector("input[name='quantity-small']").value);
+        var large = parseInt(document.querySelector("input[name='quantity-large']").value);
+        var cupWash = 0;
+        if (document.querySelector('input[name="add-wash"]').checked) {
+            cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
+        }
+
+        if (small) {
+            var orderItem = {};
+            orderItem.name = 'Small';
+            orderItem.displayName = 'Cup (Small)';
+            orderItem.quantity = small;
+            orderItem.color = document.querySelector('select[name="color"]').value;
+            userCart.push(orderItem);
+        }
+
+        if (large) {
+            var orderItem = {};
+            orderItem.name = 'Large';
+            orderItem.displayName = 'Cup (Large)';
+            orderItem.quantity = large;
+            orderItem.color = document.querySelector('select[name="color"]').value;
+            userCart.push(orderItem);
+        }
+
+        if (cupWash) {
+            var orderItem = {};
+            orderItem.name = 'Wash';
+            orderItem.displayName = 'Menstrual Cup Wash';
+            orderItem.quantity = cupWash;
+            userCart.push(orderItem);
+        }
+        Cookies.set('userCart', userCart);
+
+        if (small + large + cupWash <= 0) {
+            alert('You haven\'t selected any items. Please select a quantity of items to add to your cart.');
+            return false;
+        }
+
+        document.querySelector(".added-to-cart-message").classList.remove('display-none');
+        document.querySelector(".added-to-cart-message").classList.add('fade');
+        setTimeout(function(){
+            document.querySelector(".added-to-cart-message").classList.remove('fade');
+        }, 1000);
+
+        displayCart();
+    }
+
+    function orderNow() {
+
+        var tempCart = [];
+        // Update cart cookies
+        var small = parseInt(document.querySelector("input[name='quantity-small']").value);
+        var large = parseInt(document.querySelector("input[name='quantity-large']").value);
+        var cupWash = 0;
+        if (document.querySelector('input[name="add-wash"]').checked) {
+            cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
+        }
+
+        if (small) {
+            var orderItem = {};
+            orderItem.name = 'Small';
+            orderItem.displayName = 'Cup (Small)';
+            orderItem.quantity = small;
+            orderItem.color = document.querySelector('select[name="color"]').value;
+            tempCart.push(orderItem);
+        }
+
+        if (large) {
+            var orderItem = {};
+            orderItem.name = 'Large';
+            orderItem.displayName = 'Cup (Large)';
+            orderItem.quantity = large;
+            orderItem.color = document.querySelector('select[name="color"]').value;
+            tempCart.push(orderItem);
+        }
+
+        if (cupWash) {
+            var orderItem = {};
+            orderItem.name = 'Wash';
+            orderItem.displayName = 'Cup Wash';
+            orderItem.quantity = cupWash;
+            tempCart.push(orderItem);
+        }
+        Cookies.set('tempCart', tempCart);
+
+
+        if (tempCart.length <= 0) {
+            alert('You haven\'t selected any items to order. Please select a quantity of items to order now.');
+            return false;
+        }
+
+        window.location = ('/checkout?orderNow=true');
+    }
+
+    function displayCart() {
+        // Show/hide cart
+        var cartQuantity = userCart.reduce(function (a, b) {
+            return a + b.quantity;
+        }, 0);
+        if (cartQuantity) {
+            document.querySelector(".user-cart-quantity").textContent = cartQuantity;
+            document.querySelector(".user-cart").classList.remove('display-none');
+            document.querySelector(".user-cart").classList.add('display-inline-block');
+        }
+        else {
+            document.querySelector(".user-cart").classList.add('display-none');
+            document.querySelector(".user-cart").classList.remove('display-inline-block');
+        }
+    }
+
     (function() {
         var DRIFT_CHAT_SELECTOR = '.drift-open-chat';
         function ready(fn) {
@@ -473,7 +553,7 @@
 <div id="footer">
     <a href="mailto:contact@recircle.life">contact@recircle.life</a>
     <p class="center">
-        Copyright Recircle Cup 2017 - 2018
+        Copyright Recircle Cup 2017 - 2019
     </p>
 </div>
 </html>

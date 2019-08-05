@@ -168,9 +168,9 @@
             <div class="margin-bottom-10">
 
                 <div class="margin-bottom-20 font-bold">
-                    <div class="stock-help form-info display-none">
+                    <div class="stock-help form-info">
                         Sorry, but we're currently out of Toothbrushes!
-                        If you place your order now, it will be delivered by the end of May.
+                        We will restock and accept orders by October.
                     </div>
                 </div>
 
@@ -321,6 +321,9 @@
     }
 
     function updateCart() {
+        alert('Sorry, but we\'re currently out of Toothbrushes! We will restock and accept orders by October.');
+        return false;
+
         var quantity = parseInt(document.querySelector("select[name='toothbrush-quantity']").value) || 0;
 
         if (quantity) {
@@ -348,6 +351,9 @@
     }
 
     function orderNow() {
+
+        alert('Sorry, but we\'re currently out of Toothbrushes! We will restock and accept orders by October.');
+        return false;
 
         var tempCart = [];
         var quantity = parseInt(document.querySelector("select[name='toothbrush-quantity']").value) || 0;

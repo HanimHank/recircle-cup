@@ -221,7 +221,7 @@
 
                         <div class="margin-bottom-20 font-bold">
                             <div class="stock-help form-info">
-                                Sorry, but we're currently out of Large Recircle Cups!
+                                Sorry, but we're currently out of Recircle Cups!
                                 We will restock and accept orders by 15th September.
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                                 </div>
                                 <div class="display-inline">
                                     Large
-                                    <input type="number" disabled name="quantity-large" title="Quantity" value="0" class="cup-quantity"
+                                    <input type="number" name="quantity-large" title="Quantity" value="0" class="cup-quantity"
                                     oninput="updateTotal(this)" min="0">
                                 </div>
                             </div>
@@ -458,6 +458,8 @@
             updateTotal();
 
             function submitOrder(element) {
+                alert('Sorry, but we\'re currently out of Recircle Cups! We will restock and accept orders by 15th September.');
+                return false;
                 var small = parseInt(document.querySelector("input[name='quantity-small']").value);
                 var large = parseInt(document.querySelector("input[name='quantity-large']").value);
                 addCookie('Small', small);

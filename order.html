@@ -104,7 +104,7 @@
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Large</div>
-                            <input type="number" disabled name="quantity-large" title="Quantity" value="0" class="cup-quantity"
+                            <input type="number" name="quantity-large" title="Quantity" value="0" class="cup-quantity"
                                    oninput="updateTotal(this)" min="0">
                         </div>
                         <div class="margin-bottom-10">
@@ -112,7 +112,7 @@
                         </div>
                         <div class="margin-bottom-20">
                             <div class="stock-help form-info">
-                                Sorry, but we're currently out of Large Recircle Cups!
+                                Sorry, but we're currently out of Recircle Cups!
                                 We will restock and accept orders by 15th September.
                             </div>
                         </div>
@@ -405,6 +405,8 @@
     displayCart();
 
     function updateCart() {
+        alert('Sorry, but we\'re currently out of Recircle Cups! We will restock and accept orders by 15th September.');
+        return false;
         // Update cart cookies
         var small = parseInt(document.querySelector("input[name='quantity-small']").value);
         var large = parseInt(document.querySelector("input[name='quantity-large']").value);
@@ -455,6 +457,8 @@
     }
 
     function orderNow() {
+        alert('Sorry, but we\'re currently out of Recircle Cups! We will restock and accept orders by 15th September.');
+        return false;
 
         var tempCart = [];
         // Update cart cookies

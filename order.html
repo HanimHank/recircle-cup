@@ -89,7 +89,7 @@
 
 <div id="body">
 
-    <section class="emphasis-background">
+    <section>
         <article>
             <form class="order-form margin-bottom-10">
             <div class="col1 compact">
@@ -112,23 +112,12 @@
                         </div>
                         <div class="margin-bottom-20">
                             <div class="stock-help form-info">
-                                Sorry, but we're currently out of Recircle Cups!
-                                We will restock and accept orders by 15th September.
+
                             </div>
-                        </div>
-                        <div class="margin-bottom-15">
-                            <div class="label">Color</div>
-                            <select title="Color" name="color" class="cup-color">
-                                <option>Purple</option>
-                            </select>
-                        </div>
-                        <div class="margin-bottom-10">
-                            <a href="https://www.instagram.com/p/Ba3jpVZB_NZ/?taken-by=recircle.life"
-                               target="_blank">See all colors</a>
                         </div>
                         <div class="margin-bottom-20">
                             <div class="quantity-help form-info display-none">
-                                Sorry, but we're out of White Cups! We will restock soon.
+
                             </div>
                         </div>
                         <div class="margin-bottom-15">
@@ -151,7 +140,7 @@
                             </div>
                         </div>
                         <div class="cup-image">
-                            <img src="/static/sizes.png"/>
+                            <img src="/static/small_and_large_cup.png"/>
                         </div>
                     </div>
             </div>
@@ -228,6 +217,7 @@
     else {
         discount = false;
     }
+    discount = true;
     updateTotal();
 
     function showHelp(element) {
@@ -249,7 +239,6 @@
         var order = [];
         var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
         var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
-        var color = document.querySelector('select[name="color"]').value;
         var cupWash = 0;
 
         // If cup wash checked, add to order
@@ -269,23 +258,23 @@
         }
 
         if (small > 1) {
-            order.push(small + ' Recircle Cups (Small) ' + '(' + color + ')')
+            order.push(small + ' Recircle Cups (Small) ')
         }
         else if (small == 1) {
-            order.push(small + ' Recircle Cup (Small) ' + '(' + color + ')')
+            order.push(small + ' Recircle Cup (Small) ')
         }
         if (large > 1) {
-            order.push(large + ' Recircle Cups (Large) ' + '(' + color + ')')
+            order.push(large + ' Recircle Cups (Large) ')
         }
         else if (large == 1) {
-            order.push(large + ' Recircle Cup (Large) ' + '(' + color + ')')
+            order.push(large + ' Recircle Cup (Large) ')
         }
         if (cupWash) {
              order.push(cupWash + ' Recircle Cup Wash ')
         }
 
         var data = {
-            small: small, large: large, color: color, cup_wash: cupWash, name: name, address: address, city: city,
+            small: small, large: large, cup_wash: cupWash, name: name, address: address, city: city,
             number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice,
             order_type: 'cup', order: order.join(', ')
         };
@@ -356,8 +345,8 @@
         else {
             totalPrice = total * 2000;
             if (discount && total) {
-                totalPrice *= 0.8;
-                document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
+                totalPrice *= 0.9;
+                document.querySelector(".price-discount").textContent = "(10% Off on Single Cups)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";
@@ -405,8 +394,6 @@
     displayCart();
 
     function updateCart() {
-        alert('Sorry, but we\'re currently out of Recircle Cups! We will restock and accept orders by 15th September.');
-        return false;
         // Update cart cookies
         var small = parseInt(document.querySelector("input[name='quantity-small']").value);
         var large = parseInt(document.querySelector("input[name='quantity-large']").value);
@@ -420,7 +407,6 @@
             orderItem.name = 'Small';
             orderItem.displayName = 'Cup (Small)';
             orderItem.quantity = small;
-            orderItem.color = document.querySelector('select[name="color"]').value;
             userCart.push(orderItem);
         }
 
@@ -429,7 +415,6 @@
             orderItem.name = 'Large';
             orderItem.displayName = 'Cup (Large)';
             orderItem.quantity = large;
-            orderItem.color = document.querySelector('select[name="color"]').value;
             userCart.push(orderItem);
         }
 
@@ -457,8 +442,6 @@
     }
 
     function orderNow() {
-        alert('Sorry, but we\'re currently out of Recircle Cups! We will restock and accept orders by 15th September.');
-        return false;
 
         var tempCart = [];
         // Update cart cookies
@@ -474,7 +457,6 @@
             orderItem.name = 'Small';
             orderItem.displayName = 'Cup (Small)';
             orderItem.quantity = small;
-            orderItem.color = document.querySelector('select[name="color"]').value;
             tempCart.push(orderItem);
         }
 
@@ -483,7 +465,6 @@
             orderItem.name = 'Large';
             orderItem.displayName = 'Cup (Large)';
             orderItem.quantity = large;
-            orderItem.color = document.querySelector('select[name="color"]').value;
             tempCart.push(orderItem);
         }
 

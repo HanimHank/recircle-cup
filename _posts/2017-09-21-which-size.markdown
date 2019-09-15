@@ -3,7 +3,7 @@ layout: blog
 title:  "Which size is right for me?"
 permalink: which-size
 tagline: Let's help you select the right size for your Recircle Cup
-image: static/sizes.png
+image: static/small_and_large_cup.png
 ---
 
 If you are a virgin, we would recommend you start by using our small cup. This is because your vaginal muscles
@@ -25,17 +25,17 @@ Heavy Flow: If you change your pad every 1- 3 hours during your period
 
 **Recircle Cup Small (Left in picture above)**
 
-Length: 58mm
+Length: 66mm
 
-Diameter: 41mm
+Diameter: 40mm
 
-Capacity (upto holes): 19ml
+Capacity (upto holes): 22ml
 
 **Recircle Cup Large (Right in picture above)**
 
-Length: 64mm
+Length: 66mm
 
-Diameter: 45mm
+Diameter: 43mm
 
-Capacity (upto holes): 24ml
+Capacity (upto holes): 28ml
 

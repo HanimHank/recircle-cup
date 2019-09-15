@@ -85,6 +85,12 @@ body {
     margin-top: 0;
 }
 
+.new-cup-image {
+    margin-left: 40%;
+    position: relative;
+    top: -30px;
+}
+
 
 
 /* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
@@ -99,6 +105,10 @@ body {
 
     .blog-image img {
         margin-bottom: 20px;
+    }
+
+    .blog-image {
+        float: none;
     }
 
     .col1, .col2 {
@@ -175,6 +185,12 @@ body {
     .cup-wash-image {
         float: left;
         margin-top: 30px;
+    }
+
+    .new-cup-image {
+        margin-left: 0%;
+        position: relative;
+        top: -30px;
     }
 
 }

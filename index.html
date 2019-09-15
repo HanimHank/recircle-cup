@@ -80,7 +80,7 @@
                 <h2>
                     Make your period easier on yourself and the environment
                 </h2>
-                <span class="light-grey">
+                <span>
                     A reusable menstrual cup for the women of Pakistan
                 </span>
                 <button class="action-button margin-sides-auto" onclick="jumpToOrder()">Get your Cup</button>
@@ -88,6 +88,37 @@
         </header>
 
         <div id="body">
+
+
+
+            <section>
+                <article>
+                    <div>
+                        <h3 class="section-header display-inline-block">
+                            The All-New Recircle Cup
+                        </h3>
+                    </div>
+                    <div class="col1">
+                        <div class="margin-bottom-60">
+                            Introducing our new Recircle Cup with:
+
+                            <ul class="margin-left-15 margin-top-20">
+                                <li>Increased capacity</li>
+                                <li>Sturdier stem</li>
+                                <li>Firmer material that opens up easier</li>
+                                <li>Improved grip rings for better insertion and removal</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <img src="/static/small_and_large_cup.png" class="new-cup-image"/>
+                    </div>
+                    <div class="clear"></div>
+                    <p class="margin-top-10">
+                        <a href="/new-cup-details" title="Common Concerns">Read more about our new cup</a>
+                    </p>
+                </article>
+            </section>
 
             <section class="light-blue-background">
                 <article>
@@ -221,8 +252,7 @@
 
                         <div class="margin-bottom-20 font-bold">
                             <div class="stock-help form-info">
-                                Sorry, but we're currently out of Recircle Cups!
-                                We will restock and accept orders by 15th September.
+                                We have a 10% Launch Discount for our New Cup! Valid till Sep 22nd.
                             </div>
                         </div>
 
@@ -454,12 +484,10 @@
 
         <script>
             Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
-            var discount = false;
+            var discount = true;
             updateTotal();
 
             function submitOrder(element) {
-                alert('Sorry, but we\'re currently out of Recircle Cups! We will restock and accept orders by 15th September.');
-                return false;
                 var small = parseInt(document.querySelector("input[name='quantity-small']").value);
                 var large = parseInt(document.querySelector("input[name='quantity-large']").value);
                 addCookie('Small', small);
@@ -487,8 +515,8 @@
                 else {
                     totalPrice = total * 2000;
                     if (discount && total) {
-                        totalPrice *= 0.8;
-                        document.querySelector(".price-discount").textContent = "(20% Off)";
+                        totalPrice *= 0.9;
+                        document.querySelector(".price-discount").textContent = "(10% Off)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""
@@ -509,8 +537,8 @@
                 else {
                     totalPrice = 2000;
                     if (discount) {
-                        totalPrice *= 0.8;
-                        document.querySelector(".price-discount").textContent = "(20% Off)";
+                        totalPrice *= 0.9;
+                        document.querySelector(".price-discount").textContent = "(10% Off)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""

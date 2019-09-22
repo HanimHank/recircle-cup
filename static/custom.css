@@ -564,7 +564,7 @@ select {
 
 .primary-background {
     font-family: 'Raleway', sans-serif;
-    padding: 100px 0 120px 0;
+    padding: 80px 0 120px 0;
     background-image: url(header.jpg);
     background-position: center !important;
     background-repeat: no-repeat !important;

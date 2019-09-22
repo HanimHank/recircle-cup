@@ -375,7 +375,7 @@ select {
 .section h2 {
     max-width: 25em;
     margin: 0 auto 15px auto;
-    line-height: 1.25em;
+    line-height: 1.2em;
 }
 
 .divided-section {
@@ -571,7 +571,7 @@ select {
     background-size: cover !important;
     min-height: 82vh;
     color: #444;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .primary-background-toothbrush {
@@ -1081,8 +1081,4 @@ body {
     margin-left: 0%;
     position: relative;
     top: -30px;
-}
-
-.primary-background {
-    font-size: 17px;
 }

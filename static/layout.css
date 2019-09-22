@@ -91,6 +91,10 @@ body {
     top: -30px;
 }
 
+.primary-background {
+    font-size: 18px;
+}
+
 
 
 /* 9. CUSTOM LAYOUT & TYPOGRAPHY (Mummy bear)
@@ -191,6 +195,10 @@ body {
         margin-left: 0%;
         position: relative;
         top: -30px;
+    }
+
+    .primary-background {
+        font-size: 16px;
     }
 
 }

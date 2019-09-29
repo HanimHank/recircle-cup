@@ -29,7 +29,7 @@ Length: 66mm
 
 Diameter: 40mm
 
-Capacity (upto holes): 22ml
+Capacity (upto holes): 25ml
 
 **Recircle Cup Large (Right in picture above)**
 
@@ -37,5 +37,5 @@ Length: 66mm
 
 Diameter: 43mm
 
-Capacity (upto holes): 28ml
+Capacity (upto holes): 32ml
 

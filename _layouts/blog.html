@@ -32,11 +32,26 @@
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
 
-    <meta property="og:image" content="{{ site.url }}/{{ page.image }}" />
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ site.url }}/{{ page.permalink }}" />
-    <meta property="og:description" content="{{ page.tagline }}" />
+    <meta property="og:image" content="{{ site.url }}/{{ page.image }}"/>
+    <meta property="og:title" content="{{ page.title }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ site.url }}/{{ page.permalink }}"/>
+    <meta property="og:description" content="{{ page.tagline }}"/>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150865052-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-150865052-1');
+    </script>
+
     <script>
         !function() {
             var t;

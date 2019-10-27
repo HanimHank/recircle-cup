@@ -139,7 +139,7 @@
                             <input type="checkbox" class="cup-offer checkbox-position" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer margin-left-2 font-bold">Sister Cup Offer</span>
                             <div class="light-grey">
-                                Get two cups for Rs. 3000 (50% off the second cup)
+                                Get two cups for Rs. 3500 (25% off the second cup)
                             </div>
                         </div>
                         <div>
@@ -352,8 +352,8 @@
         if (total >= 2) {
             var sisterCupOffers = Math.floor(total / 2);
             var singleCups = total % 2;
-            totalPrice = sisterCupOffers * 3000 + singleCups * 2000;
-            document.querySelector(".price-discount").textContent = "(Save Rs. 1000 on every 2 Cups)";
+            totalPrice = sisterCupOffers * 3500 + singleCups * 2000;
+            document.querySelector(".price-discount").textContent = "(Save Rs. 500 on every 2 Cups)";
             document.querySelector(".cup-offer").checked = true;
         }
         else {

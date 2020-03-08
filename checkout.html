@@ -199,7 +199,7 @@
     if (email != 'null') {
         document.querySelector("input[name='email']").value = email
     }
-    discount = false;
+    discount = true;
 
     var outOfStock = false;
     var totalPrice;
@@ -302,8 +302,8 @@
         else {
             totalPrice = totalCups * 2000;
             if (discount && totalCups) {
-                totalPrice *= 0.9;
-                document.querySelector(".price-discount").textContent = "(10% Off on Cups)";
+                totalPrice *= 0.8;
+                document.querySelector(".price-discount").textContent = "(20% Off on Cups)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";

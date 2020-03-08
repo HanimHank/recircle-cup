@@ -232,6 +232,7 @@
     else {
         discount = false;
     }
+    discount = true;
     updateTotal();
 
     function showHelp(element) {
@@ -359,8 +360,8 @@
         else {
             totalPrice = total * 2000;
             if (discount && total) {
-                totalPrice *= 0.9;
-                document.querySelector(".price-discount").textContent = "(10% Off on Single Cups)";
+                totalPrice *= 0.8;
+                document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";

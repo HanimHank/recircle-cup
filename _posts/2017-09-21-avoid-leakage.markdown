@@ -3,7 +3,7 @@ layout: blog
 title:  "Tips for Avoiding Leakages With Recircle Cup"
 permalink: avoid-leakage
 tagline: We cover some tips so you don't have to see any unexpected red!
-image: static/cup.jpg
+image: static/avoid_leakages.jpeg
 ---
 
 If you experience leakage using Recircle Cup, here are some possible reasons with solutions to make your period leakage-free.

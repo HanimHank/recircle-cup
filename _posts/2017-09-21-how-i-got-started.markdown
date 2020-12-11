@@ -3,7 +3,7 @@ layout: blog
 title:  "What is Recircle Cup and why I started using it"
 permalink: how-i-got-started
 tagline: My story of switching to a menstrual cup
-image: static/wasma.jpg
+image: static/how_i_started.jpeg
 ---
 
 Did you know that 90% of a conventional pad consists of [plastic](http://www.huffingtonpost.com/dr-mercola/feminine-hygiene-products_b_3359581.html)? The leak-proof bottom layer and polymer powder that acts as an absorbent are all plastic! Also, the cotton used is bleached to make it look really clean and white. All this plastic and bleach make sanitary pads an unhealthy and dangerous choice for frequent use. Your vaginal pH level is disturbed, rashes and infections result. The effects go even deeper, as embryonic development is affected by chemicals such as BPA used in sanitary pads.

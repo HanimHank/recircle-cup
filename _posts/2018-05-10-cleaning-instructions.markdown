@@ -3,7 +3,7 @@ layout: blog
 title:  "Cleaning Instructions for Recircle Cup"
 permalink: cleaning-instructions
 tagline: Cleaning your menstrual cup properly is perhaps the most important thing for you to stay healthy and comfortable during your period. Here are some important tips.
-image: static/cup_picture.jpg
+image: static/cleaning_instructions.jpeg
 ---
 
 1. Boil your Recircle Cup in clean water for 3-5 minutes every time before your period starts and after it ends.

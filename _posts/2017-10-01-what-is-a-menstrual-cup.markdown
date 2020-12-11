@@ -3,7 +3,6 @@ layout: blog
 title:  "What is a Menstrual Cup?"
 permalink: what-is-a-menstrual-cup
 tagline: Learn what a menstrual cup is and how it can help you
-
 ---
 
 
@@ -18,7 +17,7 @@ medical grade silicone, making it re-usable and an environment-friendly option.
 
 Here is a picture of Recircle Cup.
 
-![Recircle Cup]({{ site.url }}/static/what-is1.png)
+![Recircle Cup]({{ site.url }}/static/what_is_menstrual_cup.jpeg)
 
 You might think a menstrual cup is similar to a tampon, but there are two main differences between a tampon and
 a menstrual cup.
@@ -36,8 +35,6 @@ is different.
 Menstrual cups have been around in the world for as long as 75 years, but are not readily available in Pakista.
 Recircle Cup is here to change that. Our cup comes with minimal packaging (a cotton pouch with jute to tie it
 with and a recycled paper box).
-
-![Recircle Cup Packaging]({{ site.url }}/static/what-is2.png)
 
 Read more about how [I started using menstrual cups](/how-i-got-started) and why I thought it was time to
 [rethink menstrual products](/rethink-menstrual-products).

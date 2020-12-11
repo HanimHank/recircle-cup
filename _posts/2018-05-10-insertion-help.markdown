@@ -6,7 +6,7 @@ tagline: Get help making sure your Recircle Cup opens up inside
 image:
 ---
 
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/3bznrfVIKnCvSreGF7" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/3bznrfVIKnCvSreGF7">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/mAdhOCDumdrOWS5mtL" width="272" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mAdhOCDumdrOWS5mtL">via GIPHY</a></p>
 
 Recircle Cup is a relatively soft menstrual cup that is easy to insert and remove. However, sometimes it can be a bit of a challenge to get the cup to open up inside your vagina. Here are the top two reasons why this can happen:
 

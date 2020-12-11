@@ -12,16 +12,16 @@ A crucial part of inserting a menstrual cup is finding the right fold. There are
 Simply fold your Recircle Cup in half, and hold it between your thumb and two fingers (forefinger and middle finger). If you see the rim, it looks like a C, hence the name. This fold does not work for me because it's too big for my vagina.
 
 Step 1
-![C Fold]({{ site.url }}/static/cfold1.jpg)
+![C Fold]({{ site.url }}/static/c_fold_1.jpeg)
 
 Step 2
-![C Fold]({{ site.url }}/static/cfold3.jpg)
+![C Fold]({{ site.url }}/static/c_fold_2.jpeg)
 
-Step 3 (Front View)
-![C Fold]({{ site.url }}/static/cfold2.jpg)
+Front View
+![C Fold]({{ site.url }}/static/c_fold_3.jpeg)
 
 Side View
-![C Fold]({{ site.url }}/static/cfold4.jpg)
+![C Fold]({{ site.url }}/static/c_fold_4.jpeg)
 
 
 ### Punchdown Fold
@@ -29,16 +29,16 @@ Side View
 Using your thumb or forefinger, punch down one side of the rim into your Recircle Cup towards its base. Grab the cup between your thumb and two fingers in this position, with half of the cup inside.
 
 Step 1
-![Punch Fold]({{ site.url }}/static/punchfold1.jpg)
+![Punch Fold]({{ site.url }}/static/punch_down_fold_1.jpeg)
 
 Step 2
-![Punch Fold]({{ site.url }}/static/punchfold3.jpg)
+![Punch Fold]({{ site.url }}/static/punch_down_fold_2.jpeg)
 
-Step 3 (Front View)
-![Punch Fold]({{ site.url }}/static/punchfold2.jpg)
+Front View
+![Punch Fold]({{ site.url }}/static/punch_down_fold_3.jpeg)
 
 Side View
-![Punch Fold]({{ site.url }}/static/punchfold4.jpg)
+![Punch Fold]({{ site.url }}/static/punch_down_fold_4.jpeg)
 
 
 ### Seven Fold
@@ -46,13 +46,13 @@ Side View
 Grab the cup, push one side of the rim to touch the cup’s base of the adjacent side- from the outside. The rim of the cup makes a 7.
 
 Step 1
-![Seven Fold]({{ site.url }}/static/sevenfold1.jpg)
+![Seven Fold]({{ site.url }}/static/7_fold_1.jpeg)
 
 Step 2
-![Seven Fold]({{ site.url }}/static/sevenfold2.jpg)
+![Seven Fold]({{ site.url }}/static/7_fold_2.jpeg)
 
-Side View
-![Seven Fold]({{ site.url }}/static/sevenfold3.jpg)
+Front View
+![Seven Fold]({{ site.url }}/static/7_fold_3.jpeg)
 
 
 There are many many other folds, but these three are the most famous ones. You need to pick a fold that allows your Recircle Cup to pop open easily inside of you and form a suction. For me, the punch down fold works best, especially because the tip of the cup becomes tiny, so I can easily insert it in. If you want to experiment with more folds, here is a [video](https://www.youtube.com/watch?v=IRGqVH1cJ6k) that you can watch.

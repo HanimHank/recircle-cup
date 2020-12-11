@@ -3,7 +3,7 @@ layout: blog
 title:  "Why Using a Menstrual Cup Won't Make You Lose Your Virginity"
 permalink: menstrual-cup-virginity
 tagline: We talk about the problems regarding virginity that girls face when using a menstrual cup
-image: static/virgin1.jpeg
+image: static/virginity.jpeg
 ---
 
 Young girls tell us this major concern: will using a menstrual cup make me lose my virginity?

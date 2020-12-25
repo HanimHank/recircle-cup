@@ -267,7 +267,7 @@
 
                         <div class="margin-bottom-20 font-bold">
                             <div class="stock-help form-info">
-
+                                25% Sale on all Cups!
                             </div>
                         </div>
 
@@ -485,7 +485,7 @@
 
         <script>
             Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
-            var discount = false;
+            var discount = true;
             updateTotal();
 
             function submitOrder(element) {
@@ -509,15 +509,21 @@
                     var sisterCupOffers = Math.floor(total / 2);
                     var singleCups = total % 2;
                     totalPrice = sisterCupOffers * 3500 + singleCups * 2000;
-                    var discountAmount = sisterCupOffers * 500;
-                    document.querySelector(".price-discount").textContent = "(Save Rs. " + discountAmount + ")";
+                    if (discount && total) {
+                        totalPrice *= 0.75;
+                        document.querySelector(".price-discount").textContent = "(25% Off)";
+                    }
+                    else {
+                        var discountAmount = sisterCupOffers * 500;
+                        document.querySelector(".price-discount").textContent = "(Save Rs. " + discountAmount + ")";
+                    }
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {
                     totalPrice = total * 2000;
                     if (discount && total) {
-                        totalPrice *= 0.8;
-                        document.querySelector(".price-discount").textContent = "(20% Off)";
+                        totalPrice *= 0.75;
+                        document.querySelector(".price-discount").textContent = "(25% Off)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""
@@ -531,15 +537,21 @@
                 var totalPrice;
                 if (element.checked) {
                     totalPrice = 3500;
-                    document.querySelector(".price-discount").textContent = "(Save Rs. 500)";
+                    if (discount) {
+                        totalPrice *= 0.75;
+                        document.querySelector(".price-discount").textContent = "(25% Off)";
+                    }
+                    else {
+                        document.querySelector(".price-discount").textContent = "(Save Rs. 500)";
+                    }
                     document.querySelector(".cup-quantity").value = 2;
                     document.querySelector("input[name='quantity-large']").value = 0;
                 }
                 else {
                     totalPrice = 2000;
                     if (discount) {
-                        totalPrice *= 0.8;
-                        document.querySelector(".price-discount").textContent = "(20% Off)";
+                        totalPrice *= 0.75;
+                        document.querySelector(".price-discount").textContent = "(25% Off)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""

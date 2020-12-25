@@ -199,7 +199,7 @@
     if (email != 'null') {
         document.querySelector("input[name='email']").value = email
     }
-    discount = false;
+    discount = true;
 
     var outOfStock = false;
     var totalPrice;
@@ -297,13 +297,19 @@
             var sisterCupOffers = Math.floor(totalCups / 2);
             var singleCups = totalCups % 2;
             totalPrice = sisterCupOffers * 3500 + singleCups * 2000;
-            document.querySelector(".price-discount").textContent = "(Save Rs. 500 on every 2 Cups)";
+            if (discount && totalCups) {
+                totalPrice *= 0.75;
+                document.querySelector(".price-discount").textContent = "(25% Off)";
+            }
+            else {
+                document.querySelector(".price-discount").textContent = "(Save Rs. 500 on every 2 Cups)";
+            }
         }
         else {
             totalPrice = totalCups * 2000;
             if (discount && totalCups) {
-                totalPrice *= 0.8;
-                document.querySelector(".price-discount").textContent = "(20% Off on Cups)";
+                totalPrice *= 0.75;
+                document.querySelector(".price-discount").textContent = "(25% Off)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";

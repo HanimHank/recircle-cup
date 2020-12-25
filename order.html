@@ -232,7 +232,7 @@
     else {
         discount = false;
     }
-    discount = false;
+    discount = true;
     updateTotal();
 
     function showHelp(element) {
@@ -354,14 +354,20 @@
             var sisterCupOffers = Math.floor(total / 2);
             var singleCups = total % 2;
             totalPrice = sisterCupOffers * 3500 + singleCups * 2000;
-            document.querySelector(".price-discount").textContent = "(Save Rs. 500 on every 2 Cups)";
+            if (discount && total) {
+                totalPrice *= 0.75;
+                document.querySelector(".price-discount").textContent = "(25% Off)";
+            }
+            else {
+                document.querySelector(".price-discount").textContent = "(Save Rs. 500 on every 2 Cups)";
+            }
             document.querySelector(".cup-offer").checked = true;
         }
         else {
             totalPrice = total * 2000;
             if (discount && total) {
-                totalPrice *= 0.8;
-                document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
+                totalPrice *= 0.75;
+                document.querySelector(".price-discount").textContent = "(25% Off)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";

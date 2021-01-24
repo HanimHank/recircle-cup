@@ -92,7 +92,7 @@
             <a href="/start">Get started</a>
             <a href="/#blog">Blog</a>
             <a class="drift-open-chat">Talk to us</a>
-            <a href="/toothbrush">Toothbrush</a>
+            <a href="/comfy-period-box">Comfy Period Box</a>
             <a href="/cup-wash">Menstrual Cup Wash</a>
             <div class="user-cart display-inline-block" onclick="window.location = ('/checkout')">
                 <img class="user-cart-image" src="static/cart.png"/>
@@ -258,7 +258,7 @@
             type: "POST",
             contentType: "application/json; charset=utf-8",
             crossDomain: false,
-            url: 'https://recircle-api.herokuapp.com/_add_order',
+            url: 'http://localhost:5000/_add_order',
             data: JSON.stringify({
                 data: data
             }),
@@ -278,7 +278,7 @@
         // Get cart items
         var totalCups = 0;
         var totalWashes = 0;
-        var totalToothbrushes = 0;
+        var totalBoxes = 0;
         userCart.forEach(function(orderItem) {
             if (orderItem.name == 'Small' || orderItem.name == 'Large') {
                 totalCups += orderItem.quantity
@@ -286,8 +286,8 @@
             if (orderItem.name == 'Wash') {
                 totalWashes += orderItem.quantity
             }
-            if (orderItem.name == 'Toothbrush') {
-                totalToothbrushes += orderItem.quantity
+            if (orderItem.name == 'Box') {
+                totalBoxes += orderItem.quantity
             }
         });
 
@@ -312,7 +312,14 @@
                 document.querySelector(".price-discount").textContent = "(25% Off)";
             }
             else {
-                document.querySelector(".price-discount").textContent = "";
+                // Add 10% discount on single cup if comfy period box present
+                if (totalCups && totalBoxes) {
+                    totalPrice *= 0.90;
+                    document.querySelector(".price-discount").textContent = "(10% Off on Single Cup)";
+                }
+                else {
+                    document.querySelector(".price-discount").textContent = "";
+                }
             }
         }
 
@@ -320,8 +327,8 @@
             totalPrice += totalWashes * 600;
         }
 
-        if (totalToothbrushes) {
-            totalPrice += totalToothbrushes * 200;
+        if (totalBoxes) {
+            totalPrice += totalBoxes * 2000;
         }
 
         // Add delivery cost
@@ -336,7 +343,7 @@
         // Add order items from cart
         userCart.forEach(function(orderItem) {
             var orderItemHtml = getOrderItemHtml(orderItem.quantity, orderItem.displayName, getPrice(orderItem.name),
-                    orderItem.color);
+                    orderItem.color, orderItem.dateOfDelivery);
             document.querySelector(".order-items").appendChild(orderItemHtml);
         });
         // Add delivery item
@@ -347,21 +354,21 @@
     }
 
     function getPrice(name) {
-        if (name == 'Small' || name == 'Large') {
+        if (name === 'Small' || name === 'Large') {
             return 2000
         }
-        if (name == 'Toothbrush') {
-            return 200
+        if (name === 'Box') {
+            return 2000
         }
-        if (name == 'Wash') {
+        if (name === 'Wash') {
             return 600
         }
-        if (name == 'Delivery') {
+        if (name === 'Delivery') {
             return 200
         }
     }
 
-    function getOrderItemHtml(quantity, name, price, color) {
+    function getOrderItemHtml(quantity, name, price, color, dateOfDelivery) {
         // Get order item html for this item
         var orderItemPrice = quantity * price;
         var orderItem = document.createElement('div');
@@ -375,22 +382,30 @@
             itemColorHtml = '<span class="order-item-color-container ' + itemColor.toLowerCase() + '">' + itemColor + '</span>'
         }
 
-        var quantityHtml = '';
+        var itemInfoHtml = '';
         var itemName = name;
-        if (name != 'Delivery Charge') {
-            quantityHtml =
-                    '<span class="order-item-quantity-container">' + 'x ' +
-                        '<input type="number" class="order-item-quantity" onchange="updateOrderItem(this)" min="1" max="10" ' +
-                        'value="' + quantity + '">' +
-                    '</span>' +
-                    itemColorHtml +
-                    '<a href="#" class="order-item-remove-container" onclick="removeOrderItem(this);return false;">Remove</a>';
+        if (name !== 'Delivery Charge') {
+            // Don't show quantity input for comfy period box
+            if (name !== 'Comfy Period Box') {
+                itemInfoHtml += '<span class="order-item-quantity-container">' + 'x ' +
+                    '<input type="number" class="order-item-quantity" onchange="updateOrderItem(this)" min="1" max="10" ' +
+                    'value="' + quantity + '">' +
+                    '</span>'
+            }
+            else {
+                // Show date of delivery for comfy period box
+                var dateOptions = { month: 'short', day: 'numeric' };
+                itemInfoHtml += ' <span class="light-grey margin-left-5">' + (new Date(dateOfDelivery).toLocaleDateString("en-US", dateOptions)) + '</span>';
+            }
+            itemInfoHtml +=
+                itemColorHtml +
+                '<a href="#" class="order-item-remove-container" onclick="removeOrderItem(this);return false;">Remove</a>';
             itemName = 'Recircle ' + itemName
         }
 
         orderItem.innerHTML =
                 itemName +
-                quantityHtml +
+                itemInfoHtml +
                 '<div class="order-item-price">Rs. ' + (orderItemPrice).toString() + '</div>';
         return orderItem;
     }
@@ -500,7 +515,7 @@
 <div id="footer">
     <a href="mailto:contact@recircle.life">contact@recircle.life</a>
     <p class="center">
-        Copyright Recircle Cup 2017 - 2019
+        Copyright Recircle Cup 2017 - 2021
     </p>
 </div>
 </html>

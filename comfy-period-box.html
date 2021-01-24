@@ -33,6 +33,10 @@
     <script src="https://cdn.ravenjs.com/3.26.1/raven.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@duetds/date-picker@1.1.0/dist/duet/duet.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@duetds/date-picker@1.1.0/dist/duet/duet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@duetds/date-picker@1.1.0/dist/duet/themes/default.css"/>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150865052-1"></script>
     <script>
@@ -91,16 +95,17 @@
             </div>
         </div>
     </nav>
-    <div class="section primary-background-cup-wash">
+    <div class="section primary-background-comfy-period-box">
         <div class="opaque-background">
             <h2>
-                Keep your Recircle Cup clean
+                Our Comfy Period Box
             </h2>
-            <span>
-                Use our organic Recircle Menstrual Cup Wash for safe cleaning.
+            <span style="padding: 0 20px;">
+                Look forward to your period every month with our subscription box of feel-good items that don't harm the environment.
             </span>
         </div>
-        <button class="action-button margin-sides-auto" onclick="jumpToOrder()">Get your Cup Wash</button>
+        <button class="action-button margin-sides-auto" onclick="jumpToOrder()">Get your Comfy Period Box</button>
+        <img class="comfy-period-box-image" src="static/comfy_period_box_header.png"/>
     </div>
 </header>
 
@@ -110,21 +115,52 @@
         <article>
             <div>
                 <h3 class="section-header display-inline-block">
-                    Why Use It
+                    About the Comfy Period Box
                 </h3>
             </div>
             <div class="col1">
                 <div class="margin-bottom-40">
-                    Our water-based Menstrual Cup Wash, unlike oil-based soaps, does not react with the silicone of your cup, making it last longer.
-                </div>
-                <div>
-                    It is also pH balanced and hypoallergenic, helping maintain the natural pH of your vagina and preventing any allergies.
+                    The idea behind our period subscription box is to get you excited for your period every month. When your period arrives to give you cramps and soreness, we hope to bring you comfort and joy.
                 </div>
             </div>
             <div class="col2">
                 <div class="margin-bottom-40">
-                    Made by Spa in a Bottle from pure aloe vera and extracts of rose, cucumber and lemon.
+                    We offer you curated items, from snacks to self-care essentials, made by Pakistani businesses and wrapped in sustainable packaging. We also include exclusive discount codes for you to use.
                 </div>
+            </div>
+            <div class="clear"></div>
+        </article>
+    </section>
+
+    <section class="comfy-period-box-background">
+        <article>
+            <h3 class="section-header">
+                February 2020 Box
+            </h3>
+            <div class="col1">
+                <div>
+                    <div class="margin-bottom-15">
+                        <span class="font-bold">1. Caramel Body Butter</span>: pamper yourself after a hot shower and get rid of winter dryness.
+                    </div>
+                    <div class="margin-bottom-15">
+                        <span class="font-bold">2. Organic Magnesium Oil</span>: massage on your body to get rid of cramps and soreness.
+                    </div>
+                    <div class="margin-bottom-15">
+                        <span class="font-bold">3. Handcrafted Chocolate Bar</span>: indulge yourself with some sweet chocolate on your period.
+                    </div>
+                    <div class="margin-bottom-15">
+                        <span class="font-bold">4. Perfume Sample</span>: smell good and feel good.
+                    </div>
+                    <div class="margin-bottom-15">
+                        <span class="font-bold">5 & 6</span>: these will be a surprise! Hint: nice smells and more snacks.
+                    </div>
+                    <div>
+                        Items change each month. Some will be announced beforehand while others will be a surprise.
+                    </div>
+                </div>
+            </div>
+            <div class="col2">
+                <img class="comfy-period-box-picture" src="static/feb_box.png"/>
             </div>
             <div class="clear"></div>
         </article>
@@ -132,68 +168,59 @@
 
     <section id="order" class="emphasis-background">
         <article>
+            <div>
+                <h3 class="section-header display-inline-block">
+                    Get Your Comfy Period Box
+                </h3>
+            </div>
 
-            <div class="col1">
+            <form>
+                <div class="col1">
+                    <div class="margin-bottom-10">
 
-                <div>
-                    <h3 class="section-header display-inline-block">
-                        Get Your Cup Wash
-                    </h3>
-                </div>
-                <div class="margin-bottom-10">
+                        <div class="margin-bottom-20">
+                            <div class="font-bold margin-bottom-5">Delivery Date</div>
+                            <duet-date-picker identifier="date" required max="2021-02-28" name="Delivery Date"></duet-date-picker>
+                            <div class="light-grey font-small margin-top-15">
+                                Let us know what date you would like the comfy period box delivered. You can select a date 5 days from today until the end of February.
+                            </div>
+                        </div>
 
-                    <div class="margin-bottom-15">
-                        Quantity
-                        <input type="number" name="quantity-cup-wash" title="Quantity" value="1" class="wash-quantity"
-                               oninput="updateTotal(this)" min="1">
+                        <div class="margin-bottom-30">
+                            <div class="font-bold">Subscription</div>
+                            <input type="checkbox" class="subscribe" name="subscribe" title="Subscribe" checked>
+                            <span class="font-small">Get this box every month</span>
+                            <div class="light-grey margin-bottom-20 font-small margin-top-10">
+                                We'll contact you before next month's delivery to confirm your order.
+                            </div>
+                        </div>
+
+                        <button type="button" class="add-to-cart-button light-action-button" onclick="updateCart()">Add to Cart</button>
+                        <button type="button" class="order-now-button" onclick="orderNow()">Order Now</button>
+                        <div class="added-to-cart-message display-none"><img class="checkmark-icon" src="static/checkmark.png"/>
+                            Added to Cart
+                            <a href="/checkout" class="margin-left-5">Checkout</a>
+                        </div>
                     </div>
-
+                </div>
+                <div class="col2">
                     <div>
-                        Total: <span class="font-bold">Rs. <span class="price">600</span></span>
+                        Total: <span class="font-bold">Rs. <span class="price">2000</span></span>
                     </div>
                     <div class="light-grey margin-bottom-20">
                         Excludes delivery charge
                     </div>
-                    <div class="light-grey margin-bottom-20 font-small">
-                        If you return the bottle to us, we'll give you Rs. 100 off your next Recircle Menstrual Cup Wash.
-                    </div>
-
-                    <button type="button" class="add-to-cart-button light-action-button" onclick="updateCart()">Add to Cart</button>
-                    <button type="button" class="order-now-button" onclick="orderNow()">Order Now</button>
-                    <div class="added-to-cart-message display-none"><img class="checkmark-icon" src="static/checkmark.png"/>
-                        Added to Cart
-                        <a href="/checkout" class="margin-left-5">Checkout</a>
+                    <div class="margin-bottom-20">
+                        Add a <a href="/order" target="_blank">Recircle Cup</a> to your comfy period box and get 10% off your cup.
                     </div>
                 </div>
-            </div>
-            <div class="col2">
-                <img src="/static/cup-wash.png" class="cup-wash-image"/>
-            </div>
-            <div class="clear"></div>
+                <div class="clear"></div>
+            </form>
         </article>
     </section>
 </div>
 
 <script>
-    var discount = false;
-
-    function updateTotal(element) {
-        var total = element.value;
-        var totalPrice = total * 600;
-        if (discount) {
-            totalPrice *= 0.8;
-            document.querySelector(".price").textContent = totalPrice.toString() + " (20% Off)";
-        }
-        else {
-            document.querySelector(".price").textContent = totalPrice.toString();
-        }
-        if (total != 4) {
-            document.querySelector(".toothbrush-quantity-help").classList.add('display-none')
-        }
-        else {
-            document.querySelector(".toothbrush-quantity-help").classList.remove('display-none')
-        }
-    }
 
     function jumpToOrder(element) {
         document.getElementById('order').scrollIntoView();
@@ -203,6 +230,11 @@
     if (Cookies.getJSON('userCart')) {
         userCart = Cookies.getJSON('userCart');
     }
+
+    // Set minimum date of delivery
+    var minimumDate = new Date();
+    minimumDate.setDate(minimumDate.getDate() + 6);
+    document.querySelector('duet-date-picker').setAttribute("min", minimumDate.toISOString().split("T")[0]);
 
     displayCart();
 
@@ -229,41 +261,44 @@
     }
 
     function updateCart() {
-        var quantity = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0;
 
-        if (quantity) {
+        if (document.querySelector("form").reportValidity()) {
+
             var orderItem = {};
-            orderItem.name = 'Wash';
-            orderItem.displayName = 'Menstrual Cup Wash';
-            orderItem.quantity = quantity;
+            orderItem.name = 'Box';
+            orderItem.displayName = 'Comfy Period Box';
+            orderItem.quantity = 1;
+            orderItem.subscribed = document.querySelector('.subscribe').checked;
+            orderItem.dateOfDelivery = document.querySelector('duet-date-picker').value;
             userCart.push(orderItem);
+            Cookies.set('userCart', userCart);
+
+            document.querySelector(".added-to-cart-message").classList.remove('display-none');
+            document.querySelector(".added-to-cart-message").classList.add('fade');
+            setTimeout(function () {
+                document.querySelector(".added-to-cart-message").classList.remove('fade');
+            }, 1000);
+
+            displayCart();
         }
-        Cookies.set('userCart', userCart);
-
-        document.querySelector(".added-to-cart-message").classList.remove('display-none');
-        document.querySelector(".added-to-cart-message").classList.add('fade');
-        setTimeout(function(){
-            document.querySelector(".added-to-cart-message").classList.remove('fade');
-        }, 1000);
-
-        displayCart();
     }
 
     function orderNow() {
 
-        var tempCart = [];
-        var quantity = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0;
+        if (document.querySelector("form").reportValidity()) {
+            var tempCart = [];
 
-        if (quantity) {
             var orderItem = {};
-            orderItem.name = 'Wash';
-            orderItem.displayName = 'Menstrual Cup Wash';
-            orderItem.quantity = quantity;
+            orderItem.name = 'Box';
+            orderItem.displayName = 'Comfy Period Box';
+            orderItem.quantity = 1;
+            orderItem.subscribed = document.querySelector('.subscribe').checked;
+            orderItem.dateOfDelivery = document.querySelector('duet-date-picker').value;
             tempCart.push(orderItem);
-        }
-        Cookies.set('tempCart', tempCart);
+            Cookies.set('tempCart', tempCart);
 
-        window.location = ('/checkout?orderNow=true');
+            window.location = ('/checkout?orderNow=true');
+        }
     }
 
     (function() {

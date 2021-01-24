@@ -311,6 +311,19 @@ input[type='text'], input[type='submit'], input[type='number'] {
     border-radius: 5px;
 }
 
+.duet-date__input {
+    padding: 8px;
+    border: 0;
+    color: #777777;
+    border-radius: 5px;
+}
+
+input[type='date'] {
+    width: auto;
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
 button {
     color: white;
     background: #3dc239;
@@ -594,6 +607,13 @@ select {
     background-repeat: no-repeat !important;
     background-size: cover !important;
     min-height: 17vh;
+}
+
+.primary-background-comfy-period-box {
+    color: #444444;
+    font-family: 'Raleway', sans-serif;
+    padding: 100px 0 100px 0;
+    background: #F7EBE8;
 }
 
 .blog-image {
@@ -979,6 +999,28 @@ select {
     top: -30px;
 }
 
+.section .comfy-period-box-image {
+    margin: 0 auto;
+    padding: 0;
+    width: 340px;
+    position: relative;
+    top: 20px;
+}
+
+.comfy-period-box-picture {
+    width: 570px;
+    display: block;
+    border: 2px solid white;
+}
+
+.comfy-period-box-background {
+    background: #74371F;
+    color: white;
+}
+
+.comfy-period-box-background .section-header {
+    color: white;
+}
 
 /* Baby */
 

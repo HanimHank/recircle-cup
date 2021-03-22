@@ -91,7 +91,7 @@
         <div class="nav">
             <a href="/start">Get started</a>
             <a href="/#blog">Blog</a>
-            <a class="drift-open-chat">Talk to us</a>
+            <a href="/help-a-sister">Help a Sister</a>
             <a href="/cup-wash">Menstrual Cup Wash</a>
             <div class="user-cart display-inline-block" onclick="window.location = ('/checkout')">
                 <img class="user-cart-image" src="static/cart.png"/>
@@ -128,8 +128,8 @@
                             <input type="text" name="mobile-number" title="Mobile Number" class="customer-mobile-number" required>
                         </div>
                         <div class="margin-bottom-15">
-                            <div class="label">Email (optional)</div>
-                            <input type="text" name="email" title="Email" class="customer-email">
+                            <div class="label">Email</div>
+                            <input type="text" name="email" title="Email" class="customer-email" required>
                         </div>
                         <div class="margin-bottom-15">
                             <div class="label">Comments (optional)</div>
@@ -152,10 +152,14 @@
                         Payment Method
                     </div>
                     <div class="margin-bottom-5">
-                        <input type="radio" id="cash" name="radio-group" checked onclick="showHelp(this)">
-                        <label for="cash">Cash on delivery</label>
-                        <input type="radio" id="transfer" name="radio-group" onclick="showHelp(this)">
-                        <label for="transfer" class="margin-left-25">Bank transfer</label>
+                        <div class="display-inline-block">
+                            <input type="radio" id="cash" name="radio-group" checked onclick="showHelp(this)">
+                            <label for="cash">Cash on delivery</label>
+                        </div>
+                        <div class="display-inline-block">
+                            <input type="radio" id="transfer" name="radio-group" onclick="showHelp(this)">
+                            <label for="transfer" class="margin-left-25">Bank transfer</label>
+                        </div>
                     </div>
                     <div class="label payment-help">Pay with cash when your order arrives</div>
                 </div>
@@ -192,10 +196,10 @@
     var name = url.searchParams.get("name");
     var email = url.searchParams.get("email");
     var orderNow = url.searchParams.get("orderNow") == 'true';
-    if (name != 'null') {
+    if (name && name != 'null') {
         document.querySelector("input[name='name']").value = name
     }
-    if (email != 'null') {
+    if (email && email != 'null') {
         document.querySelector("input[name='email']").value = email
     }
     discount = false;
@@ -208,6 +212,37 @@
     if (orderNow) {
         // Use temp cart for 'Order Now'
         userCart = (Cookies.getJSON('tempCart')) ? Cookies.getJSON('tempCart') : []
+    }
+
+    // Check if only donation added to cart, update form
+    var onlyDonation = (userCart.length == 1 && userCart[0].name == 'Donated Cup');
+    if (onlyDonation) {
+        document.querySelector(".customer-address").required = false;
+        document.querySelector(".customer-address").parentElement.classList.add('display-none');
+        document.querySelector(".customer-city").required = false;
+        document.querySelector(".customer-city").parentElement.classList.add('display-none');
+        document.querySelector(".customer-mobile-number").required = false;
+        document.querySelector(".customer-mobile-number").parentElement.classList.add('display-none');
+        document.querySelector(".customer-comments").parentElement.classList.add('display-none');
+
+        document.getElementById("cash").parentElement.classList.add('display-none');
+        document.getElementById("transfer").nextElementSibling.classList.remove('margin-left-25');
+        document.getElementById("transfer").checked = true;
+        showHelp(document.getElementById("transfer"));
+    }
+    else {
+        document.querySelector(".customer-address").required = true;
+        document.querySelector(".customer-address").parentElement.classList.remove('display-none');
+        document.querySelector(".customer-city").required = true;
+        document.querySelector(".customer-city").parentElement.classList.remove('display-none');
+        document.querySelector(".customer-mobile-number").required = true;
+        document.querySelector(".customer-mobile-number").parentElement.classList.remove('display-none');
+        document.querySelector(".customer-comments").parentElement.classList.remove('display-none');
+
+        document.getElementById("cash").parentElement.classList.remove('display-none');
+        document.getElementById("transfer").nextElementSibling.classList.add('margin-left-25');
+        document.getElementById("cash").checked = true;
+        showHelp(document.getElementById("cash"));
     }
 
     addOrderItems();
@@ -228,7 +263,6 @@
     }
 
     function sendForm(e) {
-
         if (userCart.length <= 0) {
             alert('Your cart is empty. Add some items to your cart to place an order.');
             return false;
@@ -266,7 +300,12 @@
                 if (!orderNow) {
                     Cookies.set('userCart', [])
                 }
-                window.location = '/thankyou';
+                if (onlyDonation) {
+                    window.location = '/thankyou-donation';
+                }
+                else {
+                    window.location = '/thankyou';
+                }
             },
             dataType: "json"
         });
@@ -278,6 +317,7 @@
         var totalCups = 0;
         var totalWashes = 0;
         var totalBoxes = 0;
+        var totalDonatedCups = 0;
         userCart.forEach(function(orderItem) {
             if (orderItem.name == 'Small' || orderItem.name == 'Large') {
                 totalCups += orderItem.quantity
@@ -287,6 +327,9 @@
             }
             if (orderItem.name == 'Box') {
                 totalBoxes += orderItem.quantity
+            }
+            if (orderItem.name == 'Donated Cup') {
+                totalDonatedCups += orderItem.quantity
             }
         });
 
@@ -330,8 +373,12 @@
             totalPrice += totalBoxes * 2000;
         }
 
+        if (totalDonatedCups) {
+            totalPrice += totalDonatedCups * 700;
+        }
+
         // Add delivery cost
-        if (userCart.length > 0) {
+        if (userCart.length > 0 && !onlyDonation) {
             totalPrice += getPrice('Delivery')
         }
 
@@ -346,7 +393,7 @@
             document.querySelector(".order-items").appendChild(orderItemHtml);
         });
         // Add delivery item
-        if (userCart.length > 0) {
+        if (userCart.length > 0 && !onlyDonation) {
             var orderItemHtml = getOrderItemHtml(1, 'Delivery Charge', getPrice('Delivery'), null);
             document.querySelector(".order-items").appendChild(orderItemHtml);
         }
@@ -364,6 +411,9 @@
         }
         if (name === 'Delivery') {
             return 200
+        }
+        if (name === 'Donated Cup') {
+            return 700
         }
     }
 
@@ -455,7 +505,6 @@
         var quantity = parseInt(e.value);
         var orderItem = userCart[orderItemIndex];
         orderItem.quantity = quantity;
-        console.log(orderItem, quantity);
 
         // Update price
         var orderItemPrice = quantity * parseInt(orderItemElement.dataset.price);

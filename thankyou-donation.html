@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ page.title }}</title>
+    <title>Recircle Cup</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/static/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/static/apple-icon-60x60.png">
@@ -31,12 +31,6 @@
     <![endif]-->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Merriweather+Sans|Raleway" rel="stylesheet">
-
-    <meta property="og:image" content="{{ site.url }}/{{ page.image }}"/>
-    <meta property="og:title" content="{{ page.title }}"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="{{ site.url }}/{{ page.permalink }}"/>
-    <meta property="og:description" content="{{ page.tagline }}"/>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150865052-1"></script>
@@ -86,7 +80,7 @@
             <a href="/start">Get started</a>
             <a href="/#blog">Blog</a>
             <a href="/help-a-sister">Help a Sister</a>
-            <a href="/cup-wash">Cup Wash</a>
+            <a href="/cup-wash">Menstrual Cup Wash</a>
         </div>
     </nav>
 </header>
@@ -95,28 +89,38 @@
 
     <section class="light-blue-background blog-section">
         <article>
-            <div>
             <h3 class="font-bold">
-                {{ page.title }}
+                Thank you!
             </h3>
-            </div>
             <div>
-                {{ page.tagline }}
+                You just made someone's period easy for the next 10 years! Your donation will be part of our ongoing
+                program in Daultala, Gujar Khan.
             </div>
         </article>
     </section>
 
     <section class="blog-section">
         <article>
-            <div class="blog-image {{ page.image-class }}">
-                <img src={{ page.image }}>
-            </div>
             <div>
-                {{ content }}
+                <p>
+                    Read more about Recircle Cup:
+                </p>
+                <div>
+                    <a href="/how-i-got-started" target="_blank">How I started using menstrual cups</a>
+                </div>
+                <div class="light-grey margin-bottom-10">
+                    by Wasma Imran
+                </div>
+                <div class="margin-bottom-10">
+                    <a href="/start" target="_blank">Getting started with Recircle Cup</a>
+                </div>
+                <div class="margin-bottom-10">
+                    <a href="/folds" target="_blank">Folds to try</a>
+                </div>
+                <div class="margin-bottom-10">
+                    <a href="/tips" target="_blank">Tips to avoid leakage</a>
+                </div>
             </div>
-            <p class="margin-top-30">
-                <a href="/index#order"><button class="action-button">Get your Cup</button></a>
-            </p>
         </article>
     </section>
 </div>

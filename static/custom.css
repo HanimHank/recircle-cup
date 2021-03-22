@@ -659,7 +659,7 @@ select {
 }
 
 .order-form input[type="checkbox"] {
-    width: auto;
+    width: revert;
 }
 
 .customer-comments {
@@ -1013,13 +1013,17 @@ select {
     border: 2px solid white;
 }
 
-.comfy-period-box-background {
+.brown-period-box-background {
     background: #74371F;
     color: white;
 }
 
-.comfy-period-box-background .section-header {
+.brown-period-box-background .section-header {
     color: white;
+}
+
+.brown-color {
+    color: #8c3a1f;
 }
 
 /* Baby */

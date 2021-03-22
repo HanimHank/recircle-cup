@@ -91,7 +91,7 @@
         <div class="nav">
             <a href="/start">Get started</a>
             <a href="/#blog">Blog</a>
-            <a class="drift-open-chat">Talk to us</a>
+            <a href="/help-a-sister">Help a Sister</a>
             <a href="/cup-wash">Menstrual Cup Wash</a>
             <div class="user-cart display-inline-block" onclick="window.location = ('/checkout')">
                 <img class="user-cart-image" src="static/cart.png"/>
@@ -141,7 +141,7 @@
                                 Get two cups for Rs. 3500 (25% off the second cup)
                             </div>
                         </div>
-                        <div>
+                        <div class="margin-bottom-15">
                             <input type="checkbox" class="add-wash checkbox-position" name="add-wash" title="Add Menstrual Cup Wash" onchange="addWash(this)">
                             <span class="margin-left-2 font-bold">Add Menstrual Cup Wash</span>
                             <div class="light-grey">
@@ -151,6 +151,13 @@
                             <div class="label">Menstrual Cup Wash</div>
                                  <input type="number" name="quantity-cup-wash" title="Quantity" value="1" class="wash-quantity"
                                        oninput="updateTotal(this)" min="0">
+                            </div>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="add-donated-cup checkbox-position" name="add-donated-cup" title="Donate a Cup" onchange="donateCup(this)">
+                            <span class="margin-left-2 font-bold brown-color">Donate a Cup</span>
+                            <div class="light-grey">
+                                For Rs. 700, a Recircle Cup will be donated to a woman in need as part of our <a href="/help-a-sister" target="_blank">Help a Sister</a> program.
                             </div>
                         </div>
                         <div class="cup-image">
@@ -184,6 +191,13 @@
                             x <span class="order-item-quantity-cup-wash">0</span>
                         </span>
                         <div class="order-item-price">Rs. 0</div>
+                    </div>
+                    <div class="order-item donated-cup display-none">
+                        Recircle Cup (Donated)
+                        <span class="order-item-quantity-container">
+                            x <span class="order-item-quantity-donated-cup">1</span>
+                        </span>
+                        <div class="order-item-price">Rs. 700</div>
                     </div>
                 </div>
 
@@ -338,6 +352,10 @@
             document.querySelector(".order-item-quantity-cup-wash").parentNode.nextElementSibling.textContent = 'Rs. ' + (cupWash * 600).toString();
         }
 
+        if (document.querySelector(".add-donated-cup").checked) {
+            document.querySelector(".order-item-quantity-donated-cup").parentNode.parentNode.classList.remove('display-none');
+        }
+
         // Show large cup unavailability and add discount
         if (outOfStock) {
             if (small > 0) {
@@ -378,6 +396,10 @@
             totalPrice += cupWash * 600;
         }
 
+        if (document.querySelector(".add-donated-cup").checked) {
+            totalPrice += 700;
+        }
+
         document.querySelector(".price").textContent = totalPrice.toString();
     }
 
@@ -389,6 +411,16 @@
         else {
             document.querySelector(".cup-wash").classList.add('display-none');
             document.querySelector(".cup-wash-container").classList.add('display-none');
+        }
+        updateTotal(null);
+    }
+
+    function donateCup(element) {
+        if (element.checked) {
+            document.querySelector(".donated-cup").classList.remove('display-none');
+        }
+        else {
+            document.querySelector(".donated-cup").classList.add('display-none');
         }
         updateTotal(null);
     }
@@ -421,6 +453,7 @@
         if (document.querySelector('input[name="add-wash"]').checked) {
             cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
         }
+        var donatedCup = document.querySelector('input[name="add-donated-cup"]').checked;
 
         if (small) {
             var orderItem = {};
@@ -445,6 +478,15 @@
             orderItem.quantity = cupWash;
             userCart.push(orderItem);
         }
+
+        if (donatedCup) {
+            var orderItem = {};
+            orderItem.name = 'Donated Cup';
+            orderItem.displayName = 'Cup (Donated)';
+            orderItem.quantity = 1;
+            userCart.push(orderItem);
+        }
+
         Cookies.set('userCart', userCart);
 
         if (small + large + cupWash <= 0) {
@@ -471,6 +513,7 @@
         if (document.querySelector('input[name="add-wash"]').checked) {
             cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
         }
+        var donatedCup = document.querySelector('input[name="add-donated-cup"]').checked;
 
         if (small) {
             var orderItem = {};
@@ -495,6 +538,15 @@
             orderItem.quantity = cupWash;
             tempCart.push(orderItem);
         }
+
+        if (donatedCup) {
+            var orderItem = {};
+            orderItem.name = 'Donated Cup';
+            orderItem.displayName = 'Cup (Donated)';
+            orderItem.quantity = 1;
+            tempCart.push(orderItem);
+        }
+
         Cookies.set('tempCart', tempCart);
 
 

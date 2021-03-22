@@ -231,18 +231,7 @@
         showHelp(document.getElementById("transfer"));
     }
     else {
-        document.querySelector(".customer-address").required = true;
-        document.querySelector(".customer-address").parentElement.classList.remove('display-none');
-        document.querySelector(".customer-city").required = true;
-        document.querySelector(".customer-city").parentElement.classList.remove('display-none');
-        document.querySelector(".customer-mobile-number").required = true;
-        document.querySelector(".customer-mobile-number").parentElement.classList.remove('display-none');
-        document.querySelector(".customer-comments").parentElement.classList.remove('display-none');
-
-        document.getElementById("cash").parentElement.classList.remove('display-none');
-        document.getElementById("transfer").nextElementSibling.classList.add('margin-left-25');
-        document.getElementById("cash").checked = true;
-        showHelp(document.getElementById("cash"));
+        
     }
 
     addOrderItems();

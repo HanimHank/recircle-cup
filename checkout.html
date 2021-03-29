@@ -414,12 +414,13 @@
         var itemColor = (color) ? color : '';
         var itemColorHtml = '';
         if (itemColor) {
-            itemColorHtml = '<span class="order-item-color-container ' + itemColor.toLowerCase() + '">' + itemColor + '</span>'
+            itemColorHtml = '<span class="order-item-color-container"> - ' + itemColor + '</span>'
         }
 
         var itemInfoHtml = '';
         var itemName = name;
         if (name !== 'Delivery Charge') {
+            itemInfoHtml += itemColorHtml;
             // Don't show quantity input for comfy period box
             if (name !== 'Comfy Period Box') {
                 itemInfoHtml += '<span class="order-item-quantity-container">' + 'x ' +
@@ -433,7 +434,6 @@
                 itemInfoHtml += ' <span class="light-grey margin-left-5">' + (new Date(dateOfDelivery).toLocaleDateString("en-US", dateOptions)) + '</span>';
             }
             itemInfoHtml +=
-                itemColorHtml +
                 '<a href="#" class="order-item-remove-container" onclick="removeOrderItem(this);return false;">Remove</a>';
             itemName = 'Recircle ' + itemName
         }

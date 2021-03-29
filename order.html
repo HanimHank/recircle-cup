@@ -124,6 +124,14 @@
                         <div class="margin-bottom-10">
                             <a href="/which-size" target="_blank">Which size is best for me?</a>
                         </div>
+                        <div class="margin-bottom-15" onchange="updateTotal(this)">
+                            <div class="label">Color</div>
+                            <select name="cup-color">
+                                <option selected>White</option>
+                                <option>Red</option>
+                                <option>Purple</option>
+                            </select>
+                        </div>
                         <div class="margin-bottom-20">
                             <div class="stock-help form-info">
 
@@ -161,7 +169,7 @@
                             </div>
                         </div>
                         <div class="cup-image">
-                            <img src="/static/small_and_large_cup.png"/>
+                            <img src="/static/cup_colors.png"/>
                         </div>
                     </div>
             </div>
@@ -173,6 +181,7 @@
                     <div class="label">Items</div>
                     <div class="order-item">
                         Recircle Cup Small
+                        <span class="order-item-color"></span>
                         <span class="order-item-quantity-container">
                             x <span class="order-item-quantity-small">1</span>
                         </span>
@@ -180,6 +189,7 @@
                     </div>
                     <div class="order-item">
                         Recircle Cup Large
+                        <span class="order-item-color"></span>
                         <span class="order-item-quantity-container">
                             x <span class="order-item-quantity-large">0</span>
                         </span>
@@ -262,71 +272,11 @@
         }
     }
 
-    function sendForm(e) {
-        document.querySelector('.order-now-button').value = 'Sending...please wait';
-        var order = [];
-        var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
-        var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
-        var cupWash = 0;
-
-        // If cup wash checked, add to order
-        if (document.querySelector('input[name="add-wash"]').checked) {
-            cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
-        }
-
-        var name = document.querySelector('input[name="name"]').value;
-        var address = document.querySelector('input[name="address"]').value;
-        var city = document.querySelector('input[name="city"]').value;
-        var mobile = document.querySelector('input[name="mobile-number"]').value;
-        var email = document.querySelector('input[name="email"]').value;
-        var comments = document.querySelector('textarea[name="comments"]').value;
-        var payment = document.querySelector('input[name="radio-group"]:checked').id;
-        if (payment == 'transfer') {
-            payment = 'bank transfer'
-        }
-
-        if (small > 1) {
-            order.push(small + ' Recircle Cups (Small) ')
-        }
-        else if (small == 1) {
-            order.push(small + ' Recircle Cup (Small) ')
-        }
-        if (large > 1) {
-            order.push(large + ' Recircle Cups (Large) ')
-        }
-        else if (large == 1) {
-            order.push(large + ' Recircle Cup (Large) ')
-        }
-        if (cupWash) {
-             order.push(cupWash + ' Recircle Cup Wash ')
-        }
-
-        var data = {
-            small: small, large: large, cup_wash: cupWash, name: name, address: address, city: city,
-            number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice,
-            order_type: 'cup', order: order.join(', ')
-        };
-
-        // Send order to API
-        $.ajax({
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            crossDomain: true,
-            url: 'https://recircle-api.herokuapp.com/_add_order',
-            data: JSON.stringify({
-                data: data
-            }),
-            success: function (data) {
-                window.location = '/thankyou';
-            },
-            dataType: "json"
-        });
-    }
-
     function updateTotal(element) {
         var large = parseInt(document.querySelector("input[name='quantity-large']").value) || 0;
         var small = parseInt(document.querySelector("input[name='quantity-small']").value) || 0;
         var cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0;
+        var color = document.querySelector("select[name='cup-color']").value;
 
         if (small) {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
@@ -355,6 +305,11 @@
         if (document.querySelector(".add-donated-cup").checked) {
             document.querySelector(".order-item-quantity-donated-cup").parentNode.parentNode.classList.remove('display-none');
         }
+
+        // Add color
+        document.querySelectorAll(".order-item-color").forEach(function(el) {
+           el.textContent = '(' + color + ')'
+        });
 
         // Show large cup unavailability and add discount
         if (outOfStock) {
@@ -454,12 +409,14 @@
             cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
         }
         var donatedCup = document.querySelector('input[name="add-donated-cup"]').checked;
+        var color = document.querySelector("select[name='cup-color']").value;
 
         if (small) {
             var orderItem = {};
             orderItem.name = 'Small';
             orderItem.displayName = 'Cup (Small)';
             orderItem.quantity = small;
+            orderItem.color = color;
             userCart.push(orderItem);
         }
 
@@ -468,6 +425,7 @@
             orderItem.name = 'Large';
             orderItem.displayName = 'Cup (Large)';
             orderItem.quantity = large;
+            orderItem.color = color;
             userCart.push(orderItem);
         }
 
@@ -514,12 +472,14 @@
             cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
         }
         var donatedCup = document.querySelector('input[name="add-donated-cup"]').checked;
+        var color = document.querySelector("select[name='cup-color']").value;
 
         if (small) {
             var orderItem = {};
             orderItem.name = 'Small';
             orderItem.displayName = 'Cup (Small)';
             orderItem.quantity = small;
+            orderItem.color = color;
             tempCart.push(orderItem);
         }
 
@@ -528,6 +488,7 @@
             orderItem.name = 'Large';
             orderItem.displayName = 'Cup (Large)';
             orderItem.quantity = large;
+            orderItem.color = color;
             tempCart.push(orderItem);
         }
 

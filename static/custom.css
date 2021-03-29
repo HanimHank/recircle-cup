@@ -705,29 +705,6 @@ select {
     color: #898989;
 }
 
-.order-form .order-item-color-container {
-    margin-left: 10px;
-    font-size: 16px;
-    color: #898989;
-    font-weight: bold;
-}
-
-.order-item-color-container.pink {
-    color: #f9a1ba;
-}
-
-.order-item-color-container.blue {
-    color: #65ccba;
-}
-
-.order-item-color-container.purple {
-    color: #d282cc;
-}
-
-.order-item-color-container.white {
-    color: #ffffff;
-}
-
 .order-form .order-item-remove-container {
     margin-left: 10px;
     font-size: 14px;
@@ -828,6 +805,10 @@ select {
 
 .cup-image {
     margin: 50px 0 65px 0;
+}
+
+.cup-image img {
+    width: 400px;
 }
 
 .spinner {
@@ -996,7 +977,8 @@ select {
 .new-cup-image {
     margin-left: 40%;
     position: relative;
-    top: -30px;
+    top: -60px;
+    width: 400px;
 }
 
 .section .comfy-period-box-image {
@@ -1126,5 +1108,5 @@ body {
 .new-cup-image {
     margin-left: 0%;
     position: relative;
-    top: -30px;
+    top: -60px;
 }

@@ -308,7 +308,7 @@
 
         // Add color
         document.querySelectorAll(".order-item-color").forEach(function(el) {
-           el.textContent = '(' + color + ')'
+           el.textContent = ' - ' + color
         });
 
         // Show large cup unavailability and add discount
@@ -337,9 +337,10 @@
         }
         else {
             totalPrice = total * 2000;
-            if (discount && total) {
-                totalPrice *= 0.75;
-                document.querySelector(".price-discount").textContent = "(25% Off)";
+            var singleCupDiscount = true;
+            if (singleCupDiscount && total) {
+                totalPrice *= 0.85;
+                document.querySelector(".price-discount").textContent = "(15% Off on Single Cups)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";

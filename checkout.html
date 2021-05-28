@@ -335,7 +335,7 @@
         }
         else {
             totalPrice = totalCups * 2000;
-            var singleCupDiscount = false;
+            var singleCupDiscount = true;
             if (singleCupDiscount && totalCups) {
                 totalPrice *= 0.85;
                 document.querySelector(".price-discount").textContent = "(15% Off on Single Cups)";

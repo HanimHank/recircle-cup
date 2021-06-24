@@ -48,29 +48,6 @@
 
         gtag('config', 'UA-150865052-1');
     </script>
-
-    <script>
-        !function() {
-            var t;
-            if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
-                    t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
-                    t.factory = function(e) {
-                        return function() {
-                            var n;
-                            return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
-                        };
-                    }, t.methods.forEach(function(e) {
-                t[e] = t.factory(e);
-            }), t.load = function(t) {
-                var e, n, o, i;
-                e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
-                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
-                        n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
-            });
-        }();
-        drift.SNIPPET_VERSION = '0.3.1';
-        drift.load('3i2nh4v2nv35');
-    </script>
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
@@ -146,7 +123,7 @@
                             <input type="checkbox" class="cup-offer checkbox-position" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer margin-left-2 font-bold">Sister Cup Offer</span>
                             <div class="light-grey">
-                                Get two cups for Rs. 3500 (25% off the second cup)
+                                Get two cups for Rs. 4100 (Rs. 500 off the second cup)
                             </div>
                         </div>
                         <div class="margin-bottom-15">
@@ -185,7 +162,7 @@
                         <span class="order-item-quantity-container">
                             x <span class="order-item-quantity-small">1</span>
                         </span>
-                        <div class="order-item-price">Rs. 2000</div>
+                        <div class="order-item-price">Rs. 2300</div>
                     </div>
                     <div class="order-item">
                         Recircle Cup Large
@@ -215,7 +192,7 @@
                     <div class="total-price font-bold font-1p25em margin-bottom-5">
                         Total:
                         <span class="font-bold">
-                        Rs. <span class="price">2000</span><span class="price-discount margin-left-5"></span>
+                        Rs. <span class="price">2300</span><span class="price-discount margin-left-5"></span>
                         </span>
                     </div>
                     <div class="label">Excludes delivery charge</div>
@@ -281,7 +258,7 @@
         if (small) {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-small").textContent = small;
-            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'Rs. ' + (small * 2000).toString();
+            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'Rs. ' + (small * 2300).toString();
         }
         else {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.add('display-none');
@@ -290,7 +267,7 @@
         if (large) {
             document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-large").textContent = large;
-            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'Rs. ' + (large * 2000).toString();
+            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'Rs. ' + (large * 2300).toString();
         }
         else {
             document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.add('display-none');
@@ -299,7 +276,7 @@
         if (document.querySelector(".add-wash").checked) {
             document.querySelector(".order-item-quantity-cup-wash").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-cup-wash").textContent = cupWash;
-            document.querySelector(".order-item-quantity-cup-wash").parentNode.nextElementSibling.textContent = 'Rs. ' + (cupWash * 600).toString();
+            document.querySelector(".order-item-quantity-cup-wash").parentNode.nextElementSibling.textContent = 'Rs. ' + (cupWash * 900).toString();
         }
 
         if (document.querySelector(".add-donated-cup").checked) {
@@ -325,7 +302,7 @@
         if (total >= 2) {
             var sisterCupOffers = Math.floor(total / 2);
             var singleCups = total % 2;
-            totalPrice = sisterCupOffers * 3500 + singleCups * 2000;
+            totalPrice = sisterCupOffers * 4100 + singleCups * 2300;
             if (discount && total) {
                 totalPrice *= 0.75;
                 document.querySelector(".price-discount").textContent = "(25% Off)";
@@ -336,7 +313,7 @@
             document.querySelector(".cup-offer").checked = true;
         }
         else {
-            totalPrice = total * 2000;
+            totalPrice = total * 2300;
             var singleCupDiscount = false;
             if (singleCupDiscount && total) {
                 totalPrice *= 0.85;
@@ -349,7 +326,7 @@
         }
 
         if (document.querySelector(".add-wash").checked) {
-            totalPrice += cupWash * 600;
+            totalPrice += cupWash * 900;
         }
 
         if (document.querySelector(".add-donated-cup").checked) {
@@ -536,40 +513,6 @@
         }
     }
 
-    (function() {
-        var DRIFT_CHAT_SELECTOR = '.drift-open-chat';
-        function ready(fn) {
-            if (document.readyState != 'loading') {
-                fn();
-            } else if (document.addEventListener) {
-                document.addEventListener('DOMContentLoaded', fn);
-            } else {
-                document.attachEvent('onreadystatechange', function() {
-                    if (document.readyState != 'loading')
-                        fn();
-                });
-            }
-        }
-        /* http://youmightnotneedjquery.com/#each */
-        function forEachElement(selector, fn) {
-            var elements = document.querySelectorAll(selector);
-            for (var i = 0; i < elements.length; i++)
-                fn(elements[i], i);
-        }
-        function openSidebar(driftApi, event) {
-            event.preventDefault();
-            driftApi.sidebar.open();
-            return false;
-        }
-        ready(function() {
-            drift.on('ready', function(api) {
-                var handleClick = openSidebar.bind(this, api)
-                forEachElement(DRIFT_CHAT_SELECTOR, function(el) {
-                    el.addEventListener('click', handleClick);
-                });
-            });
-        });
-    })();
 </script>
 </body>
 

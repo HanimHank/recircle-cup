@@ -48,29 +48,6 @@
 
         gtag('config', 'UA-150865052-1');
     </script>
-
-    <script>
-        !function() {
-            var t;
-            if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
-                    t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
-                    t.factory = function(e) {
-                        return function() {
-                            var n;
-                            return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
-                        };
-                    }, t.methods.forEach(function(e) {
-                t[e] = t.factory(e);
-            }), t.load = function(t) {
-                var e, n, o, i;
-                e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
-                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
-                        n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
-            });
-        }();
-        drift.SNIPPET_VERSION = '0.3.1';
-        drift.load('3i2nh4v2nv35');
-    </script>
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
@@ -324,7 +301,7 @@
         if (totalCups >= 2) {
             var sisterCupOffers = Math.floor(totalCups / 2);
             var singleCups = totalCups % 2;
-            totalPrice = sisterCupOffers * 3500 + singleCups * 2000;
+            totalPrice = sisterCupOffers * 4100 + singleCups * 2300;
             if (discount && totalCups) {
                 totalPrice *= 0.75;
                 document.querySelector(".price-discount").textContent = "(25% Off)";
@@ -334,7 +311,7 @@
             }
         }
         else {
-            totalPrice = totalCups * 2000;
+            totalPrice = totalCups * 2300;
             var singleCupDiscount = false;
             if (singleCupDiscount && totalCups) {
                 totalPrice *= 0.85;
@@ -353,7 +330,7 @@
         }
 
         if (totalWashes) {
-            totalPrice += totalWashes * 600;
+            totalPrice += totalWashes * 900;
         }
 
         if (totalBoxes) {
@@ -388,13 +365,13 @@
 
     function getPrice(name) {
         if (name === 'Small' || name === 'Large') {
-            return 2000
+            return 2300
         }
         if (name === 'Box') {
             return 2000
         }
         if (name === 'Wash') {
-            return 600
+            return 900
         }
         if (name === 'Delivery') {
             return 200
@@ -508,41 +485,6 @@
             window.location.replace('/checkout');
         }
     }
-
-    (function() {
-    var DRIFT_CHAT_SELECTOR = '.drift-open-chat';
-    function ready(fn) {
-        if (document.readyState != 'loading') {
-            fn();
-        } else if (document.addEventListener) {
-            document.addEventListener('DOMContentLoaded', fn);
-        } else {
-            document.attachEvent('onreadystatechange', function() {
-                if (document.readyState != 'loading')
-                    fn();
-            });
-        }
-    }
-    /* http://youmightnotneedjquery.com/#each */
-    function forEachElement(selector, fn) {
-        var elements = document.querySelectorAll(selector);
-        for (var i = 0; i < elements.length; i++)
-            fn(elements[i], i);
-    }
-    function openSidebar(driftApi, event) {
-        event.preventDefault();
-        driftApi.sidebar.open();
-        return false;
-    }
-    ready(function() {
-        drift.on('ready', function(api) {
-            var handleClick = openSidebar.bind(this, api)
-            forEachElement(DRIFT_CHAT_SELECTOR, function(el) {
-                el.addEventListener('click', handleClick);
-            });
-        });
-    });
-})();
 
 </script>
 </body>

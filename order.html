@@ -304,9 +304,9 @@
             var singleCups = total % 2;
             totalPrice = sisterCupOffers * 4100 + singleCups * 2300;
             if (discount && total) {
-                totalPrice *= 0.85;
+                totalPrice *= 0.80;
                 totalPrice = Math.round(totalPrice/100)*100;
-                document.querySelector(".price-discount").textContent = "(15% Off)";
+                document.querySelector(".price-discount").textContent = "(20% Off)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "(Save Rs. 500 on every 2 Cups)";

@@ -236,7 +236,7 @@
 
                         <div class="margin-bottom-20 font-bold">
                             <div class="stock-help form-info">
-
+                                Eid Sale! Get 30% off on single cups and 15% on Sister Cup Offers.
                             </div>
                         </div>
 
@@ -458,7 +458,7 @@
 
         <script>
             Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
-            var discount = false;
+            var discount = true;
             updateTotal();
 
             function submitOrder(element) {
@@ -483,8 +483,9 @@
                     var singleCups = total % 2;
                     totalPrice = sisterCupOffers * 4100 + singleCups * 2300;
                     if (discount && total) {
-                        totalPrice *= 0.75;
-                        document.querySelector(".price-discount").textContent = "(25% Off)";
+                        totalPrice *= 0.85;
+                        totalPrice = Math.round(totalPrice/100)*100;
+                        document.querySelector(".price-discount").textContent = "(15% Off)";
                     }
                     else {
                         var discountAmount = sisterCupOffers * 500;
@@ -494,10 +495,11 @@
                 }
                 else {
                     totalPrice = total * 2300;
-                    var singleCupDiscount = false;
+                    var singleCupDiscount = true;
                     if (singleCupDiscount && total) {
-                        totalPrice *= 0.85;
-                        document.querySelector(".price-discount").textContent = "(15% Off on Single Cups)";
+                        totalPrice *= 0.70;
+                        totalPrice = Math.round(totalPrice/100)*100;
+                        document.querySelector(".price-discount").textContent = "(30% Off on Single Cups)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""
@@ -512,8 +514,9 @@
                 if (element.checked) {
                     totalPrice = 4100;
                     if (discount) {
-                        totalPrice *= 0.75;
-                        document.querySelector(".price-discount").textContent = "(25% Off)";
+                        totalPrice *= 0.85;
+                        totalPrice = Math.round(totalPrice/100)*100;
+                        document.querySelector(".price-discount").textContent = "(15% Off)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = "(Save Rs. 500)";
@@ -524,8 +527,9 @@
                 else {
                     totalPrice = 2300;
                     if (discount) {
-                        totalPrice *= 0.75;
-                        document.querySelector(".price-discount").textContent = "(25% Off)";
+                        totalPrice *= 0.70;
+                        totalPrice = Math.round(totalPrice/100)*100;
+                        document.querySelector(".price-discount").textContent = "(30% Off on Single Cups)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""

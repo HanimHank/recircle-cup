@@ -179,7 +179,7 @@
     if (email && email != 'null') {
         document.querySelector("input[name='email']").value = email
     }
-    discount = true;
+    discount = false;
 
     var outOfStock = false;
     var totalPrice;
@@ -313,7 +313,7 @@
         }
         else {
             totalPrice = totalCups * 2300;
-            var singleCupDiscount = true;
+            var singleCupDiscount = false;
             if (singleCupDiscount && totalCups) {
                 totalPrice *= 0.70;
                 totalPrice = Math.round(totalPrice/100)*100;

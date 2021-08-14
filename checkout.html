@@ -179,7 +179,7 @@
     if (email && email != 'null') {
         document.querySelector("input[name='email']").value = email
     }
-    discount = false;
+    discount = true;
 
     var outOfStock = false;
     var totalPrice;
@@ -313,11 +313,11 @@
         }
         else {
             totalPrice = totalCups * 2300;
-            var singleCupDiscount = false;
+            var singleCupDiscount = true;
             if (singleCupDiscount && totalCups) {
-                totalPrice *= 0.70;
+                totalPrice *= 0.80;
                 totalPrice = Math.round(totalPrice/100)*100;
-                document.querySelector(".price-discount").textContent = "(30% Off on Single Cups)";
+                document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
             }
             else {
                 // Add 10% discount on single cup if comfy period box present

@@ -236,6 +236,7 @@
 
                         <div class="margin-bottom-20 font-bold">
                             <div class="stock-help form-info">
+                                Independence Day Sale! Get 20% Off.
                             </div>
                         </div>
 
@@ -457,7 +458,7 @@
 
         <script>
             Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
-            var discount = false;
+            var discount = true;
             updateTotal();
 
             function submitOrder(element) {
@@ -494,11 +495,11 @@
                 }
                 else {
                     totalPrice = total * 2300;
-                    var singleCupDiscount = false;
+                    var singleCupDiscount = true;
                     if (singleCupDiscount && total) {
-                        totalPrice *= 0.70;
+                        totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;
-                        document.querySelector(".price-discount").textContent = "(30% Off on Single Cups)";
+                        document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""
@@ -526,9 +527,9 @@
                 else {
                     totalPrice = 2300;
                     if (discount) {
-                        totalPrice *= 0.70;
+                        totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;
-                        document.querySelector(".price-discount").textContent = "(30% Off on Single Cups)";
+                        document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""

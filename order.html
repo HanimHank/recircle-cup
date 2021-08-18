@@ -232,7 +232,7 @@
     else {
         discount = false;
     }
-    discount = true;
+    discount = false;
     updateTotal();
 
     function showHelp(element) {
@@ -315,7 +315,7 @@
         }
         else {
             totalPrice = total * 2300;
-            var singleCupDiscount = true;
+            var singleCupDiscount = false;
             if (singleCupDiscount && total) {
                 totalPrice *= 0.80;
                 totalPrice = Math.round(totalPrice/100)*100;

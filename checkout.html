@@ -136,8 +136,12 @@
                             <input type="radio" id="transfer" name="radio-group" onclick="showHelp(this)">
                             <label for="transfer" class="margin-left-25">Bank transfer</label>
                         </div>
+                        <div class="display-inline-block">
+                            <input type="radio" id="card" name="radio-group" onclick="showHelp(this)">
+                            <label for="card" class="margin-top-10">Debit/Credit Card</label>
+                        </div>
                     </div>
-                    <div class="label payment-help">Pay with cash when your order arrives</div>
+                    <div class="label payment-help margin-top-10">Pay with cash when your order arrives</div>
                 </div>
 
                 <div class="margin-bottom-20">
@@ -218,6 +222,10 @@
                     '<a target="_blank" href="https://www.facebook.com/recirclepakistan">message</a>' +
                     ' us a picture of your receipt/transaction.'
         }
+        else if (element.id == 'card') {
+            document.querySelector('.payment-help').textContent =
+                    'Pay online via debit/credit card.'
+        }
         else {
             document.querySelector('.payment-help').textContent =
                     'Pay with cash when your order arrives.'
@@ -261,6 +269,10 @@
                 // Clear cart if not 'Order Now', redirect to thank you page
                 if (!orderNow) {
                     Cookies.set('userCart', [])
+                }
+                if (payment == 'card') {
+                    window.location = data;
+                    return false;
                 }
                 if (onlyDonation) {
                     window.location = '/thankyou-donation';

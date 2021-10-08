@@ -103,14 +103,14 @@
                         <div class="margin-bottom-15" onchange="updateTotal(this)">
                             <div class="label">Color</div>
                             <select name="cup-color">
-                                <option selected>White</option>
+                                <option id="cup-color-white">White</option>
                                 <option>Red</option>
-                                <option>Purple</option>
+                                <option selected>Purple</option>
                             </select>
                         </div>
                         <div class="margin-bottom-20">
-                            <div class="stock-help form-info">
-
+                            <div class="stock-help form-info display-none font-bold">
+                                White small cups are currently out of stock. We'll be restocking soon!
                             </div>
                         </div>
                         <div class="margin-bottom-20">
@@ -251,9 +251,17 @@
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-small").textContent = small;
             document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'Rs. ' + (small * 2300).toString();
+            document.querySelector(".stock-help").classList.remove('display-none');
+            document.getElementById("cup-color-white").disabled = true;
+            if (color == 'White') {
+                color = 'Purple';
+                document.querySelector("select[name='cup-color']").value = color;
+            }
         }
         else {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.add('display-none');
+            document.querySelector(".stock-help").classList.add('display-none');
+            document.getElementById("cup-color-white").disabled = false;
         }
 
         if (large) {

@@ -105,12 +105,11 @@
                             <select name="cup-color">
                                 <option id="cup-color-white">White</option>
                                 <option selected>Red</option>
-                                <option disabled>Purple</option>
+                                <option>Purple</option>
                             </select>
                         </div>
                         <div class="margin-bottom-20">
                             <div class="stock-help form-info font-bold">
-                                Some small cups (white and purple) and some large cups (purple) are currently out of stock. We'll be restocking soon!
                             </div>
                         </div>
                         <div class="margin-bottom-20">
@@ -251,15 +250,9 @@
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-small").textContent = small;
             document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'Rs. ' + (small * 2300).toString();
-            document.getElementById("cup-color-white").disabled = true;
-            if (color == 'White') {
-                color = 'Red';
-                document.querySelector("select[name='cup-color']").value = color;
-            }
         }
         else {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.add('display-none');
-            document.getElementById("cup-color-white").disabled = false;
         }
 
         if (large) {

@@ -103,14 +103,14 @@
                         <div class="margin-bottom-15" onchange="updateTotal(this)">
                             <div class="label">Color</div>
                             <select name="cup-color">
-                                <option selected>White</option>
-                                <option>Red</option>
-                                <option>Purple</option>
+                                <option id="cup-color-white">White</option>
+                                <option selected>Red</option>
+                                <option disabled>Purple</option>
                             </select>
                         </div>
                         <div class="margin-bottom-20">
-                            <div class="stock-help form-info">
-
+                            <div class="stock-help form-info font-bold">
+                                Some small cups (white and purple) and some large cups (purple) are currently out of stock. We'll be restocking soon!
                             </div>
                         </div>
                         <div class="margin-bottom-20">
@@ -224,7 +224,7 @@
     else {
         discount = false;
     }
-    discount = true;
+    discount = false;
     updateTotal();
 
     function showHelp(element) {
@@ -251,9 +251,15 @@
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-small").textContent = small;
             document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'Rs. ' + (small * 2300).toString();
+            document.getElementById("cup-color-white").disabled = true;
+            if (color == 'White') {
+                color = 'Red';
+                document.querySelector("select[name='cup-color']").value = color;
+            }
         }
         else {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.add('display-none');
+            document.getElementById("cup-color-white").disabled = false;
         }
 
         if (large) {
@@ -269,10 +275,6 @@
             document.querySelector(".order-item-quantity-cup-wash").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-cup-wash").textContent = cupWash;
             document.querySelector(".order-item-quantity-cup-wash").parentNode.nextElementSibling.textContent = 'Rs. ' + (cupWash * 900).toString();
-        }
-
-        if (document.querySelector(".add-donated-cup").checked) {
-            document.querySelector(".order-item-quantity-donated-cup").parentNode.parentNode.classList.remove('display-none');
         }
 
         // Add color
@@ -307,7 +309,7 @@
         }
         else {
             totalPrice = total * 2300;
-            var singleCupDiscount = true;
+            var singleCupDiscount = false;
             if (singleCupDiscount && total) {
                 totalPrice *= 0.80;
                 totalPrice = Math.round(totalPrice/100)*100;
@@ -321,10 +323,6 @@
 
         if (document.querySelector(".add-wash").checked) {
             totalPrice += cupWash * 900;
-        }
-
-        if (document.querySelector(".add-donated-cup").checked) {
-            totalPrice += 700;
         }
 
         document.querySelector(".price").textContent = totalPrice.toString();
@@ -380,7 +378,6 @@
         if (document.querySelector('input[name="add-wash"]').checked) {
             cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
         }
-        var donatedCup = document.querySelector('input[name="add-donated-cup"]').checked;
         var color = document.querySelector("select[name='cup-color']").value;
 
         if (small) {
@@ -406,14 +403,6 @@
             orderItem.name = 'Wash';
             orderItem.displayName = 'Menstrual Cup Wash';
             orderItem.quantity = cupWash;
-            userCart.push(orderItem);
-        }
-
-        if (donatedCup) {
-            var orderItem = {};
-            orderItem.name = 'Donated Cup';
-            orderItem.displayName = 'Cup (Donated)';
-            orderItem.quantity = 1;
             userCart.push(orderItem);
         }
 
@@ -443,7 +432,6 @@
         if (document.querySelector('input[name="add-wash"]').checked) {
             cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0
         }
-        var donatedCup = document.querySelector('input[name="add-donated-cup"]').checked;
         var color = document.querySelector("select[name='cup-color']").value;
 
         if (small) {
@@ -469,14 +457,6 @@
             orderItem.name = 'Wash';
             orderItem.displayName = 'Menstrual Cup Wash';
             orderItem.quantity = cupWash;
-            tempCart.push(orderItem);
-        }
-
-        if (donatedCup) {
-            var orderItem = {};
-            orderItem.name = 'Donated Cup';
-            orderItem.displayName = 'Cup (Donated)';
-            orderItem.quantity = 1;
             tempCart.push(orderItem);
         }
 

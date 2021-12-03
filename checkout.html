@@ -100,6 +100,45 @@
                             <input type="text" name="city" title="City" class="customer-city" required>
                         </div>
                         <div class="margin-bottom-15">
+                            <div class="label">Country</div>
+                            <select name="country" title="Country" class="customer-country" onchange="changeCountry()">
+                                <option>Australia</option>
+                                <option>Bahrain</option>
+                                <option>Bangladesh</option>
+                                <option>Belgium</option>
+                                <option>Canada</option>
+                                <option>Czech Republic</option>
+                                <option>Denmark</option>
+                                <option>Egypt</option>
+                                <option>Finland</option>
+                                <option>France</option>
+                                <option>Germany</option>
+                                <option>Hungary</option>
+                                <option>Indonesia</option>
+                                <option>Iran</option>
+                                <option>Italy</option>
+                                <option>Japan</option>
+                                <option>Kuwait</option>
+                                <option>Malaysia</option>
+                                <option>New Zealand</option>
+                                <option>Oman</option>
+                                <option selected>Pakistan</option>
+                                <option>Philippines</option>
+                                <option>Poland</option>
+                                <option>Portugal</option>
+                                <option>Qatar</option>
+                                <option>Saudi Arabia</option>
+                                <option>Singapore</option>
+                                <option>Spain</option>
+                                <option>Sri Lanka</option>
+                                <option>Thailand</option>
+                                <option>The Netherlands</option>
+                                <option>UAE</option>
+                                <option>UK</option>
+                                <option>USA</option>
+                            </select>
+                        </div>
+                        <div class="margin-bottom-15">
                             <div class="label">Mobile Number</div>
                             <input type="text" name="mobile-number" title="Mobile Number" class="customer-mobile-number" required>
                         </div>
@@ -162,6 +201,42 @@
 
 <script>
     Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
+
+    var countryShippingPrices = {
+        "UAE": 1500,
+        "USA": 4200,
+        "Canada": 4200,
+        "Singapore": 2500,
+        "UK": 2800,
+        "Saudi Arabia": 3200,
+        "Australia": 3200,
+        "Germany": 3600,
+        "France": 3600,
+        "Spain": 3600,
+        "The Netherlands": 3600,
+        "Indonesia": 3200,
+        "Philippines": 3500,
+        "Belgium": 3600,
+        "Italy": 3600,
+        "Portugal": 3600,
+        "Oman": 3600,
+        "Kuwait": 3600,
+        "Sri Lanka": 2600,
+        "Bangladesh": 2600,
+        "Malaysia": 3000,
+        "Thailand": 3000,
+        "Japan": 5500,
+        "New Zealand": 3500,
+        "Poland": 3600,
+        "Denmark": 3800,
+        "Finland": 3800,
+        "Hungary": 3600,
+        "Czech Republic": 3600,
+        "Qatar": 5000,
+        "Bahrain": 3600,
+        "Iran": 4600,
+        "Egypt": 4000
+    };
 
     function getCookie(name) {
         var value = "; " + document.cookie;
@@ -243,6 +318,7 @@
         var name = document.querySelector('input[name="name"]').value;
         var address = document.querySelector('input[name="address"]').value;
         var city = document.querySelector('input[name="city"]').value;
+        var country = document.querySelector('select[name="country"]').value;
         var mobile = document.querySelector('input[name="mobile-number"]').value;
         var email = document.querySelector('input[name="email"]').value;
         var comments = document.querySelector('textarea[name="comments"]').value;
@@ -252,7 +328,7 @@
         }
 
         var data = {
-            user_cart: userCart, name: name, address: address, city: city,
+            user_cart: userCart, name: name, address: address, city: city, country: country,
             number: mobile, email: email, comments: comments, payment_type: payment, total: totalPrice
         };
 
@@ -359,7 +435,7 @@
             totalPrice += getPrice('Delivery')
         }
 
-        document.querySelector(".price").textContent = totalPrice.toString();
+        document.querySelector(".price").textContent = totalPrice.toLocaleString();
     }
 
     function addOrderItems() {
@@ -371,7 +447,7 @@
         });
         // Add delivery item
         if (userCart.length > 0 && !onlyDonation) {
-            var orderItemHtml = getOrderItemHtml(1, 'Delivery Charge', getPrice('Delivery'), null);
+            var orderItemHtml = getOrderItemHtml(1, 'Shipping Charge', getPrice('Delivery'), null);
             document.querySelector(".order-items").appendChild(orderItemHtml);
         }
     }
@@ -387,6 +463,10 @@
             return 900
         }
         if (name === 'Delivery') {
+            var country = document.querySelector('select[name="country"]').value;
+            if (country && countryShippingPrices[country]) {
+                return countryShippingPrices[country];
+            }
             return 200
         }
         if (name === 'Donated Cup') {
@@ -410,7 +490,7 @@
 
         var itemInfoHtml = '';
         var itemName = name;
-        if (name !== 'Delivery Charge') {
+        if (name !== 'Shipping Charge') {
             itemInfoHtml += itemColorHtml;
             // Don't show quantity input for comfy period box
             if (name !== 'Comfy Period Box') {
@@ -432,7 +512,7 @@
         orderItem.innerHTML =
                 itemName +
                 itemInfoHtml +
-                '<div class="order-item-price">Rs. ' + (orderItemPrice).toString() + '</div>';
+                '<div class="order-item-price">Rs. ' + (orderItemPrice).toLocaleString() + '</div>';
         return orderItem;
     }
 
@@ -496,6 +576,29 @@
         else {
             Cookies.set('userCart', userCart);
             window.location.replace('/checkout');
+        }
+    }
+
+    function changeCountry(e) {
+        // Update shipping item and total price
+        var orderItemHtml = getOrderItemHtml(1, 'Shipping Charge', getPrice('Delivery'), null);
+        var shippingItem = document.querySelector(".order-items").lastElementChild;
+        if (shippingItem) {
+            shippingItem.replaceWith(orderItemHtml);
+        }
+        updateTotal();
+
+        // Change payment options
+        var country = document.querySelector('select[name="country"]').value;
+        if (country != 'Pakistan') {
+            document.getElementById("cash").parentElement.classList.add('display-none');
+            document.getElementById("transfer").parentElement.classList.add('display-none');
+            document.getElementById("card").checked = true;
+            showHelp(document.getElementById("card"));
+        }
+        else {
+            document.getElementById("cash").parentElement.classList.remove('display-none');
+            document.getElementById("transfer").parentElement.classList.remove('display-none');
         }
     }
 

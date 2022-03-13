@@ -121,7 +121,7 @@
                             <input type="checkbox" class="cup-offer checkbox-position" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer margin-left-2 font-bold">Sister Cup Offer</span>
                             <div class="light-grey">
-                                Get two cups for Rs. 4100 (Rs. 500 off the second cup)
+                                Get two cups for PKR 4100 (PKR 500 off the second cup)
                             </div>
                         </div>
                         <div class="margin-bottom-15">
@@ -153,7 +153,7 @@
                         <span class="order-item-quantity-container">
                             x <span class="order-item-quantity-small">1</span>
                         </span>
-                        <div class="order-item-price">Rs. 2300</div>
+                        <div class="order-item-price">PKR 2300</div>
                     </div>
                     <div class="order-item">
                         Recircle Cup Large
@@ -161,21 +161,21 @@
                         <span class="order-item-quantity-container">
                             x <span class="order-item-quantity-large">0</span>
                         </span>
-                        <div class="order-item-price">Rs. 0</div>
+                        <div class="order-item-price">PKR 0</div>
                     </div>
                     <div class="order-item cup-wash display-none">
                         Recircle Menstrual Cup Wash
                         <span class="order-item-quantity-container">
                             x <span class="order-item-quantity-cup-wash">0</span>
                         </span>
-                        <div class="order-item-price">Rs. 0</div>
+                        <div class="order-item-price">PKR 0</div>
                     </div>
                     <div class="order-item donated-cup display-none">
                         Recircle Cup (Donated)
                         <span class="order-item-quantity-container">
                             x <span class="order-item-quantity-donated-cup">1</span>
                         </span>
-                        <div class="order-item-price">Rs. 700</div>
+                        <div class="order-item-price">PKR 700</div>
                     </div>
                 </div>
 
@@ -183,7 +183,7 @@
                     <div class="total-price font-bold font-1p25em margin-bottom-5">
                         Total:
                         <span class="font-bold">
-                        Rs. <span class="price">2300</span><span class="price-discount margin-left-5"></span>
+                        PKR <span class="price">2300</span><span class="price-discount margin-left-5"></span>
                         </span>
                     </div>
                     <div class="label">Excludes delivery charge</div>
@@ -249,7 +249,7 @@
         if (small) {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-small").textContent = small;
-            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'Rs. ' + (small * 2300).toString();
+            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'PKR ' + (small * 2300).toString();
         }
         else {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.add('display-none');
@@ -258,7 +258,7 @@
         if (large) {
             document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-large").textContent = large;
-            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'Rs. ' + (large * 2300).toString();
+            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'PKR ' + (large * 2300).toString();
         }
         else {
             document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.add('display-none');
@@ -267,7 +267,7 @@
         if (document.querySelector(".add-wash").checked) {
             document.querySelector(".order-item-quantity-cup-wash").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-cup-wash").textContent = cupWash;
-            document.querySelector(".order-item-quantity-cup-wash").parentNode.nextElementSibling.textContent = 'Rs. ' + (cupWash * 900).toString();
+            document.querySelector(".order-item-quantity-cup-wash").parentNode.nextElementSibling.textContent = 'PKR ' + (cupWash * 900).toString();
         }
 
         // Add color
@@ -296,7 +296,7 @@
                 document.querySelector(".price-discount").textContent = "(20% Off)";
             }
             else {
-                document.querySelector(".price-discount").textContent = "(Save Rs. 500 on every 2 Cups)";
+                document.querySelector(".price-discount").textContent = "(Save PKR 500 on every 2 Cups)";
             }
             document.querySelector(".cup-offer").checked = true;
         }

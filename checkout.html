@@ -187,7 +187,7 @@
                     <div class="total-price font-bold font-1p25em margin-bottom-5">
                         Total:
                         <span class="font-bold">
-                        Rs. <span class="price">2000</span><span class="price-discount margin-left-5"></span>
+                        PKR <span class="price">2000</span><span class="price-discount margin-left-5"></span>
                         </span>
                     </div>
                 </div>
@@ -337,7 +337,7 @@
             type: "POST",
             contentType: "application/json; charset=utf-8",
             crossDomain: false,
-            url: 'https://recircle-api-heroku-18.herokuapp.com/_add_order',
+            url: 'http://localhost:5000/_add_order',
             data: JSON.stringify({
                 data: data
             }),
@@ -395,7 +395,7 @@
                 document.querySelector(".price-discount").textContent = "(20% Off)";
             }
             else {
-                document.querySelector(".price-discount").textContent = "(Save Rs. 500 on every 2 Cups)";
+                document.querySelector(".price-discount").textContent = "(Save PKR 500 on every 2 Cups)";
             }
         }
         else {
@@ -512,7 +512,7 @@
         orderItem.innerHTML =
                 itemName +
                 itemInfoHtml +
-                '<div class="order-item-price">Rs. ' + (orderItemPrice).toLocaleString() + '</div>';
+                '<div class="order-item-price">PKR ' + (orderItemPrice).toLocaleString() + '</div>';
         return orderItem;
     }
 
@@ -565,7 +565,7 @@
 
         // Update price
         var orderItemPrice = quantity * parseInt(orderItemElement.dataset.price);
-        orderItemElement.querySelector(".order-item-price").textContent = 'Rs. ' + (orderItemPrice).toString();
+        orderItemElement.querySelector(".order-item-price").textContent = 'PKR ' + (orderItemPrice).toString();
         updateTotal();
 
         // Update cart

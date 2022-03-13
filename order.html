@@ -120,7 +120,7 @@
                         <div class="margin-bottom-15">
                             <input type="checkbox" class="cup-offer checkbox-position" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer margin-left-2 font-bold">Sister Cup Offer</span>
-                            <div class="light-grey display-none">
+                            <div class="light-grey">
                                 Get two cups for Rs. 4100 (Rs. 500 off the second cup)
                             </div>
                         </div>
@@ -223,7 +223,7 @@
     else {
         discount = false;
     }
-    discount = true;
+    discount = false;
     updateTotal();
 
     function showHelp(element) {
@@ -289,10 +289,10 @@
         if (total >= 2) {
             var sisterCupOffers = Math.floor(total / 2);
             var singleCups = total % 2;
-            totalPrice = sisterCupOffers * 4600 + singleCups * 2300;
+            totalPrice = sisterCupOffers * 4100 + singleCups * 2300;
             if (discount && total) {
                 totalPrice *= 0.80;
-                totalPrice = Math.round(totalPrice/50)*50;
+                totalPrice = Math.round(totalPrice/100)*100;
                 document.querySelector(".price-discount").textContent = "(20% Off)";
             }
             else {
@@ -302,11 +302,11 @@
         }
         else {
             totalPrice = total * 2300;
-            var singleCupDiscount = true;
+            var singleCupDiscount = false;
             if (singleCupDiscount && total) {
                 totalPrice *= 0.80;
-                totalPrice = Math.round(totalPrice/50)*50;
-                document.querySelector(".price-discount").textContent = "(20% Off)";
+                totalPrice = Math.round(totalPrice/100)*100;
+                document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";

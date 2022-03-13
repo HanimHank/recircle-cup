@@ -233,7 +233,6 @@
 
                         <div class="margin-bottom-20 font-bold">
                             <div class="stock-help form-info">
-                                Get 20% off on all Recircle Cup orders for International Womxn's Day!
                             </div>
                         </div>
 
@@ -257,7 +256,7 @@
                             <div class="col1 margin-top-15">
                                 <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
                                 <span class="cup-offer">Sister Cup Offer</span>
-                                <div class="light-grey display-none">
+                                <div class="light-grey">
                                     Get two cups for Rs. 4100 (Rs. 500 off the second cup)
                                 </div>
                             </div>
@@ -455,7 +454,7 @@
 
         <script>
             Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
-            var discount = true;
+            var discount = false;
             updateTotal();
 
             function submitOrder(element) {
@@ -478,10 +477,10 @@
                 if (total >= 2) {
                     var sisterCupOffers = Math.floor(total / 2);
                     var singleCups = total % 2;
-                    totalPrice = sisterCupOffers * 4600 + singleCups * 2300;
+                    totalPrice = sisterCupOffers * 4100 + singleCups * 2300;
                     if (discount && total) {
                         totalPrice *= 0.80;
-                        totalPrice = Math.round(totalPrice/50)*50;
+                        totalPrice = Math.round(totalPrice/100)*100;
                         document.querySelector(".price-discount").textContent = "(20% Off)";
                     }
                     else {
@@ -492,11 +491,11 @@
                 }
                 else {
                     totalPrice = total * 2300;
-                    var singleCupDiscount = true;
+                    var singleCupDiscount = false;
                     if (singleCupDiscount && total) {
                         totalPrice *= 0.80;
-                        totalPrice = Math.round(totalPrice/50)*50;
-                        document.querySelector(".price-discount").textContent = "(20% Off)";
+                        totalPrice = Math.round(totalPrice/100)*100;
+                        document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""
@@ -509,7 +508,7 @@
             function addOffer(element) {
                 var totalPrice;
                 if (element.checked) {
-                    totalPrice = 4600;
+                    totalPrice = 4100;
                     if (discount) {
                         totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;
@@ -526,7 +525,7 @@
                     if (discount) {
                         totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;
-                        document.querySelector(".price-discount").textContent = "(20% Off)";
+                        document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""

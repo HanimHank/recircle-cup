@@ -488,6 +488,11 @@
             itemColorHtml = '<span class="order-item-color-container"> - ' + itemColor + '</span>'
         }
 
+        // Add 2 cup discount
+        if (name == 'Cup (Small)' || name == 'Cup (Large)') {
+            orderItemPrice -= (200 * Math.floor(quantity / 2))
+        }
+
         var itemInfoHtml = '';
         var itemName = name;
         if (name !== 'Shipping Charge') {
@@ -565,6 +570,11 @@
 
         // Update price
         var orderItemPrice = quantity * parseInt(orderItemElement.dataset.price);
+
+        // Add 2 cup discount
+        if (orderItemElement.dataset.name == 'Cup (Small)' || orderItemElement.dataset.name == 'Cup (Large)') {
+            orderItemPrice -= (200 * Math.floor(quantity / 2))
+        }
         orderItemElement.querySelector(".order-item-price").textContent = 'PKR ' + (orderItemPrice).toString();
         updateTotal();
 

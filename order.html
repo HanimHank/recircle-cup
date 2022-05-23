@@ -249,7 +249,7 @@
         if (small) {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-small").textContent = small;
-            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'PKR ' + (small * 1800).toString();
+            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'PKR ' + (small * 1800 - (200 * Math.floor(small / 2))).toString();
         }
         else {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.add('display-none');
@@ -258,7 +258,7 @@
         if (large) {
             document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-large").textContent = large;
-            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'PKR ' + (large * 1800).toString();
+            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'PKR ' + (large * 1800 - (200 * Math.floor(large / 2))).toString();
         }
         else {
             document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.add('display-none');

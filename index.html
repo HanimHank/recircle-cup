@@ -233,6 +233,7 @@
 
                         <div class="margin-bottom-20 font-bold">
                             <div class="stock-help form-info">
+
                             </div>
                         </div>
 
@@ -257,7 +258,7 @@
                                 <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
                                 <span class="cup-offer">Sister Cup Offer</span>
                                 <div class="light-grey">
-                                    Get two cups for PKR 4100 (PKR 500 off the second cup)
+                                    Get two cups for PKR 3400 (PKR 200 off the second cup)
                                 </div>
                             </div>
 
@@ -265,8 +266,11 @@
                                 <div class="total-price">
                                     Total:
                                     <span class="font-bold">
-                                    PKR <span class="price">2300</span><span class="price-discount margin-left-5"></span>
+                                    PKR <span class="price">1800</span><span class="price-discount margin-left-5"></span>
                                     </span>
+                                </div>
+                                <div class="light-grey font-bold">
+                                    20% Sale
                                 </div>
                                 <div class="light-grey">
                                     Excludes delivery charge
@@ -477,20 +481,20 @@
                 if (total >= 2) {
                     var sisterCupOffers = Math.floor(total / 2);
                     var singleCups = total % 2;
-                    totalPrice = sisterCupOffers * 4100 + singleCups * 2300;
+                    totalPrice = sisterCupOffers * 3400 + singleCups * 1800;
                     if (discount && total) {
                         totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;
                         document.querySelector(".price-discount").textContent = "(20% Off)";
                     }
                     else {
-                        var discountAmount = sisterCupOffers * 500;
+                        var discountAmount = sisterCupOffers * 200;
                         document.querySelector(".price-discount").textContent = "(Save PKR " + discountAmount + ")";
                     }
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {
-                    totalPrice = total * 2300;
+                    totalPrice = total * 1800;
                     var singleCupDiscount = false;
                     if (singleCupDiscount && total) {
                         totalPrice *= 0.80;
@@ -508,20 +512,20 @@
             function addOffer(element) {
                 var totalPrice;
                 if (element.checked) {
-                    totalPrice = 4100;
+                    totalPrice = 3400;
                     if (discount) {
                         totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;
                         document.querySelector(".price-discount").textContent = "(20% Off)";
                     }
                     else {
-                        document.querySelector(".price-discount").textContent = "(Save PKR 500)";
+                        document.querySelector(".price-discount").textContent = "(Save PKR 200)";
                     }
                     document.querySelector(".cup-quantity").value = 2;
                     document.querySelector("input[name='quantity-large']").value = 0;
                 }
                 else {
-                    totalPrice = 2300;
+                    totalPrice = 1800;
                     if (discount) {
                         totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;

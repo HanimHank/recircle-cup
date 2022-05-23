@@ -388,18 +388,18 @@
         if (totalCups >= 2) {
             var sisterCupOffers = Math.floor(totalCups / 2);
             var singleCups = totalCups % 2;
-            totalPrice = sisterCupOffers * 4100 + singleCups * 2300;
+            totalPrice = sisterCupOffers * 3400 + singleCups * 1800;
             if (discount && totalCups) {
                 totalPrice *= 0.80;
                 totalPrice = Math.round(totalPrice/100)*100;
                 document.querySelector(".price-discount").textContent = "(20% Off)";
             }
             else {
-                document.querySelector(".price-discount").textContent = "(Save PKR 500 on every 2 Cups)";
+                document.querySelector(".price-discount").textContent = "(Save PKR 200 on every 2 Cups)";
             }
         }
         else {
-            totalPrice = totalCups * 2300;
+            totalPrice = totalCups * 1800;
             var singleCupDiscount = false;
             if (singleCupDiscount && totalCups) {
                 totalPrice *= 0.80;
@@ -454,7 +454,7 @@
 
     function getPrice(name) {
         if (name === 'Small' || name === 'Large') {
-            return 2300
+            return 1800
         }
         if (name === 'Box') {
             return 2000

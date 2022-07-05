@@ -258,7 +258,7 @@
                                 <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
                                 <span class="cup-offer">Sister Cup Offer</span>
                                 <div class="light-grey">
-                                    Get two cups for PKR 3400 (PKR 200 off the second cup)
+                                    Get two cups for PKR 3800 (PKR 200 off the second cup)
                                 </div>
                             </div>
 
@@ -266,10 +266,10 @@
                                 <div class="total-price">
                                     Total:
                                     <span class="font-bold">
-                                    PKR <span class="price">1800</span><span class="price-discount margin-left-5"></span>
+                                    PKR <span class="price">2000</span><span class="price-discount margin-left-5 display-none"></span>
                                     </span>
                                 </div>
-                                <div class="light-grey font-bold">
+                                <div class="light-grey font-bold display-none">
                                     20% Sale
                                 </div>
                                 <div class="light-grey">
@@ -481,7 +481,7 @@
                 if (total >= 2) {
                     var sisterCupOffers = Math.floor(total / 2);
                     var singleCups = total % 2;
-                    totalPrice = sisterCupOffers * 3400 + singleCups * 1800;
+                    totalPrice = sisterCupOffers * 3800 + singleCups * 2000;
                     if (discount && total) {
                         totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;
@@ -494,7 +494,7 @@
                     document.querySelector(".cup-offer").checked = true;
                 }
                 else {
-                    totalPrice = total * 1800;
+                    totalPrice = total * 2000;
                     var singleCupDiscount = false;
                     if (singleCupDiscount && total) {
                         totalPrice *= 0.80;
@@ -512,7 +512,7 @@
             function addOffer(element) {
                 var totalPrice;
                 if (element.checked) {
-                    totalPrice = 3400;
+                    totalPrice = 3800;
                     if (discount) {
                         totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;
@@ -525,7 +525,7 @@
                     document.querySelector("input[name='quantity-large']").value = 0;
                 }
                 else {
-                    totalPrice = 1800;
+                    totalPrice = 2000;
                     if (discount) {
                         totalPrice *= 0.80;
                         totalPrice = Math.round(totalPrice/100)*100;

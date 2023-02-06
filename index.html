@@ -258,7 +258,7 @@
                                 <input type="checkbox" class="cup-offer" name="extra-cup" title="Get an extra cup" onchange="addOffer(this)">
                                 <span class="cup-offer">Sister Cup Offer</span>
                                 <div class="light-grey">
-                                    Get two cups for PKR 3800 (PKR 200 off the second cup)
+                                    Get two cups for PKR 1800 (PKR 200 off the second cup)
                                 </div>
                             </div>
 
@@ -269,8 +269,8 @@
                                     PKR <span class="price">2000</span><span class="price-discount margin-left-5 display-none"></span>
                                     </span>
                                 </div>
-                                <div class="light-grey font-bold display-none">
-                                    20% Sale
+                                <div class="light-grey font-bold">
+                                    50% End of Business Sale
                                 </div>
                                 <div class="light-grey">
                                     Excludes delivery charge
@@ -458,7 +458,7 @@
 
         <script>
             Raven.config('https://0d9c3b7c58a54182b20a04867fc5c682@sentry.io/1222661').install();
-            var discount = false;
+            var discount = true;
             updateTotal();
 
             function submitOrder(element) {
@@ -481,11 +481,11 @@
                 if (total >= 2) {
                     var sisterCupOffers = Math.floor(total / 2);
                     var singleCups = total % 2;
-                    totalPrice = sisterCupOffers * 3800 + singleCups * 2000;
+                    totalPrice = sisterCupOffers * 3600 + singleCups * 2000;
                     if (discount && total) {
-                        totalPrice *= 0.80;
+                        totalPrice *= 0.50;
                         totalPrice = Math.round(totalPrice/100)*100;
-                        document.querySelector(".price-discount").textContent = "(20% Off)";
+                        document.querySelector(".price-discount").textContent = "(50% Off)";
                     }
                     else {
                         var discountAmount = sisterCupOffers * 200;
@@ -495,11 +495,11 @@
                 }
                 else {
                     totalPrice = total * 2000;
-                    var singleCupDiscount = false;
+                    var singleCupDiscount = true;
                     if (singleCupDiscount && total) {
-                        totalPrice *= 0.80;
+                        totalPrice *= 0.50;
                         totalPrice = Math.round(totalPrice/100)*100;
-                        document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
+                        document.querySelector(".price-discount").textContent = "(50%)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""
@@ -512,11 +512,11 @@
             function addOffer(element) {
                 var totalPrice;
                 if (element.checked) {
-                    totalPrice = 3800;
+                    totalPrice = 3600;
                     if (discount) {
-                        totalPrice *= 0.80;
+                        totalPrice *= 0.50;
                         totalPrice = Math.round(totalPrice/100)*100;
-                        document.querySelector(".price-discount").textContent = "(20% Off)";
+                        document.querySelector(".price-discount").textContent = "(50% Off)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = "(Save PKR 200)";
@@ -527,9 +527,9 @@
                 else {
                     totalPrice = 2000;
                     if (discount) {
-                        totalPrice *= 0.80;
+                        totalPrice *= 0.50;
                         totalPrice = Math.round(totalPrice/100)*100;
-                        document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
+                        document.querySelector(".price-discount").textContent = "(50%)";
                     }
                     else {
                         document.querySelector(".price-discount").textContent = ""

@@ -121,7 +121,7 @@
                             <input type="checkbox" class="cup-offer checkbox-position" name="cup-offer" title="Get an extra cup" onchange="addOffer(this)">
                             <span class="cup-offer margin-left-2 font-bold">Sister Cup Offer</span>
                             <div class="light-grey">
-                                Get two cups for PKR 3800 (PKR 200 off the second cup)
+                                Get two cups for PKR 1800 (PKR 200 off the second cup)
                             </div>
                         </div>
                         <div class="margin-bottom-15">
@@ -183,7 +183,7 @@
                     <div class="total-price font-bold font-1p25em margin-bottom-5">
                         Total:
                         <span class="font-bold">
-                        PKR <span class="price">2000</span><span class="price-discount margin-left-5 display-none"></span>
+                        PKR <span class="price">2000</span><span class="price-discount margin-left-5"></span>
                         </span>
                     </div>
                     <div class="label">Excludes delivery charge</div>
@@ -223,7 +223,7 @@
     else {
         discount = false;
     }
-    discount = false;
+    discount = true;
     updateTotal();
 
     function showHelp(element) {
@@ -249,7 +249,7 @@
         if (small) {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-small").textContent = small;
-            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'PKR ' + (small * 2000 - (200 * Math.floor(small / 2))).toString();
+            document.querySelector(".order-item-quantity-small").parentNode.nextElementSibling.textContent = 'PKR ' + (small * 2000 - (400 * Math.floor(small / 2))).toString();
         }
         else {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.add('display-none');
@@ -258,7 +258,7 @@
         if (large) {
             document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-large").textContent = large;
-            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'PKR ' + (large * 2000 - (200 * Math.floor(large / 2))).toString();
+            document.querySelector(".order-item-quantity-large").parentNode.nextElementSibling.textContent = 'PKR ' + (large * 2000 - (400 * Math.floor(large / 2))).toString();
         }
         else {
             document.querySelector(".order-item-quantity-large").parentNode.parentNode.classList.add('display-none');
@@ -289,11 +289,11 @@
         if (total >= 2) {
             var sisterCupOffers = Math.floor(total / 2);
             var singleCups = total % 2;
-            totalPrice = sisterCupOffers * 3800 + singleCups * 2000;
+            totalPrice = sisterCupOffers * 3600 + singleCups * 2000;
             if (discount && total) {
-                totalPrice *= 0.80;
+                totalPrice *= 0.50;
                 totalPrice = Math.round(totalPrice/100)*100;
-                document.querySelector(".price-discount").textContent = "(20% Off)";
+                document.querySelector(".price-discount").textContent = "(50% Off)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "(Save PKR 200 on every 2 Cups)";
@@ -302,11 +302,11 @@
         }
         else {
             totalPrice = total * 2000;
-            var singleCupDiscount = false;
+            var singleCupDiscount = true;
             if (singleCupDiscount && total) {
-                totalPrice *= 0.80;
+                totalPrice *= 0.50;
                 totalPrice = Math.round(totalPrice/100)*100;
-                document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
+                document.querySelector(".price-discount").textContent = "(50% Off)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "";

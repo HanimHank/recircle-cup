@@ -187,7 +187,7 @@
                     <div class="total-price font-bold font-1p25em margin-bottom-5">
                         Total:
                         <span class="font-bold">
-                        PKR <span class="price">2000</span><span class="price-discount margin-left-5 display-none"></span>
+                        PKR <span class="price">2000</span><span class="price-discount margin-left-5"></span>
                         </span>
                     </div>
                 </div>
@@ -257,7 +257,7 @@
     if (email && email != 'null') {
         document.querySelector("input[name='email']").value = email
     }
-    discount = false;
+    discount = true;
 
     var outOfStock = false;
     var totalPrice;
@@ -388,11 +388,11 @@
         if (totalCups >= 2) {
             var sisterCupOffers = Math.floor(totalCups / 2);
             var singleCups = totalCups % 2;
-            totalPrice = sisterCupOffers * 3800 + singleCups * 2000;
+            totalPrice = sisterCupOffers * 3600 + singleCups * 2000;
             if (discount && totalCups) {
-                totalPrice *= 0.80;
+                totalPrice *= 0.50;
                 totalPrice = Math.round(totalPrice/100)*100;
-                document.querySelector(".price-discount").textContent = "(20% Off)";
+                document.querySelector(".price-discount").textContent = "(50% Off)";
             }
             else {
                 document.querySelector(".price-discount").textContent = "(Save PKR 200 on every 2 Cups)";
@@ -400,11 +400,11 @@
         }
         else {
             totalPrice = totalCups * 2000;
-            var singleCupDiscount = false;
+            var singleCupDiscount = true;
             if (singleCupDiscount && totalCups) {
-                totalPrice *= 0.80;
+                totalPrice *= 0.50;
                 totalPrice = Math.round(totalPrice/100)*100;
-                document.querySelector(".price-discount").textContent = "(20% Off on Single Cups)";
+                document.querySelector(".price-discount").textContent = "(50%)";
             }
             else {
                 // Add 10% discount on single cup if comfy period box present
@@ -490,7 +490,7 @@
 
         // Add 2 cup discount
         if (name == 'Cup (Small)' || name == 'Cup (Large)') {
-            orderItemPrice -= (200 * Math.floor(quantity / 2))
+            orderItemPrice -= (400 * Math.floor(quantity / 2))
         }
 
         var itemInfoHtml = '';
@@ -573,7 +573,7 @@
 
         // Add 2 cup discount
         if (orderItemElement.dataset.name == 'Cup (Small)' || orderItemElement.dataset.name == 'Cup (Large)') {
-            orderItemPrice -= (200 * Math.floor(quantity / 2))
+            orderItemPrice -= (400 * Math.floor(quantity / 2))
         }
         orderItemElement.querySelector(".order-item-price").textContent = 'PKR ' + (orderItemPrice).toString();
         updateTotal();

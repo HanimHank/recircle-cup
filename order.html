@@ -113,8 +113,8 @@
                             </div>
                         </div>
                         <div class="margin-bottom-20">
-                            <div class="quantity-help form-info display-none">
-
+                            <div class="quantity-help form-info font-bold display-none">
+                                Small White Cups are out of stock
                             </div>
                         </div>
                         <div class="margin-bottom-15">
@@ -125,10 +125,10 @@
                             </div>
                         </div>
                         <div class="margin-bottom-15">
-                            <input type="checkbox" class="add-wash checkbox-position" name="add-wash" title="Add Menstrual Cup Wash" onchange="addWash(this)">
+                            <input type="checkbox" class="add-wash checkbox-position" name="add-wash" title="Add Menstrual Cup Wash" onchange="addWash(this)" disabled>
                             <span class="margin-left-2 font-bold">Add Menstrual Cup Wash</span>
                             <div class="light-grey">
-                                Our Menstrual Cup Wash is pH neutral, oil-free and organic.
+                                Out of stock
                             </div>
                             <div class="display-none cup-wash-container margin-top-10">
                             <div class="label">Menstrual Cup Wash</div>
@@ -210,7 +210,7 @@
     }
     var smallCups = (getCookie('Small')) ? getCookie('Small') : 1;
     var largeCups = (getCookie('Large')) ? getCookie('Large') : 0;
-    var outOfStock = false;
+    var outOfStock = true;
     var totalPrice;
     document.querySelector("input[name='quantity-small']").value = smallCups;
     document.querySelector("input[name='quantity-large']").value = largeCups;
@@ -246,6 +246,23 @@
         var cupWash = parseInt(document.querySelector("input[name='quantity-cup-wash']").value) || 0;
         var color = document.querySelector("select[name='cup-color']").value;
 
+        // Show cup unavailability
+        if (outOfStock) {
+            if (small > 0) {
+                document.querySelector(".quantity-help").classList.remove('display-none');
+                document.querySelector("#cup-color-white").disabled = true;
+                // If white selected, change to red
+                if (color === 'White') {
+                    document.querySelector("select[name='cup-color']").value = 'Red';
+                    color = 'Red';
+                }
+            }
+            else {
+                document.querySelector(".quantity-help").classList.add('display-none');
+                document.querySelector("#cup-color-white").disabled = false;
+            }
+        }
+
         if (small) {
             document.querySelector(".order-item-quantity-small").parentNode.parentNode.classList.remove('display-none');
             document.querySelector(".order-item-quantity-small").textContent = small;
@@ -274,16 +291,6 @@
         document.querySelectorAll(".order-item-color").forEach(function(el) {
            el.textContent = ' - ' + color
         });
-
-        // Show large cup unavailability and add discount
-        if (outOfStock) {
-            if (small > 0) {
-                document.querySelector(".quantity-help").classList.remove('display-none');
-            }
-            else {
-                document.querySelector(".quantity-help").classList.add('display-none');
-            }
-        }
 
         var total = small + large;
         if (total >= 2) {

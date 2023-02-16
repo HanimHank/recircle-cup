@@ -378,6 +378,10 @@ select {
     border-radius: 5px;
 }
 
+select option:disabled {
+    color: #a9a9a9;
+}
+
 .section img {
     width: 180px;
     display: block;

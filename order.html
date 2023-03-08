@@ -105,7 +105,7 @@
                             <select name="cup-color">
                                 <option id="cup-color-white">White</option>
                                 <option selected>Red</option>
-                                <option>Purple</option>
+                                <option id="cup-color-purple">Purple</option>
                             </select>
                         </div>
                         <div class="margin-bottom-20">
@@ -114,7 +114,7 @@
                         </div>
                         <div class="margin-bottom-20">
                             <div class="quantity-help form-info font-bold display-none">
-                                Small White Cups are out of stock
+                                Small White/Purple Cups are out of stock
                             </div>
                         </div>
                         <div class="margin-bottom-15">
@@ -251,8 +251,9 @@
             if (small > 0) {
                 document.querySelector(".quantity-help").classList.remove('display-none');
                 document.querySelector("#cup-color-white").disabled = true;
+                document.querySelector("#cup-color-purple").disabled = true;
                 // If white selected, change to red
-                if (color === 'White') {
+                if (color === 'White' || color === 'Purple') {
                     document.querySelector("select[name='cup-color']").value = 'Red';
                     color = 'Red';
                 }
@@ -260,6 +261,7 @@
             else {
                 document.querySelector(".quantity-help").classList.add('display-none');
                 document.querySelector("#cup-color-white").disabled = false;
+                document.querySelector("#cup-color-purple").disabled = false;
             }
         }
 

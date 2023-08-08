@@ -53,7 +53,7 @@ How your vagina looks like from the inside
 See some [great tips on removal](https://www.youtube.com/watch?v=BuysKXj82Gg).
 
 Have a happy, care-free period girls! If you have any questions, you can contact us at
-[contact@recircle.life](mailto:wasma.imran@gmail.com).
+[wasma.imran@gmail.com](mailto:wasma.imran@gmail.com).
 
 ### Additional Reading
 

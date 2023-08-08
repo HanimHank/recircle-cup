@@ -32,10 +32,6 @@ The best thing about a menstrual cup is that it seals inside your vagina, so you
 cups come in different [sizes](/which-size) and designs so you can select the one that fits your vagina best, as every vagina
 is different.
 
-Menstrual cups have been around in the world for as long as 75 years, but are not readily available in Pakista.
-Recircle Cup is here to change that. Our cup comes with minimal packaging (a cotton pouch with jute to tie it
-with and a recycled paper box).
-
 Read more about how [I started using menstrual cups](/how-i-got-started) and why I thought it was time to
 [rethink menstrual products](/rethink-menstrual-products).
 
